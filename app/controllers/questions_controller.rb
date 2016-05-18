@@ -19,8 +19,8 @@ class QuestionsController < ApplicationController
 
   end
 
-  # Action: Destroy current question comment
-  # Require question_comment.id == current_user.login || Admin access
+  # Action: Destroy current question
+  # Require question.user == current_user.login || Admin access
   def destroy
 
   end

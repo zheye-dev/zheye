@@ -10,7 +10,7 @@
 /.idea/*.iml
 # Ignore bundler config.
 /.bundle
-/bundle
+/bundle/*
 /vendor
 
 # Ignore the default SQLite database.

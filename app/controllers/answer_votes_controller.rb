@@ -1,0 +1,2 @@
+class AnswerVotesController < ApplicationController
+end

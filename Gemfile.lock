@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    amazeui (2.6.1)
     arel (6.0.3)
     authlogic (3.4.6)
       activerecord (>= 3.2)
@@ -157,6 +158,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazeui
   authlogic (= 3.4.6)
   byebug
   cancan

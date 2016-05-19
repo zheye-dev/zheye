@@ -10,6 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require amazeui.js
+//= require amazeui.min.js
+//= require amazeui.widegets.helper.js
+//= require amazeui.widegets.helper.min.js
+//= require handlebars.min.js
+//
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

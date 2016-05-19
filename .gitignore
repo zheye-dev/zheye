@@ -7,6 +7,7 @@
 # Ignore idea project files
 /.idea/workspace.xml
 /.idea/tasks.xml
+/.idea
 # Ignore bundler config.
 /bundle/*
 /vendor

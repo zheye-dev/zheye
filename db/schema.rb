@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160517125300) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
+    t.string   "type"
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "answer_id"
@@ -47,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160517125300) do
     t.string   "realname"
     t.date     "birthday"
     t.string   "address"
-    t.string   "selfIntroduction"
+    t.string   "self_introduction"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160517125300) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "attitude"
+    t.string   "type"
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "answer_id"

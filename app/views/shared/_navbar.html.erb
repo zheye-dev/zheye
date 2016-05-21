@@ -1,5 +1,5 @@
 <header class="am-topbar am-topbar-inverse">
-  <h1 class="am-topbar-brand" style="margin-left: 12%">
+  <h1 class="am-topbar-brand" style="margin-left: 15%">
     <a href="#">
       <%=image_tag "header_tran.png", style: "padding-bottom: 4px"%>
     </a>
@@ -15,7 +15,7 @@
     </form>
 
     <% if current_user %>
-      <div class="am-topbar-right" style="margin-right: 12%">
+      <div class="am-topbar-right" style="margin-right: 15%">
         <%= button_to "提问", new_question_path, :id => "button_ask", :class => "am-btn am-btn-primary am-topbar-btn am-btn-sm", :method => :get, form_class:"am-topbar-left am-topbar-inline"  %>
         <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
           <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle><%= current_user.login %><span class="am-icon-caret-down"></span></button>
@@ -31,7 +31,7 @@
         </div>
       </div>
     <% else %>
-      <div class="am-topbar-right" style="margin-right: 12%">
+      <div class="am-topbar-right" style="margin-right: 15%">
         <%= button_to "登录", log_in_path, :id => "button_login", :class => "am-btn am-btn-primary am-topbar-btn am-btn-sm", :method => :get, form_class:"am-topbar-right am-topbar-inline" %>
         <%= button_to "注册", new_user_path, :id => "button_signup", :class =>"am-btn am-btn-primary am-topbar-btn am-btn-sm", :method => :get, form_class:"am-topbar-right am-topbar-inline" %>
       </div>

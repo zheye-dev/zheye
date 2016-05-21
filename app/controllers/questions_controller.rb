@@ -9,6 +9,11 @@ class QuestionsController < ApplicationController
 
   end
 
+  def show
+
+  end
+
+  end
   # Display form to edit current question commenet
   def edit
 

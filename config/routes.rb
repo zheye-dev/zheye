@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   get 'portal/index'
 
   resources :questions do
-    resources :question_comments
-    resources :answers do
-      resources :answer_comments
-    end
+    resources :answers
   end
+
+  resources :users
+
+  resources :user_sessions, only: [:create, :destroy]
+
+  delete '/logout', to: 'user_sessions#destroy', as: :log_out
+  get '/login', to: 'user_sessions#new', as: :log_in
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

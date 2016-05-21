@@ -1,0 +1,43 @@
+<header class="am-topbar am-topbar-inverse">
+  <h1 class="am-topbar-brand" style="margin-left: 12%">
+    <a href="#">者也</a>
+  </h1>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+    <form class="am-topbar-form am-topbar-left am-form-inline" role="search">
+      <div class="am-form-group">
+        <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
+      </div>
+    </form>
+
+    <div class="am-topbar-right">
+      <% if current_user %>
+
+          <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>用户test <span class="am-icon-caret-down"></span></button>
+            <ul class="am-dropdown-content">
+              <li><a href="#">我的主页</a></li>
+              <li><a href="#">我的提问</a></li>
+              <li><a href="#">我的回答</a></li>
+              <li><a href="#">我的评论</a></li>
+              <li><a href="#">我赞成的</a></li>
+              <li><a href="#">我反对的</a></li>
+            </ul>
+          </div>
+
+          <li><span><%= current_user.login %></span></li>
+          <li><%= link_to 'Log Out', log_out_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Log In', log_in_path %></li>
+          <li><%= link_to 'Sign', new_user_path %></li>
+      <% end %>
+
+    </div>
+
+    <div class="am-topbar-right">
+      <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录/注册</button>
+    </div>
+  </div>
+</header>

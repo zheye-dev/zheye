@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160517125300) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.boolean  "admin"
     t.boolean  "gender"
     t.string   "realname"
     t.date     "birthday"

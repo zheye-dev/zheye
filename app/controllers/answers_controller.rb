@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
 
   # Display all answers to a question
   def index
-
+    @answers = Answer.where(:question => params[:question_id])
   end
 
   # Action: Create a new answer

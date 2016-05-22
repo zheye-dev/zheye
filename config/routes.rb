@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :question_votes
     resources :answers do
       resources :answer_votes
+      resources :answer_comments
     end
   end
 

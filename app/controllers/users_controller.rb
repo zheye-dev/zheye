@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource :except => :cur_user
   # Display all users
   # Require admin access
   def index

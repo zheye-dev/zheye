@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  authorize_resource
   # Action: Create a new comment to question
   def new
     @question = Question.new
@@ -27,19 +28,22 @@ class QuestionsController < ApplicationController
   # Display form to edit current question comment
   def edit
     @question = Question.find(params[:id])
+    authorize! :update, @question
   end
 
   # Action: Update given question comment
   def update
     @question = Question.find(params[:id])
+    authorize! :update, @question
     @question.update(question_params)
-    redirect_to root_path
+    redirect_to @question
   end
 
   # Action: Destroy current question
   # Require question.user == current_user.login || Admin access
   def destroy
     @question = Question.find(params[:id])
+    authorize! :destroy, @question
     @question.destroy
     redirect_to root_path
   end

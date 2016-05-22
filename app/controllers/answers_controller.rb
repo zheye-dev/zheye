@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+  authorize_resource
   # Display all answers to a question
   def index
     @answers = Answer.where(:question => params[:question_id])
@@ -30,7 +30,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     @answer.update(answer_params)
-    redirect_to root_path
+    redirect_to @answer
   end
 
   # Action: Destroy current answer

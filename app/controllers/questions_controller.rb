@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     @question.update(question_params)
-    redirect_to @root_path
+    redirect_to root_path
   end
 
   # Action: Destroy current question

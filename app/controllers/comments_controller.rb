@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    render 'Comment editted!'
+    flash[:notice] = 'Comment editted!'
   end
 
   # Action: Destroy current comment

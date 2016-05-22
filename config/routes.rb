@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :question_votes
     resources :answers do
       resources :answer_votes
+      resources :answer_comments
     end
   end
 
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'user_sessions#destroy', as: :log_out
   get '/login', to: 'user_sessions#new', as: :log_in
+
+  get '/me', to: 'users#cur_user'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

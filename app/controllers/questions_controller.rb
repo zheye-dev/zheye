@@ -6,12 +6,8 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save
-      redirect_to @root_path
-    else
-      flash[:notice] = "Not successful!"
-      render 'new'
-    end
+    @question.save
+    redirect_to @root_path
   end
 
   # Display an comment box to current question
@@ -31,12 +27,8 @@ class QuestionsController < ApplicationController
   # Action: Update given question comment
   def update
     @question = Question.find(params[:id])
-    if @question.save
-      redirect_to @root_path
-    else
-      flash[:notice] = "Not successful!"
-      render 'edit'
-    end
+    @question.update(question_params)
+    redirect_to root_path
   end
 
   # Action: Destroy current question
@@ -45,5 +37,9 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     redirect_to root_path
+  end
+  private
+  def question_params
+    params.require(:question).permit(:title, :text)
   end
 end

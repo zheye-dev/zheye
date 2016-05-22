@@ -22,23 +22,35 @@ class UsersController < ApplicationController
 
   # Display info about certain user
   def show
-
+    @user = User.find(params[:id])
   end
 
   # Display form to edit current user's info
   def edit
-
+    @user = User.find(params[:id])
   end
 
   # Action: Update given user's info
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_info_params)
+      redirect_to @user
+    else
+      render 'edit'
+    end
 
+  end
+
+  def cur_user
+    redirect_to current_user
   end
 
   # Action: Destroy certain user(not logout)
   # Require admin access
   def destroy
-
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
 
   private
@@ -46,6 +58,10 @@ class UsersController < ApplicationController
   def users_params
     # Todo: Add other user info required by register here
     params.require(:user).permit(:login, :password, :password_confirmation)
+  end
+
+  def user_info_params
+    params.require(:user).permit(:gender, :realname, :birthday, :address, :self_introduction)
   end
 
 end

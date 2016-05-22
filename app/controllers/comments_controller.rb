@@ -3,17 +3,14 @@ class CommentsController < ApplicationController
 
   # Display an item of comment
   def show
+    @comment = Comment.find(params[:id])
   end
 
   # Action: Update given comment
   def update
-
     @comment = Comment.find(params[:id])
-    if @comment.update(comment_params)
-      render 'Comment editted!'
-    else
-      render 'edit'
-    end
+    @comment.update(comment_params)
+    flash[:notice] = 'Comment editted!'
   end
 
   # Action: Destroy current comment

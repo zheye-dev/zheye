@@ -1,2 +1,3 @@
 class VotesController < ApplicationController
+
 end

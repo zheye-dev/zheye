@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
     end
   end
 
-  # Action: Distroy current session(logout)
+  # Action: destroy current session(logout)
   def destroy
     current_user_session.destroy
     redirect_to root_path

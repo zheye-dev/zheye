@@ -13,7 +13,7 @@ class AnswerCommentsController < CommentsController
     @comment = AnswerComment.new
   end
 
-  # Display form to edit current answer commenet
+  # Display form to edit current answer comment
   def edit
     @comment = AnswerComment.update(comment_params)
     redirect_to root_path

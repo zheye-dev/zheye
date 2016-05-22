@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
   # Action: Create a new comment to question
   def new
-    question = Question.new
+    @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
     @question.save
-    redirect_to @root_path
+    redirect_to root_path
   end
 
   # Display an comment box to current question
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  # Display form to edit current question commenet
+  # Display form to edit current question comment
   def edit
     @question = Question.find(params[:id])
   end

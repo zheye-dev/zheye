@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'authlogic', '3.4.6'
-gem "cancan"
+gem 'cancan'
 gem 'amazeui'
 
 group :development, :test do

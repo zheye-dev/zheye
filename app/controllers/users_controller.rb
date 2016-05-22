@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # params.require(:user).permit(:login, :password, :password_confirmation)
   def create
     @user = User.new(users_params)
-    @user.admin = @user.login == "admin"
+    @user.admin = @user.login == 'admin'
     if @user.save
       redirect_to root_path
     else
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Display registeration form
+  # Display registration form
   def new
     @user = User.new
   end

@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
   # Action: Create a new answer
   def create
     @answer = Answer.create(question: question_id, user: current_user.id, content: answer_params)
-    redirect_to @root_path
+    redirect_to root_path
   end
 
   # Display an answer box to current question

@@ -13,57 +13,57 @@
 
 ActiveRecord::Schema.define(version: 20160517125300) do
 
-  create_table "answers", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "question_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'answers', force: :cascade do |t|
+    t.text 'content'
+    t.integer 'question_id'
+    t.integer 'user_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.string   "type"
-    t.integer  "user_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'comments', force: :cascade do |t|
+    t.text 'content'
+    t.string 'type'
+    t.integer 'user_id'
+    t.integer 'question_id'
+    t.integer 'answer_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'questions', force: :cascade do |t|
+    t.string 'title'
+    t.text 'content'
+    t.integer 'user_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "login"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
-    t.boolean  "admin"
-    t.boolean  "gender"
-    t.string   "realname"
-    t.date     "birthday"
-    t.string   "address"
-    t.string   "self_introduction"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'users', force: :cascade do |t|
+    t.string 'login'
+    t.string 'crypted_password'
+    t.string 'password_salt'
+    t.string 'persistence_token'
+    t.boolean 'admin'
+    t.boolean 'gender'
+    t.string 'realname'
+    t.date 'birthday'
+    t.string 'address'
+    t.string 'self_introduction'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  add_index "users", ["login"], name: "index_users_on_login", unique: true
+  add_index 'users', ['login'], name: 'index_users_on_login', unique: true
 
-  create_table "votes", force: :cascade do |t|
-    t.integer  "attitude"
-    t.string   "type"
-    t.integer  "user_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'votes', force: :cascade do |t|
+    t.integer 'attitude'
+    t.string 'type'
+    t.integer 'user_id'
+    t.integer 'question_id'
+    t.integer 'answer_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
 end

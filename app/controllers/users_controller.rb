@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   # params.require(:user).permit(:login, :password, :password_confirmation)
   def create
     @user = User.new(users_params)
+    @user.admin = @user.login == "admin"
     if @user.save
       redirect_to root_path
     else

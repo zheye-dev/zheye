@@ -16,6 +16,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+/public/assets/*
+/tmp
+/.DS_Store
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep

@@ -18,6 +18,6 @@
 //= require amazeui.widgets.helper.js
 //= require amazeui.widgets.helper.min.js
 //= require handlebars.min.js
-//
+//= require ckeditor/init
 
 //= require_tree .

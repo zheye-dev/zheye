@@ -1,7 +1,7 @@
 
 <h2> <%= @question.title %> </h2>
 
-<%= @question.content %>
+<%= @question.content.html_safe %>
 
 <p><%= @question.created_at%> </p>
 

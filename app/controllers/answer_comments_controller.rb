@@ -10,7 +10,7 @@ class AnswerCommentsController < CommentsController
 
   # Display an comment box to current answer
   def new
-    @answer_comment = AnswerComment.new
+    @comment = AnswerComment.new
   end
 
   # Display form to edit current answer commenet

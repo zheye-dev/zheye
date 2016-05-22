@@ -11,6 +11,8 @@ class QuestionCommentsController < CommentsController
   # Display an comment box to current question
   def new
     @comment = QuestionComment.new
+    @comment_parent = Question.find(params[:question_id])
+    render 'comments/new'
   end
 
   # Display form to edit current question comment

@@ -6,8 +6,13 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.save
-    redirect_to root_path
+    @question.user = current_user
+    if @question.save
+      redirect_to @question
+    else
+      render 'new'
+    end
+
   end
 
   # Display an comment box to current question
@@ -40,6 +45,6 @@ class QuestionsController < ApplicationController
   end
   private
   def question_params
-    params.require(:question).permit(:title, :text)
+    params.require(:question).permit(:title, :content)
   end
 end

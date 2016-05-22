@@ -17,7 +17,7 @@
       <h2>问题描述问题描述问题描述问题描述问题描述问题描述问题描述</h2>
       <p class="am-san-serif">问题详细描述问题详细描述问题详细描述问题详细描述问题详细描述问题详细描述问题详细描述问题详细描述问题详细描述</p>
       <div style="display: inline-block">
-        <a href="##">2条评论</a>
+        <a href="##" id="comments">2条评论</a>
         <a href="##">添加评论</a>
         <a href="##">分享</a>
       </div>
@@ -25,6 +25,49 @@
         <span>发布于2016-05-01</span>
         <a href="##">用户test</a>
         <span>21</span>
+      </div>
+      <div id="question_comments" style="display: none">
+        <ul class="am-comments-list am-comments-list-flip">
+          <li class="am-comment">
+            <a href="#link-to-user-home">
+              <%=image_tag "default_user.jpe", class: "am-comment-avatar", style: "width:4 8px; height: 48px" %>
+            </a>
+
+            <div class="am-comment-main">
+              <header class="am-comment-hd">
+                <!--<h3 class="am-comment-title">评论标题</h3>-->
+                <div class="am-comment-meta">
+                  <a href="#link-to-user" class="am-comment-author">某人</a>
+                  <span>评论于2016-05-02</span>
+                </div>
+              </header>
+
+              <div class="am-comment-bd">
+                我是一条评论。
+              </div>
+            </div>
+          </li>
+
+          <li class="am-comment">
+            <a href="#link-to-user-home">
+              <%=image_tag "default_user.jpe", class: "am-comment-avatar", style: "width:4 8px; height: 48px" %>
+            </a>
+
+            <div class="am-comment-main">
+              <header class="am-comment-hd">
+                <!--<h3 class="am-comment-title">评论标题</h3>-->
+                <div class="am-comment-meta">
+                  <a href="#link-to-user" class="am-comment-author">某人</a>
+                  <span>评论于2016-05-03</span>
+                </div>
+              </header>
+
+              <div class="am-comment-bd">
+                我是另一条评论。
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
       <hr>
     </div>

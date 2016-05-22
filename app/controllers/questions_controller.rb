@@ -16,14 +16,13 @@ class QuestionsController < ApplicationController
 
   # Display an comment box to current question
   def show
-
+    @question = Question.find(params[:id])
   end
 
   def index
     @questions = Question.all
   end
-
-  end
+  
   # Display form to edit current question commenet
   def edit
 

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :questions
   get 'portal/index'
 
   resources :questions do
-    resources :answers
+    resources :question_comments
+    resources :question_votes
+    resources :answers do
+      resources :answer_votes
+    end
   end
 
   resources :users

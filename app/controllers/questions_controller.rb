@@ -1,18 +1,29 @@
 class QuestionsController < ApplicationController
   # Action: Create a new comment to question
-  def create
+  def new
+    question = Question.new
+  end
 
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      redirect_to @root_path
+    else
+      flash[:notice] = "Not successful!"
+      render 'new'
+    end
   end
 
   # Display an comment box to current question
-  def new
-
-  end
-
   def show
 
   end
 
+  def index
+    @questions = Question.all
+  end
+
+  end
   # Display form to edit current question commenet
   def edit
 

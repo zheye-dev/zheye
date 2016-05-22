@@ -1,0 +1,5 @@
+<%= debug(@user) %>
+
+<% if can? :update, @user %>
+  <%= link_to "Edit", edit_user_path(@user) %>
+<% end %>

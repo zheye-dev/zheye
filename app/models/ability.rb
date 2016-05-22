@@ -8,8 +8,10 @@ class Ability
     else
       can :read, :all
       can [:create, :update], [Question, Answer, Comment, QuestionComment, AnswerComment, Vote, QuestionVote, AnswerVote],
-          :user => user
-      can :destroy, [Vote, QuestionVote, AnswerVote], :user => user
+          :user_id => user.id
+      can :create, User
+      can :update, User, :id => user.id
+      can :destroy, [Vote, QuestionVote, AnswerVote], :user_id => user.id
     end
     # Define abilities for the passed in user here. For example:
     #

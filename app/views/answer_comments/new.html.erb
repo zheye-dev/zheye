@@ -1,5 +1,12 @@
-<h1>New Answer Comment</h1>
+<%= render 'errors' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', answer_comments_path %>
+<li class="am-comment">
+  <div class="am-input-group" style="margin-bottom: 5px; width: 91%">
+    <%= form_for @comment do |f| %>
+        <div style="margin-bottom: 5px">
+          <%= f.text_field :content, class: "am-form-field", placeholder:"写下你的评论……" %>
+          <span class="am-input-group-label"><i class="am-icon-comment-o am-icon-fw"></i></span>
+        </div>
+    <% end %>
+  </div>
+</li>

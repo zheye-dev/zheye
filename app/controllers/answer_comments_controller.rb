@@ -5,7 +5,7 @@ class AnswerCommentsController < CommentsController
   end
   # Action: Create a new comment to answer
   def create
-    @comment = AnswerComment.create(question: question_id, answer: answer_id, user_id: current_user, content: comment_params)
+    @comment = AnswerComment.create(question: question_id, answer: answer_id, user: current_user, content: comment_params)
   end
 
   # Display an comment box to current answer

@@ -1,10 +1,6 @@
 # Virtual class for comments, don't call directly
 class CommentsController < ApplicationController
   authorize_resource
-  # Display an item of comment
-  def show
-    @comment = Comment.find(params[:comment_id])
-  end
 
   # Action: Update given comment
   def update

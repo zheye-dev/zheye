@@ -1,18 +1,33 @@
-<% @questions.each do |question| %>
-    <div class="am-g am-g-collapse">
-      <div class="am-u-sm-2"></div>
-      <div class="am-u-sm-6 am-u-sm-offset-2">
+
+<div class="am-g am-g-collapse">
+  <div class="am-u-sm-2"></div>
+  <div class="am-u-sm-6 am-u-sm-offset-2">
+    <div style="display: inline-block; vertical-align: middle">
+      <span style="font-weight: bold">热门问答</span>
+    </div>
+    <div style="display: inline-block; float: right; vertical-align: middle">
+      <div class="am-dropdown" data-am-dropdown>
+        <button class="am-btn am-btn-sm am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>综合排序<span class="am-icon-caret-down"></span></button>
+        <ul class="am-dropdown-content">
+          <li class="am-disabled"><a href="#">综合排序</a></li>
+          <li class="am-divider"></li>
+          <li><a href="#">时间排序</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <% @questions.each do |question| %>
         <div style="display: inline-block; float: left;">
           <div style="display: inline-block; width: 50px; text-align: center">
             <span>10</span><br>
             <span>投票</span>
           </div>
           <div style="display: inline-block; width: 50px; text-align: center">
-            <span>10</span><br>
+            <span><%= question.answers.length %></span><br>
             <span>回答</span>
           </div>
           <div style="display: inline-block; width: 50px; text-align: center">
-            <span>10</span><br>
+            <span><%= question.question_comments.length %></span><br>
             <span>评论</span>
           </div>
         </div>
@@ -27,10 +42,10 @@
           </div>
         </div>
         <hr>
-      </div>
-      <div class="am-u-sm-2">
-        <span></span>
-      </div>
-      <div class="am-u-sm-2"></div>
-    </div>
-<% end %>
+    <% end %>
+  </div>
+  <div class="am-u-sm-2">
+    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
+  </div>
+  <div class="am-u-sm-2"></div>
+</div>

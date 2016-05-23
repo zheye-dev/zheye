@@ -7,8 +7,13 @@ class QuestionCommentsController < CommentsController
   # Action: Create a new comment to question
   def create
     @comment_parent = Question.find(params[:question_id])
-    @comment = QuestionComment.create(question: @question, user: current_user, content: question_comment_params[:content])
-    redirect_to @question
+    @comment = QuestionComment.create(question: @comment_parent, user: current_user, content: question_comment_params[:content])
+    if @comment
+     redirect_to @comment_parent
+    else
+      render 'comments/edit'
+    end
+
   end
 
   # Display an comment box to current question

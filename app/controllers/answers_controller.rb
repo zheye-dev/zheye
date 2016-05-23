@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
     @answer.update(answer_params)
-    redirect_to @answer
+    redirect_to @question
   end
 
   # Action: Destroy current answer

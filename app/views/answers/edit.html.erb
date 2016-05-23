@@ -5,7 +5,7 @@
   <div class="am-u-sm-6 am-u-sm-offset-2">
     <span style="font-weight: bold">修改回答</span>
     <hr style="margin-top: 0px;">
-    <%= form_for @answer do |f| %>
+    <%= form_for [@question, @answer] do |f| %>
         <div style="margin-bottom: 5px">
           <%= f.cktext_area :content%><br>
         </div>

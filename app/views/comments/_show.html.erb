@@ -1,14 +1,14 @@
 <li class="am-comment">
-  <a href="#link-to-user-home">
-    <%=image_tag 'default_user.jpe', class: 'am-comment-avatar', style: 'width:4 8px; height: 48px' %>
-  </a>
+  <%= link_to @comment.user do %>
+      <%=image_tag 'default_user.jpe', class: 'am-comment-avatar', style: 'width:4 8px; height: 48px' %>
+  <% end %>
 
   <div class="am-comment-main">
     <header class="am-comment-hd">
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
-        <a href="#link-to-user" class="am-comment-author"><%= @comment.user.login %></a>
-        <span>评论于<%= @comment.created_at %></span>
+        <%= link_to @comment.user.login, @comment.user, class: "am-comment-author" %>
+        <span>评论于<%= @comment.created_at.strftime("%Y/%m/%d") %></span>
       </div>
     </header>
 

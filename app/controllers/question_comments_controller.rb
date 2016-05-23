@@ -6,7 +6,7 @@ class QuestionCommentsController < CommentsController
   # Action: Create a new comment to question
   def create
     @question = Question.find(params[:question_id])
-    @comment = QuestionComment.create(question: @question, user: current_user, content: question_comment_params)
+    @comment = QuestionComment.create(question: @question, user: current_user, content: question_comment_params[:content])
     redirect_to @question
   end
 

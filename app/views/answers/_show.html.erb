@@ -14,7 +14,7 @@
       <span>21</span>
     </div>
     <div style="display: inline-block; float: right">
-      <%= link_to '修改', edit_answer_path(@answer) %>
+      <%= link_to '修改', edit_question_answer_path(@question, @answer) %>
     </div>
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">
@@ -22,7 +22,7 @@
       <a href="##">分享</a>
     </div>
     <div style="display: inline-block; float: right">
-      <span>发布于<%= @answer.created_at.strftime("%Y/%m/%d")%></span>
+      <span>发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
     </div>
     <hr>
   </div>

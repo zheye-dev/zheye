@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   authorize_resource
   # Display an item of comment
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
   end
 
   # Action: Update given comment
@@ -20,8 +20,5 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to root_path
   end
-  private
-  def comment_params
-    params.require(:comment).permit(:content)
-  end
+
 end

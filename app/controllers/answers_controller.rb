@@ -2,32 +2,43 @@ class AnswersController < ApplicationController
   authorize_resource
   # Display all answers to a question
   def index
-    @answers = Answer.where(:question => params[:question_id])
+    @question = Question.find(params[:question_id])
+    @answers = Answer.where(question_id: @question.id)
   end
 
   # Action: Create a new answer
   def create
-    @answer = Answer.create(question: question_id, user: current_user.id, content: answer_params)
-    redirect_to root_path
+    @question = Question.find(params[:question_id])
+    @answer = Answer.create(question: @question, user: current_user, content: answer_params)
+    if @answer
+     redirect_to Question.find(params[:question_id])
+    else
+      render 'new'
+    end
+
   end
 
   # Display an answer box to current question
   def new
+    @question = Question.find(params[:question_id])
     @answer = Answer.new
   end
 
   # Display an item of answer
   def show
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
   end
 
   # Display form to edit current answer
   def edit
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
   end
 
   # Action: Update given answer
   def update
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
     @answer.update(answer_params)
     redirect_to @answer
@@ -36,6 +47,7 @@ class AnswersController < ApplicationController
   # Action: Destroy current answer
   # Require answer.id == current_user.login || admin access
   def destroy
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
     @answer.destroy
     redirect_to root_path

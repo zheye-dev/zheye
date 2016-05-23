@@ -1,11 +1,78 @@
+<div class="am-g am-g-collapse">
+  <div class="am-u-sm-2">
+    <div style="width: 50px; float: right; text-align: center; padding-top: 5px;">
+      <a href="#" class="am-icon-btn am-primary am-icon-arrow-up am-icon-btn-sm"></a>
+      <br>
+      <span>233</span>
+      <br>
+      <a href="#" class="am-icon-btn am-primary am-icon-arrow-down am-icon-btn-sm"></a>
+    </div>
+  </div>
+  <div class="am-u-sm-6">
+    <div style="display: inline-block;">
+      <h2 style="margin-bottom: 0px;"><%= @question.title %></h2>
+    </div>
+    <div style="display: inline-block">
+      <%= link_to '修改', edit_question_path(@question) %>
+    </div>
+    <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
+    <div style="display: inline-block">
+      <a href="#" id="comments">2条评论</a>
+      <a href="#">添加评论</a>
+      <a href="#">分享</a>
+    </div>
+    <div style="display: inline-block; float: right">
+      <span>发布于<%= @question.created_at%></span>
+      <a href="#"><%= @question.user.login %></a>
+      <span>21</span>
+    </div>
+    <div id="question_comments" style="display: none">
+      <ul class="am-comments-list am-comments-list-flip">
+        <li class="am-comment">
+          <a href="#link-to-user-home">
+            <%=image_tag 'default_user.jpe', class: 'am-comment-avatar', style: 'width:4 8px; height: 48px' %>
+          </a>
 
-<h2> <%= @question.title %> </h2>
+          <div class="am-comment-main">
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta">
+                <a href="#link-to-user" class="am-comment-author">某人</a>
+                <span>评论于2016-05-02</span>
+              </div>
+            </header>
 
-<%= @question.content.html_safe %>
+            <div class="am-comment-bd">
+              我是一条评论。
+            </div>
+          </div>
+        </li>
 
-<p><%= @question.created_at%> </p>
+        <li class="am-comment">
+          <a href="#link-to-user-home">
+            <%=image_tag 'default_user.jpe', class: 'am-comment-avatar', style: 'width:4 8px; height: 48px' %>
+          </a>
 
-<p><%= @question.user.login %></p>
+          <div class="am-comment-main">
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta">
+                <a href="#link-to-user" class="am-comment-author">某人</a>
+                <span>评论于2016-05-03</span>
+              </div>
+            </header>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+            <div class="am-comment-bd">
+              我是另一条评论。
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <hr>
+  </div>
+  <div class="am-u-sm-2">
+    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
+  </div>
+  <div class="am-u-sm-2"></div>
+</div>

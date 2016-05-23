@@ -1,0 +1,34 @@
+<div class="am-g am-g-collapse">
+  <div class="am-u-sm-2">
+    <div style="width: 50px; float: right; text-align: center; padding-top: 5px;">
+      <a href="##" class="am-icon-btn am-primary am-icon-arrow-up am-icon-btn-sm"></a>
+      <br>
+      <span>23</span>
+      <br>
+      <a href="##" class="am-icon-btn am-primary am-icon-arrow-down am-icon-btn-sm"></a>
+    </div>
+  </div>
+  <div class="am-u-sm-6">
+    <div style="display: inline-block">
+      <a href="##"><%= @answer.user.login %></a>
+      <span>21</span>
+    </div>
+    <div style="display: inline-block; float: right">
+      <%= link_to '修改', edit_answer_path(@answer) %>
+    </div>
+    <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
+    <div style="display: inline-block">
+      <a href="##">3条评论</a>
+      <a href="##">添加评论</a>
+      <a href="##">分享</a>
+    </div>
+    <div style="display: inline-block; float: right">
+      <span>发布于<%= @answer.created_at%></span>
+    </div>
+    <hr>
+  </div>
+  <div class="am-u-sm-2">
+    <span></span>
+  </div>
+  <div class="am-u-sm-2"></div>
+</div>

@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
   # Action: Create a new answer
   def create
     @question = Question.find(params[:question_id])
-    @answer = Answer.create(question: @question, user: current_user, content: answer_params)
+    @answer = Answer.create(question_id: @question.id, user_id: current_user, content: answer_params[:content])
     if @answer
      redirect_to Question.find(params[:question_id])
     else
@@ -54,6 +54,6 @@ class AnswersController < ApplicationController
   end
   private
   def answer_params
-    params.require(:answer).permit(:text)
+    params.require(:answer).permit(:content)
   end
 end

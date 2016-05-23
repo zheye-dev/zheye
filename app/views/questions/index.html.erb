@@ -21,9 +21,9 @@
             <%= link_to question.title, question, style: "font-size: 1.2em"%>
           </div>
           <div style="font-size: 0.9em; text-align: right">
-            <span>发布于<%= question.created_at %></span>
+            <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
             <%= link_to question.user.login, question.user %>
-            <span>21</span>
+            <span> 21</span>
           </div>
         </div>
         <hr>

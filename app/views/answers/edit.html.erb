@@ -1,6 +1,20 @@
-<h1>Editing Answer</h1>
 <%= render 'errors' %>
-<%= render 'form' %>
 
-<%= link_to 'Show', @answer %> |
-<%= link_to 'Back', answers_path %>
+<div class="am-g am-g-collapse">
+  <div class="am-u-sm-2"></div>
+  <div class="am-u-sm-6 am-u-sm-offset-2">
+    <span style="font-weight: bold">修改回答</span>
+    <hr style="margin-top: 0px;">
+    <%= form_for @answer do |f| %>
+        <div style="margin-bottom: 5px">
+          <%= f.cktext_area :content%><br>
+        </div>
+        <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>
+    <% end %>
+    <%= button_to '返回', @answer, action:"show", method: :get , :class => 'am-btn', :style => 'float:right; margin-right:5px'%>
+  </div>
+  <div class="am-u-sm-2">
+    <span></span>
+  </div>
+  <div class="am-u-sm-2"></div>
+</div>

@@ -10,7 +10,7 @@
   </div>
   <div class="am-u-sm-6">
     <div style="display: inline-block">
-      <a href="##"><%= @answer.user.login %></a>
+      <%= link_to @answer.user.login, @answer.user %>
       <span>21</span>
     </div>
     <div style="display: inline-block; float: right">
@@ -19,11 +19,10 @@
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">
       <a href="##">3条评论</a>
-      <a href="##">添加评论</a>
       <a href="##">分享</a>
     </div>
     <div style="display: inline-block; float: right">
-      <span>发布于<%= @answer.created_at%></span>
+      <span>发布于<%= @answer.created_at.strftime("%Y/%m/%d")%></span>
     </div>
     <hr>
   </div>

@@ -2,8 +2,7 @@ class AnswersController < ApplicationController
   authorize_resource
   # Display all answers to a question
   def index
-    @question = Question.find(params[:question_id])
-    @answers = Answer.where(question_id: @question.id)
+    @answers = Answer.where(question_id: params[:question_id])
   end
 
   # Action: Create a new answer

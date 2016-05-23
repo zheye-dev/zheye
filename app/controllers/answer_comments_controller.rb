@@ -1,11 +1,11 @@
 class AnswerCommentsController < CommentsController
   # Display all comments to an answer
   def index
-    @comments = AnswerComment.where(:answer => params[:answer_id])
+    @comments = AnswerComment.where(answer_id: params[:answer_id])
   end
   # Action: Create a new comment to answer
   def create
-    @comment = AnswerComment.create(question: question_id, answer: answer_id, content: comment_params)
+    @comment = AnswerComment.create(question: question_id, answer: answer_id, user_id: current_user, content: comment_params)
   end
 
   # Display an comment box to current answer

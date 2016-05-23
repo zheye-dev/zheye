@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :question_comments
+  resources :answer_comments
   resources :answers
   mount Ckeditor::Engine => '/ckeditor'
   get 'portal/index'

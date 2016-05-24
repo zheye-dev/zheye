@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
+  before_action :get_question, :only => [:show,:edit,:update,:destroy]
   authorize_resource
   # Action: Create a new comment to question
+  def get_question
+    @question = Question.find(params[:id])
+  end
   def new
     @question = Question.new
   end
@@ -8,6 +12,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
+    authorize! :create, @question
     if @question.save
       redirect_to @question
     else
@@ -18,7 +23,6 @@ class QuestionsController < ApplicationController
 
   # Display an comment box to current question
   def show
-    @question = Question.find(params[:id])
   end
 
   def index
@@ -27,23 +31,22 @@ class QuestionsController < ApplicationController
 
   # Display form to edit current question comment
   def edit
-    @question = Question.find(params[:id])
-    authorize! :update, @question
   end
 
   # Action: Update given question comment
   def update
-    @question = Question.find(params[:id])
-    authorize! :update, @question
-    @question.update(question_params)
-    redirect_to @question
+    if @question.update(question_params)
+      redirect_to @question
+      flash[:notice] = 'Question updated!'
+    else
+      render 'edit'
+      flash[:notice] = 'Failed!'
+    end
   end
 
   # Action: Destroy current question
   # Require question.user == current_user.login || Admin access
   def destroy
-    @question = Question.find(params[:id])
-    authorize! :destroy, @question
     @question.destroy
     redirect_to root_path
   end

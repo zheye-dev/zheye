@@ -24,6 +24,8 @@ class AnswersController < ApplicationController
       flash[:notice] = 'answer added'
     else
       render 'new'
+      flash[:notice] = 'Failed!'
+    end
     end
   end
 

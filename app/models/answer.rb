@@ -6,4 +6,13 @@ class Answer < ActiveRecord::Base
     belongs_to :question
     has_many :answer_comments, dependent: :destroy
     has_many :answer_votes, dependent: :destroy
+
+    before_save :sanitize_content
+    before_update :sanitize_content
+
+    private
+
+    def sanitize_content
+        self.content = Sanitize.fragment(self.content, Sanitize::Config::RELAXED)
+    end
 end

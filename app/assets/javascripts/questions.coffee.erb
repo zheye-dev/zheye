@@ -8,6 +8,12 @@
         answer_box.data("question-id")
     ))
 
+  new_answer_box = $("#new_answer_box")
+  if (new_answer_box.length)
+    new_answer_box.load(Routes.new_question_answer_path(
+      new_answer_box.data("question-id")
+    ))
+
   question_comment_link = $("#question_comment_link")
   question_id = question_comment_link.data("question-id")
 

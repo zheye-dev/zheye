@@ -3,6 +3,8 @@ class AnswersController < ApplicationController
   before_action :get_question, :only => [:index,:create,:new,:update,:show,:edit,:destroy]
   authorize_resource
 
+  respond_to :html, :js
+
   layout false
   # Display all answers to a question
   def get_answer
@@ -21,13 +23,8 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     @answer.question = @question
     authorize! :create, @answer
-    if @answer.save
-      redirect_to @question
-      flash[:notice] = 'answer added'
-    else
-      render 'new'
-      flash[:notice] = 'Failed!'
-    end
+    @answer.save
+    render 'answers/create'
   end
 
   # Display an answer box to current question

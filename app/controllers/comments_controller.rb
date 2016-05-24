@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   # Require comment.user == current_user.login || Admin access
   def destroy
     @comment.destroy
-    redirect_to root_path
+    render 'destroy'
   end
 
 end

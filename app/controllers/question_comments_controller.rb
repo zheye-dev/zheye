@@ -21,7 +21,7 @@ class QuestionCommentsController < CommentsController
       redirect_to @comment.question
       flash[:notice] = 'Comment created!'
     else
-      render 'comment/new'
+      render 'comments/new'
       flash[:notice] = 'Failed!'
     end
   end

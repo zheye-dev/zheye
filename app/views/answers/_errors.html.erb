@@ -1,5 +1,5 @@
-<% if @answer.errors.any? %>
-    <div class="am-alert am-alert-warning" data-am-alert>
+<div id="answer-error" class="am-alert am-alert-warning" style="visibility: hidden" data-am-alert>
+  <% if @answer.errors.any? %>
       <button type="button" class="am-close">&times;</button>
       <h3>警告</h3>
 
@@ -8,5 +8,6 @@
             <li><%= msg %></li>
         <% end %>
       </ul>
-    </div>
-<% end %>
+  <% end %>
+</div>
+

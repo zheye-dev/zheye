@@ -10,7 +10,7 @@
         <%= link_to @comment.user.login, @comment.user, class: "am-comment-author" %>
         <span>评论于<%= @comment.created_at.strftime("%Y/%m/%d") %></span>
         <% if can? :destroy, @comment.chain %>
-            <%= link_to '删除', @comment.chain, action: :destroy, method: :delete %>
+            <%= link_to '删除', @comment.chain, action: :destroy, method: :delete, remote: true, data: {confirm: 'Really?'} %>
         <% end %>
       </div>
     </header>

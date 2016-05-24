@@ -1,0 +1,7 @@
+<% if @answer.errors.any? %>
+$("#answer-error")[0].outerHTML = "<%= j render 'answers/errors' %>";
+$("#answer-error").show();
+$("#answer-error").css("visibility", "")
+<% else %>
+location.reload();
+<% end %>

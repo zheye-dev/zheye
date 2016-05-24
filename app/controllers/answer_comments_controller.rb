@@ -6,17 +6,19 @@ class AnswerCommentsController < CommentsController
   # Action: Create a new comment to answer
   def create
     @comment_parent = Answer.find(params[:answer_id])
-    if @comment = AnswerComment.create(question_id: @comment_parent.question_id, answer: @comment_parent, user: current_user, content: answer_comment_params[:content])
-      redirect_to @comment_parent
+    @comment = AnswerComment.new(question_id: @comment_parent.question_id, answer: @comment_parent, user: current_user, content: answer_comment_params[:content])
+    if @comment.save
+      redirect_to @comment.answer.question
     else
-      render 'comment/edit'
+      render 'comment/new'
     end
   end
 
   # Display an comment box to current answer
   def new
     @comment = AnswerComment.new
-    @comment_parent = Answer.find(params[:answer_id])
+    @comment.answer = Answer.find(params[:answer_id])
+    #render 'comments/new'
   end
 
   # Display form to edit current answer comment

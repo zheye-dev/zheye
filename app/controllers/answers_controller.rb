@@ -40,7 +40,7 @@ class AnswersController < ApplicationController
   # Action: Update given answer
   def update
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:answer_id])
+    @answer = Answer.find(params[:id])
     @answer.update(answer_params)
     #authorize! :update, @answer
     redirect_to @question

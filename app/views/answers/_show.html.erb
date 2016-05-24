@@ -20,7 +20,7 @@
     </div>
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">
-      <a href="##"><%= @answer.answer_comments.length %>条评论</a>
+      <a id="answer<%= @answer.id %>_comment_link" href="javascript: void(0)"><%= @answer.answer_comments.length %>条评论</a>
       <a href="##">分享</a>
     </div>
     <div style="display: inline-block; float: right">

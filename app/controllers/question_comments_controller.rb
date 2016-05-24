@@ -24,8 +24,7 @@ class QuestionCommentsController < CommentsController
 
   # Display form to edit current question comment
   def edit
-    @comment = QuestionComment.update(comment_params)
-    redirect_to root_path
+    @comment = QuestionComment.find(params[:question_comment_id])
   end
 
   private

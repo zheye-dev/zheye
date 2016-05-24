@@ -1,7 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
+ $ ->
   answer_box = $("#answer_box")
   if (answer_box.length)
     answer_box.load(Routes.question_answers_path(
@@ -13,11 +13,18 @@ $ ->
 
   if (question_comment_link.length)
     question_comment_link.click ->
-      question_comment_box = $("#question_comment_box")
-      if (question_comment_box.length)
+      question_comment_container = $("#question_comment_container")
+      if (question_comment_container.length)
         console.log("SDFDA")
-        question_comment_box.toggle()
+        question_comment_container.toggle()
       else
         question_comment_box = $("<div />", {id: "question_comment_box"})
         question_comment_box.load(Routes.question_question_comments_path(question_id))
-        question_comment_link.after(question_comment_box)
+        new_question_comment_box = $("<div />", {id: "new_question_comment_box"})
+        new_question_comment_box.load(Routes.new_question_question_comment_path(question_id))
+        question_comment_container = $("<div />", {"id": "question_comment_container"}).append(
+          question_comment_box
+        ).append(
+          new_question_comment_box
+        )
+        question_comment_link.after(question_comment_container)

@@ -1,6 +1,8 @@
 class QuestionCommentsController < CommentsController
   before_action :get_comment, :only => [:edit, :update, :destroy]
   authorize_resource
+
+  respond_to :html, :js
   def get_comment
     @comment = QuestionComment.find(params[:id])
   end

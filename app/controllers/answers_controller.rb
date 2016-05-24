@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
-  authorize_resource
+
+  load_and_authorize_resource
   # Display all answers to a question
   def index
     @question = Question.find(params[:question_id])

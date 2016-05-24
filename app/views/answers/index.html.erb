@@ -19,7 +19,10 @@
   <div class="am-u-sm-2"></div>
   <div class="am-u-sm-2"></div>
 </div>
-<% @answers.each do |answer| %>
-    <% @answer = answer %>
-    <%= render "answers/show" %>
-<% end %>
+
+<div id="answerslist">
+  <% @answers.each do |answer| %>
+      <% @answer = answer %>
+      <%= render "answers/show" %>
+  <% end %>
+</div>

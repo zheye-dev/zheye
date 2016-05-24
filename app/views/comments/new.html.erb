@@ -1,10 +1,8 @@
 <%= render 'errors' %>
 
-  <div class="am-input-group" style="margin-bottom: 5px; width: 91%">
-    <%= form_for @comment.chain do |f| %>
-        <div style="margin-bottom: 5px">
-          <%= f.text_field :content, class: "am-form-field", placeholder:"写下你的评论……" %>
-          <span class="am-input-group-label"><i class="am-icon-comment-o am-icon-fw"></i></span>
-        </div>
-    <% end %>
-  </div>
+<%= form_for @comment.chain do |f| %>
+    <div class="am-input-group" style="margin-bottom: 5px; width: 91%">
+      <%= f.text_field :content, class: "am-form-field", placeholder:"写下你的评论……" %>
+      <span class="am-input-group-label"><i class="am-icon-comment-o am-icon-fw"></i></span>
+    </div>
+<% end %>

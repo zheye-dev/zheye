@@ -3,7 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   answer_box = $("#answer_box")
-  if (answer_box)
-    $("#answer_box").load(Routes.question_answers_path(
-        $("#answer_box").data("question-id")
+  if (answer_box.length)
+    answer_box.load(Routes.question_answers_path(
+        answer_box.data("question-id")
     ))
+
+  question_comment_link = $("#question_comment_link")
+  question_id = question_comment_link.data("question-id")
+
+  if (question_comment_link.length)
+    question_comment_link.click ->
+      question_comment_box = $("#question_comment_box")
+      if (question_comment_box.length)
+        console.log("SDFDA")
+        question_comment_box.toggle()
+      else
+        question_comment_box = $("<div />", {id: "question_comment_box"})
+        question_comment_box.load(Routes.question_question_comments_path(question_id))
+        question_comment_link.after(question_comment_box)

@@ -7,11 +7,10 @@ class QuestionCommentsController < CommentsController
   # Action: Create a new comment to question
   def create
     @comment_parent = Question.find(params[:question_id])
-    @comment = QuestionComment.create(question: @comment_parent, user: current_user, content: question_comment_params[:content])
-    if @comment
+    if @comment = QuestionComment.create(question: @comment_parent, user: current_user, content: question_comment_params[:content])
      redirect_to @comment_parent
     else
-      render 'comments/edit'
+      render 'edit'
     end
   end
 

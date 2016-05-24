@@ -14,16 +14,9 @@
       <span>21</span>
     </div>
     <div style="display: inline-block; float: right">
-      <!--
       <% if can? :update, @answer %>
           <%= link_to '修改', edit_question_answer_path(@question, @answer) %>
       <% end %>
-      -->
-
-
-      <%= link_to '修改', edit_question_answer_path(@question, @answer) %>
-
-
     </div>
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">

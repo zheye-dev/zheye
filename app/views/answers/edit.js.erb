@@ -1,0 +1,3 @@
+answer = $("#answer-<%= @answer.id %>");
+answer[0].outerHTML = "<%= j render 'edit'%>";
+CKEDITOR.replace('answer_content');

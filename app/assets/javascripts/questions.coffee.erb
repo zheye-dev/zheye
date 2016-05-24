@@ -1,3 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  answer_box = $("#answer_box")
+  if (answer_box)
+    $("#answer_box").load(Routes.question_answers_path(
+        $("#answer_box").data("question-id")
+    ))

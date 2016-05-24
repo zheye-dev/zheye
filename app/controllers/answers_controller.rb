@@ -2,6 +2,8 @@ class AnswersController < ApplicationController
   before_action :get_answer, :only => [:update,:show,:edit,:destroy]
   before_action :get_question, :only => [:index,:create,:new,:update,:show,:edit,:destroy]
   authorize_resource
+
+  layout false
   # Display all answers to a question
   def get_answer
     @answer = Answer.find(params[:id])

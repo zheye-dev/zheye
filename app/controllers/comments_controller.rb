@@ -1,5 +1,6 @@
 # Virtual class for comments, don't call directly
 class CommentsController < ApplicationController
+  layout false
   before_action :get_comment, :only => [:update,:destroy]
   authorize_resource
   def get_comment

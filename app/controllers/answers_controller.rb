@@ -13,13 +13,16 @@ class AnswersController < ApplicationController
   # Action: Create a new answer
   def create
     @question = Question.find(params[:question_id])
-    @answer = Answer.create(question_id: @question.id, user: current_user, content: answer_params[:content])
-    if @answer
-     redirect_to Question.find(params[:question_id])
+    @answer = Answer.new(answer_params)
+    @answer.user = current_user
+    @answer.question = @question
+    authorize! :create, @answer
+    if @answer.save
+      redirect_to @question
+      flash[:notice] = 'answer added'
     else
       render 'new'
     end
-
   end
 
   # Display an answer box to current question
@@ -35,7 +38,7 @@ class AnswersController < ApplicationController
 
   # Display form to edit current answer
   def edit
-    authorize! :update, @answer
+    authorize! :update, answer
     @question = Question.find(params[:question_id])
   end
 

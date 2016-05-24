@@ -24,6 +24,7 @@ class QuestionCommentsController < CommentsController
   # Display form to edit current question comment
   def edit
     @comment = QuestionComment.find(params[:question_comment_id])
+    authorize! :update, @comment
   end
 
   private

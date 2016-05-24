@@ -23,6 +23,7 @@ class AnswerCommentsController < CommentsController
   # Display form to edit current answer comment
   def edit
     @comment = AnswerComment.find(params[:answer_comment_id])
+    authorize! :update, @comment
   end
   private
   def answer_comment_params

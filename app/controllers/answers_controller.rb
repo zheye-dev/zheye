@@ -1,7 +1,10 @@
 class AnswersController < ApplicationController
-
+  before_action :get_answer, :only => [:update]
   authorize_resource
   # Display all answers to a question
+  def get_answer
+    @answer = Answer.find(params[:id])
+  end
   def index
     @question = Question.find(params[:question_id])
     @answers = Answer.where(question: @question)
@@ -40,7 +43,7 @@ class AnswersController < ApplicationController
   # Action: Update given answer
   def update
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
+    #@answer = Answer.find(params[:id])
     @answer.update(answer_params)
     #authorize! :update, @answer
     redirect_to @question

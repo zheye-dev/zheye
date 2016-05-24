@@ -36,6 +36,7 @@ class AnswersController < ApplicationController
 
   # Display form to edit current answer
   def edit
+    authorize! :update, @answer
     @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
   end
@@ -43,7 +44,6 @@ class AnswersController < ApplicationController
   # Action: Update given answer
   def update
     @question = Question.find(params[:question_id])
-    #@answer = Answer.find(params[:id])
     @answer.update(answer_params)
     #authorize! :update, @answer
     redirect_to @question

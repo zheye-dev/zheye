@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "vote must have user" do
+    vote = Vote.new(attitude: 1)
+    assert_not vote.save
+  end
 end

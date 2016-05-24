@@ -4,9 +4,9 @@ class Question < ActiveRecord::Base
     validates_length_of :content, maximum: 1000
     validates_length_of :title, minimum: 5, maximum: 50
     belongs_to :user
-    has_many :answers
-    has_many :question_comments
-    has_many :question_votes
+    has_many :answers, dependent: :destroy
+    has_many :question_comments, dependent: :destroy
+    has_many :question_votes, dependent: :destroy
 
   before_save :sanitize_content
   before_update :sanitize_content

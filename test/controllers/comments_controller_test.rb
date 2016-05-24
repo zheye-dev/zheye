@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    user = users(:tester)
+    @controller.instance_eval do
+      @current_user = user
+    end
+    @user = user
+  end
+
 end

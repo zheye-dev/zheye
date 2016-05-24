@@ -23,8 +23,7 @@ class AnswerCommentsController < CommentsController
 
   # Display form to edit current answer comment
   def edit
-    @comment = AnswerComment.update(comment_params)
-    redirect_to root_path
+    @comment = AnswerComment.find(params[:answer_comment_id])
   end
   private
   def answer_comment_params

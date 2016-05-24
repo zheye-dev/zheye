@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :get_answer, :only => [:update]
+  before_action :get_answer, :only => [:update,:show,:edit,:destroy]
   authorize_resource
   # Display all answers to a question
   def get_answer
@@ -31,21 +31,18 @@ class AnswersController < ApplicationController
   # Display an item of answer
   def show
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
   end
 
   # Display form to edit current answer
   def edit
     authorize! :update, @answer
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
   end
 
   # Action: Update given answer
   def update
     @question = Question.find(params[:question_id])
     @answer.update(answer_params)
-    #authorize! :update, @answer
     redirect_to @question
   end
 
@@ -53,7 +50,6 @@ class AnswersController < ApplicationController
   # Require answer.id == current_user.login || admin access
   def destroy
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
     @answer.destroy
     redirect_to root_path
   end

@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <title><%= @question.title %>-者也</title>
+<% end %>
+
 <div class="am-g am-g-collapse">
   <div class="am-u-sm-2">
     <div style="width: 50px; float: right; text-align: center; padding-top: 5px;">
@@ -13,7 +17,9 @@
       <h2 style="margin-bottom: 0px;"><%= @question.title %></h2>
     </div>
     <div style="display: inline-block">
-      <%= link_to '修改', edit_question_path(@question) %>
+      <% if can? :update, @question %>
+          <%= link_to '修改', edit_question_path(@question) %>
+      <% end %>
     </div>
     <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
     <div style="display: inline-block">

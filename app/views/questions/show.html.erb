@@ -4,7 +4,7 @@
 
 <div class="am-g am-g-collapse">
   <div class="am-u-sm-2">
-    <div style="width: 50px; float: right; text-align: center; padding-top: 5px;">
+    <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
       <a href="#" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
       <br>
       <span>233</span>
@@ -14,7 +14,7 @@
   </div>
   <div class="am-u-sm-6">
     <div style="display: inline-block;">
-      <h2 style="margin-bottom: 0px;"><%= @question.title %></h2>
+      <h2 class="am-monospace" style="margin-bottom: 0px;"><%= @question.title %></h2>
     </div>
     <div style="display: inline-block">
       <% if can? :update, @question %>

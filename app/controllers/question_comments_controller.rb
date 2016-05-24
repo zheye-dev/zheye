@@ -10,7 +10,7 @@ class QuestionCommentsController < CommentsController
     if @comment = QuestionComment.create(question: @comment_parent, user: current_user, content: question_comment_params[:content])
      redirect_to @comment_parent
     else
-      render 'edit'
+      render 'comment/edit'
     end
   end
 

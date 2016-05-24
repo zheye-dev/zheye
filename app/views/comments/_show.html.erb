@@ -9,7 +9,9 @@
       <div class="am-comment-meta">
         <%= link_to @comment.user.login, @comment.user, class: "am-comment-author" %>
         <span>评论于<%= @comment.created_at.strftime("%Y/%m/%d") %></span>
-        <%= link_to "删除", [@comment_parent, @comment], action: :destroy, method: :delete %>
+        <% if can? :destroy, [@comment_parent, @comment] %>
+            <%= link_to '删除', [@comment_parent, @comment], action: :destroy, method: :delete %>
+        <% end %>
       </div>
     </header>
 

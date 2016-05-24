@@ -17,7 +17,7 @@ class AnswerCommentsController < CommentsController
   def new
     @comment = AnswerComment.new
     @comment_parent = Answer.find(params[:answer_id])
-    #render 'comments/new'
+    ##render 'comments/new'
   end
 
   # Display form to edit current answer comment

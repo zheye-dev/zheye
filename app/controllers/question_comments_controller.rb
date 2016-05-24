@@ -1,7 +1,7 @@
 class QuestionCommentsController < CommentsController
   # Display all comments to a question
   def index
-    @comment_parent = Question.find(params[:question_id])
+    #@comment_parent = Question.find(params[:question_id])
     @comments = QuestionComment.where(question_id: params[:question_id])
   end
   # Action: Create a new comment to question
@@ -13,14 +13,13 @@ class QuestionCommentsController < CommentsController
     else
       render 'comments/edit'
     end
-
   end
 
   # Display an comment box to current question
   def new
     @comment = QuestionComment.new
     @comment_parent = Question.find(params[:question_id])
-    render 'comments/new'
+    #render 'comments/new'
   end
 
   # Display form to edit current question comment

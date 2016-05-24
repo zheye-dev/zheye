@@ -17,7 +17,9 @@
       <h2 style="margin-bottom: 0px;"><%= @question.title %></h2>
     </div>
     <div style="display: inline-block">
-      <%= link_to '修改', edit_question_path(@question) %>
+      <% if can? :update, @question %>
+          <%= link_to '修改', edit_question_path(@question) %>
+      <% end %>
     </div>
     <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
     <div style="display: inline-block">

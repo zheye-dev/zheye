@@ -1,17 +1,26 @@
 class QuestionCommentsController < CommentsController
+  before_action :get_comment, :only => [:edit]
+  authorize_resource
+  def get_comment
+    @comment = QuestionComment.find(params[:id])
+  end
   # Display all comments to a question
   def index
-    #@comment_parent = Question.find(params[:question_id])
     @comments = QuestionComment.where(question_id: params[:question_id])
   end
   # Action: Create a new comment to question
   def create
-    @comment_parent = Question.find(params[:question_id])
-    @comment = QuestionComment.new(question: @comment_parent, user: current_user, content: question_comment_params[:content])
+    @question = Question.find(params[:question_id])
+    @comment = QuestionComment.new(question_comment_params)
+    @comment.question = @question
+    authorize! :create, @comment
+    @comment.user = current_user
     if @comment.save
-     redirect_to @comment_parent
+      redirect_to @comment.question
+      flash[:notice] = 'Comment created!'
     else
-      render 'comments/new'
+      render 'comment/new'
+      flash[:notice] = 'Failed!'
     end
   end
 
@@ -24,7 +33,6 @@ class QuestionCommentsController < CommentsController
 
   # Display form to edit current question comment
   def edit
-    @comment = QuestionComment.find(params[:question_comment_id])
     authorize! :update, @comment
   end
 

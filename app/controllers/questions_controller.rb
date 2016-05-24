@@ -31,6 +31,7 @@ class QuestionsController < ApplicationController
 
   # Display form to edit current question comment
   def edit
+    authorize! :update, @question
   end
 
   # Action: Update given question comment

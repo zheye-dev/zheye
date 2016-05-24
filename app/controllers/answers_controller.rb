@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
 
   # Display form to edit current answer
   def edit
-    authorize! :update, answer
+    authorize! :update, @answer
   end
 
   # Action: Update given answer

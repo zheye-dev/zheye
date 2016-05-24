@@ -2,7 +2,7 @@ class AnswerCommentsController < CommentsController
   before_action :get_comment, :only => [:edit]
   authorize_resource
   def get_comment
-    @comment = AnswerComment.find(params[:answer_comment_id])
+    @comment = AnswerComment.find(params[:id])
   end
   # Display all comments to an answer
   def index
@@ -14,7 +14,7 @@ class AnswerCommentsController < CommentsController
     @answer = Answer.find(params[:answer_id])
     @comment = AnswerComment.new(answer_comment_params)
     @comment.answer = @answer
-    #@comment.question = @question
+    authorize! :create, @comment
     @comment.user = current_user
     if @comment.save
       redirect_to @comment.answer.question
@@ -33,6 +33,7 @@ class AnswerCommentsController < CommentsController
 
   # Display form to edit current answer comment
   def edit
+    authorize! :update, @comment
   end
 
   private

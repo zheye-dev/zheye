@@ -28,7 +28,6 @@ class AnswersController < ApplicationController
       render 'new'
       flash[:notice] = 'Failed!'
     end
-    end
   end
 
   # Display an answer box to current question

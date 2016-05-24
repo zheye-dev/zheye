@@ -1,5 +1,5 @@
 class AnswerCommentsController < CommentsController
-  before_action :get_comment, :only => [:edit]
+  before_action :get_comment, :only => [:edit, :update, :destroy]
   authorize_resource
   def get_comment
     @comment = AnswerComment.find(params[:id])

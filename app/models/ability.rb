@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :create, [Question, Answer, Comment, QuestionComment, AnswerComment, Vote, QuestionVote, AnswerVote, User]
+      can :create, [Question, Answer, Comment, QuestionComment, AnswerComment, Vote, QuestionVote, AnswerVote, User], :user_id => user.id
       can :update, [Question, Answer, Comment, QuestionComment, AnswerComment, Vote, QuestionVote, AnswerVote, User], :user_id => user.id
       can :destroy, [Vote, QuestionVote, AnswerVote], :user_id => user.id
     end

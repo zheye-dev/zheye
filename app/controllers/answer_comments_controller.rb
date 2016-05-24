@@ -6,8 +6,7 @@ class AnswerCommentsController < CommentsController
   # Action: Create a new comment to answer
   def create
     @comment_parent = Answer.find(params[:answer_id])
-    @comment = AnswerComment.create(question_id: @comment_parent.question_id, answer: @comment_parent, user: current_user, content: answer_comment_params[:content])
-    if @comment
+    if @comment = AnswerComment.create(question_id: @comment_parent.question_id, answer: @comment_parent, user: current_user, content: answer_comment_params[:content])
       redirect_to @comment_parent
     else
       render 'comments/edit'

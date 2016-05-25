@@ -1,5 +1,5 @@
-<div id="answer-<%= @answer.id %>" class="am-g am-g-collapse">
-  <div class="am-u-sm-2">
+<div id="answer-<%= @answer.id %>">
+  <div class="am-u-sm-3">
     <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
       <a href="##" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
       <br>
@@ -8,7 +8,7 @@
       <a href="##" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
     </div>
   </div>
-  <div class="am-u-sm-6">
+  <div class="am-u-sm-9">
     <div style="display: inline-block">
       <%= link_to @answer.user.login, @answer.user %>
       <span>21</span>
@@ -30,8 +30,4 @@
     <div id="answer<%= @answer.id %>_comments_placeholder"></div>
     <hr>
   </div>
-  <div class="am-u-sm-2">
-    <span></span>
-  </div>
-  <div class="am-u-sm-2"></div>
 </div>

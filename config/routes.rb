@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search/index'
+
   resources :comments
   resources :question_comments
   resources :answer_comments

@@ -11,7 +11,14 @@ class Question < ActiveRecord::Base
   before_save :sanitize_content
   before_update :sanitize_content
 
-  private
+
+    searchable do
+      string :title
+      text :content
+    end
+
+
+    private
 
   def sanitize_content
     self.content = Sanitize.fragment(self.content, Sanitize::Config::RELAXED)

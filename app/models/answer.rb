@@ -10,6 +10,10 @@ class Answer < ActiveRecord::Base
     before_save :sanitize_content
     before_update :sanitize_content
 
+    searchable do
+        text :content
+    end
+
     private
 
     def sanitize_content

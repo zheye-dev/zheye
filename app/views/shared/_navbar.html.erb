@@ -22,7 +22,7 @@
           <ul class="am-dropdown-content">
             <li><%= link_to '我的主页', me_path %></li>
             <li><%= link_to "我的提问", all_questions_user_path(current_user) %></li>
-            <li><a href="#">我的回答</a></li>
+            <li><%= link_to "我的回答", all_answers_user_path(current_user) %></li>
             <li><a href="#">我的评论</a></li>
             <li><a href="#">我赞成的</a></li>
             <li><a href="#">我反对的</a></li>

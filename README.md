@@ -11,6 +11,12 @@ Run
 `bundle install` to install dependencies.
 
 Run
+`rake db:drop` and `rake db:migrate` to regenerate databases
+
+Run
+`rake rake sunspot:solr:start` to start a test searching engine
+
+Run
 `bundle exec rails server` to test
 
 ### Model

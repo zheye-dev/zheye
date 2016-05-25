@@ -23,8 +23,9 @@ class UserTest < ActiveSupport::TestCase
     assert answer.persisted?
     answer_p = Answer.find(answerid)
     assert_equal answer_p, answer
-    user.destroy
-    answer_p = Answer.find(answerid)
+    user_p = User.find(user.id)
+    user_p.destroy
+    #answer_p = Answer.find(answerid)
     assert user.destroyed?, "destroy user unsuccess"
     assert question.destroyed?,"destroy question unsuccess"
     assert answer.destroyed?,"destroy answer unsuccess"

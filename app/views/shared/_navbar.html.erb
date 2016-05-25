@@ -1,7 +1,7 @@
 <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
-  <h1 class="am-topbar-brand" style="margin-left: 15%">
+  <h1 class="am-topbar-brand" style="margin-left: 16%">
     <a href="/questions">
-      <%=image_tag 'header_tran.png', style: 'padding-bottom: 4px'%>
+      <%=image_tag 'header_tran.png', style: 'padding-bottom: 4px', height: "40px" %>
     </a>
   </h1>
 
@@ -31,7 +31,7 @@
         </div>
       </div>
     <% else %>
-      <div class="am-topbar-right" style="margin-right: 15%">
+      <div class="am-topbar-right" style="margin-right: 16%">
         <%= button_to '登录', log_in_path, :id => 'button_login', :class => 'am-btn am-btn-primary am-topbar-btn am-btn-sm', :method => :get, form_class: 'am-topbar-right am-topbar-inline' %>
         <%= button_to '注册', new_user_path, :id => 'button_signup', :class => 'am-btn am-btn-primary am-topbar-btn am-btn-sm', :method => :get, form_class: 'am-topbar-right am-topbar-inline' %>
       </div>

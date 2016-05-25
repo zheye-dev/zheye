@@ -17,12 +17,12 @@
       </div>
       <div style="display: inline-block; float: right">
         <% if can? :update, @answer %>
-            <%= link_to '修改', edit_question_answer_path(@question, @answer), remote: true %>
+            <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
         <% end %>
       </div>
       <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
       <div style="display: inline-block">
-        <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @question.id %>"
+        <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
            href="javascript: void(0)"><%= @answer.answer_comments.length %>条评论</a>
         <a href="##">分享</a>
       </div>

@@ -37,5 +37,33 @@
 
 <% else %>
 
+<div class="am-u-sm-3"></div>
+<div class="am-u-sm-9 am-u-sm-offset-3">
+  <div style="display: inline-block; float: left;">
+    <div style="display: inline-block; width: 50px; text-align: center">
+      <span>10</span><br>
+      <span>投票</span>
+    </div>
+    <div style="display: inline-block; width: 50px; text-align: center">
+      <span><%= @question.answers.length %></span><br>
+      <span>回答</span>
+    </div>
+    <div style="display: inline-block; width: 50px; text-align: center">
+      <span><%= @question.question_comments.length %></span><br>
+      <span>评论</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <%= link_to @question.title, @question, style: "font-size: 1.2em"%>
+    </div>
+    <div style="font-size: 0.9em; text-align: right">
+      <span>发布于 <%= @question.created_at.strftime("%Y/%m/%d") %></span>
+      <%= link_to @question.user.login, @question.user %>
+      <span> 21</span>
+    </div>
+  </div>
+  <hr>
+</div>
 
 <% end %>

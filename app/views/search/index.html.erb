@@ -4,5 +4,7 @@
 
 <% @search.results.each do |result| %>
     <% @answer = result %>
+    <% @question = result.question %>
+    <%= render partial: 'questions/question_box', locals: {detail: false} %>
 <%= render partial: 'answers/answer_box', locals: {detail: false} %>
 <% end %>

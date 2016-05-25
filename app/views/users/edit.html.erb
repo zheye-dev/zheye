@@ -2,48 +2,43 @@
     <title>编辑个人资料-者也</title>
 <% end %>
 
-<div class="am-g am-g-collapse">
-  <div class="am-u-sm-2"></div>
-  <div class="am-u-sm-6 am-u-sm-offset-2">
-    <span class="am-monospace" style="font-weight: bold">修改个人信息</span>
-    <hr style="margin-top: 0px;">
-    <span><%= @user.login %>的统计信息：</span>
-    <div style="padding-left: 30px">
-      <span>个人成就：共获得5赞同 2分享</span><br>
-      <span>我的提问(3) 回答(2) 评论(5) 赞成(7) 反对(1)</span><br><br>
-    </div>
-    <div>
-      <span><%= @user.login %>的详细资料：</span><br>
-    </div>
-    <div style="padding-left: 30px">
-      <%= form_for @user do |f| %>
-          <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-            <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-            <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
-          </div>
-          <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-            <span class="am-input-group-label"><i class="am-icon-mars am-icon-fw"></i></span>
-            <%= f.text_field :gender, class: "am-form-field", placeholder:"性别" %>
-          </div>
-          <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-            <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
-            <%= f.text_field :birthday, class: "am-form-field", placeholder:"生日" %>
-          </div>
-          <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-            <span class="am-input-group-label"><i class="am-icon-map am-icon-fw"></i></span>
-            <%= f.text_field :address, class: "am-form-field", placeholder:"地址" %>
-          </div>
-          <div style="margin-bottom: 5px">
-            <%= f.text_area :self_introduction, style:"width:100%; border: 1px solid rgb(14, 144, 210)", placeholder:"个人介绍" %><br>
-          </div>
-          <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>
-      <% end %>
-    </div>
+<div class="am-u-sm-3"></div>
+<div class="am-u-sm-9 am-u-sm-offset-3">
+  <span class="am-monospace" style="font-weight: bold">修改个人信息</span>
+  <hr style="margin-top: 0px;">
+  <span><%= @user.login %>的统计信息：</span>
+  <div style="padding-left: 30px">
+    <span>个人成就：共获得5赞同 2分享</span><br>
+    <span>我的提问(3) 回答(2) 评论(5) 赞成(7) 反对(1)</span><br><br>
   </div>
-  <div class="am-u-sm-2">
-    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
+  <div>
+    <span><%= @user.login %>的详细资料：</span><br>
   </div>
-  <div class="am-u-sm-2"></div>
+  <div style="padding-left: 30px">
+    <%= form_for @user do |f| %>
+        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+          <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+          <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
+        </div>
+        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+          <span class="am-input-group-label"><i class="am-icon-mars am-icon-fw"></i></span>
+          <%= f.text_field :gender, class: "am-form-field", placeholder:"性别" %>
+        </div>
+        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+          <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
+          <%= f.text_field :birthday, class: "am-form-field", placeholder:"生日" %>
+        </div>
+        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+          <span class="am-input-group-label"><i class="am-icon-map am-icon-fw"></i></span>
+          <%= f.text_field :address, class: "am-form-field", placeholder:"地址" %>
+        </div>
+        <div style="margin-bottom: 5px">
+          <%= f.text_area :self_introduction, style:"width:100%; border: 1px solid rgb(14, 144, 210)", placeholder:"个人介绍" %><br>
+        </div>
+        <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>
+    <% end %>
+  </div>
 </div>
+
 
 

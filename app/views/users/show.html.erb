@@ -3,14 +3,13 @@
 <% end %>
 
 
-<div class="am-g am-g-collapse">
-  <div class="am-u-sm-2"></div>
-  <div class="am-u-sm-6 am-u-sm-offset-2">
-    <span class="am-monospace" style="font-weight: bold">我的主页</span>
-    <hr style="margin-top: 0px;">
-    <span><%= @user.login %>的统计信息：</span>
-    <div style="padding-left: 30px">
-      <span>个人成就：共获得1</span><br>
+<div class="am-u-sm-3"></div>
+<div class="am-u-sm-9 am-u-sm-offset-3">
+  <span class="am-monospace" style="font-weight: bold">我的主页</span>
+  <hr style="margin-top: 0px;">
+  <span><%= @user.login %>的统计信息：</span>
+  <div style="padding-left: 30px">
+    <span>个人成就：共获得1</span><br>
       <span>
         我的提问(<%= @user.questions.length %>)
         回答(<%= @user.answers.length %>)
@@ -18,27 +17,22 @@
         赞成(<%= @user.votes.where(attitude: 1).length %>)
         反对(<%= @user.votes.where(attitude: -1).length %>)
       </span><br><br>
-    </div>
-    <div>
-      <span><%= @user.login %>的详细资料：</span>
-      <% if can? :update, @user %>
-          <%= link_to '修改', edit_user_path(@user) %>
-      <% end %>
-      <% if can? :destroy, @user %>
-          <%= link_to '删除', user_path(@user), method: :delete, data: {confirm: 'Really?'} %>
-      <% end %>
-      <br>
-    </div>
-    <div style="padding-left: 30px">
-      <span>真实姓名：<%= @user.realname %></span><br>
-      <span>性别：<%= @user.gender %></span><br>
-      <span>生日：<%= @user.birthday %></span><br>
-      <span>地址：<%= @user.address %></span><br>
-      <span>个人简介：<%= @user.self_introduction %></span><br>
-    </div>
   </div>
-  <div class="am-u-sm-2">
-    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
+  <div>
+    <span><%= @user.login %>的详细资料：</span>
+    <% if can? :update, @user %>
+        <%= link_to '修改', edit_user_path(@user) %>
+    <% end %>
+    <% if can? :destroy, @user %>
+        <%= link_to '删除', user_path(@user), method: :delete, data: {confirm: 'Really?'} %>
+    <% end %>
+    <br>
   </div>
-  <div class="am-u-sm-2"></div>
+  <div style="padding-left: 30px">
+    <span>真实姓名：<%= @user.realname %></span><br>
+    <span>性别：<%= @user.gender %></span><br>
+    <span>生日：<%= @user.birthday %></span><br>
+    <span>地址：<%= @user.address %></span><br>
+    <span>个人简介：<%= @user.self_introduction %></span><br>
+  </div>
 </div>

@@ -14,11 +14,15 @@
 </head>
 <body data-no-turbolink>
 <div class="am-container" style="max-width: none; padding-left: 0; padding-right: 0;">
-
   <%= render 'shared/navbar' %>
-
-  <%= yield %>
-
+  <div class="am-g am-g-collapse">
+    <div class="am-u-sm-8">
+      <%= yield %>
+    </div>
+    <div class="am-u-sm-4">
+      <span></span>
+    </div>
+  </div>
   <%= render 'shared/backtotop' %>
   <%= render 'shared/footer' %>
 </div>

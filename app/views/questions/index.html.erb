@@ -2,53 +2,47 @@
     <title>首页-者也</title>
 <% end %>
 
-<div class="am-g am-g-collapse">
-  <div class="am-u-sm-2"></div>
-  <div class="am-u-sm-6 am-u-sm-offset-2">
-    <div style="display: inline-block; vertical-align: middle">
-      <span class="am-monospace" style="font-weight: bold">热门问答</span>
+<div class="am-u-sm-3"></div>
+<div class="am-u-sm-9 am-u-sm-offset-3">
+  <div style="display: inline-block; vertical-align: middle">
+    <span class="am-monospace" style="font-weight: bold">热门问答</span>
+  </div>
+  <div style="display: inline-block; float: right; vertical-align: middle">
+    <div class="am-dropdown" data-am-dropdown>
+      <button class="am-btn am-btn-sm am-btn-xs am-dropdown-toggle" style="background-color: transparent" data-am-dropdown-toggle>综合排序<span class="am-icon-caret-down"></span></button>
+      <ul class="am-dropdown-content">
+        <li class="am-disabled"><a href="#">综合排序</a></li>
+        <li class="am-divider"></li>
+        <li><a href="#">时间排序</a></li>
+      </ul>
     </div>
-    <div style="display: inline-block; float: right; vertical-align: middle">
-      <div class="am-dropdown" data-am-dropdown>
-        <button class="am-btn am-btn-sm am-btn-xs am-dropdown-toggle" style="background-color: transparent" data-am-dropdown-toggle>综合排序<span class="am-icon-caret-down"></span></button>
-        <ul class="am-dropdown-content">
-          <li class="am-disabled"><a href="#">综合排序</a></li>
-          <li class="am-divider"></li>
-          <li><a href="#">时间排序</a></li>
-        </ul>
+  </div>
+  <hr>
+  <% @questions.each do |question| %>
+      <div style="display: inline-block; float: left;">
+        <div style="display: inline-block; width: 50px; text-align: center">
+          <span>10</span><br>
+          <span>投票</span>
+        </div>
+        <div style="display: inline-block; width: 50px; text-align: center">
+          <span><%= question.answers.length %></span><br>
+          <span>回答</span>
+        </div>
+        <div style="display: inline-block; width: 50px; text-align: center">
+          <span><%= question.question_comments.length %></span><br>
+          <span>评论</span>
+        </div>
       </div>
-    </div>
-    <hr>
-    <% @questions.each do |question| %>
-        <div style="display: inline-block; float: left;">
-          <div style="display: inline-block; width: 50px; text-align: center">
-            <span>10</span><br>
-            <span>投票</span>
-          </div>
-          <div style="display: inline-block; width: 50px; text-align: center">
-            <span><%= question.answers.length %></span><br>
-            <span>回答</span>
-          </div>
-          <div style="display: inline-block; width: 50px; text-align: center">
-            <span><%= question.question_comments.length %></span><br>
-            <span>评论</span>
-          </div>
-        </div>
+      <div>
         <div>
-          <div>
-            <%= link_to question.title, question, style: "font-size: 1.2em"%>
-          </div>
-          <div style="font-size: 0.9em; text-align: right">
-            <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
-            <%= link_to question.user.login, question.user %>
-            <span> 21</span>
-          </div>
+          <%= link_to question.title, question, style: "font-size: 1.2em"%>
         </div>
-        <hr>
-    <% end %>
-  </div>
-  <div class="am-u-sm-2">
-    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
-  </div>
-  <div class="am-u-sm-2"></div>
+        <div style="font-size: 0.9em; text-align: right">
+          <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
+          <%= link_to question.user.login, question.user %>
+          <span> 21</span>
+        </div>
+      </div>
+      <hr>
+  <% end %>
 </div>

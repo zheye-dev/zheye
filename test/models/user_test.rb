@@ -26,9 +26,9 @@ class UserTest < ActiveSupport::TestCase
   test "destroy comments while user destroyed" do
     user = User.new(login: "tester", password: "password", password_confirmation: "password")
     user.save
-    question = Question.create(user: user, title:"test title", content: "this is a test question")
-    comment = QuestionComment.create(question: question, user: user, content: "this is a test commont")
-    assert_equal comment.user,user
+    question = Question.create(user_id: user.id, title:"test title", content: "this is a test question")
+    comment = QuestionComment.create(question_id: question.id, user_id: user.id, content: "this is a test commont")
+    assert_equal user.comments.first,comment
 
     user.destroy
     assert user.frozen?, "destroy user unsuccess"

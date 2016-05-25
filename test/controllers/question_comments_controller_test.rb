@@ -10,7 +10,7 @@ class QuestionCommentsControllerTest < ActionController::TestCase
   end
 
   test "shouldn't create question comment" do
-    post :create, {question_id: questions(:one).id, user: @current_user, question_comment: {content: "ill"}}
+    post :create, {question_id: questions(:tester_question).id, user: @current_user, question_comment: {content: "ill"}}
     assert_response :success
   end
 end

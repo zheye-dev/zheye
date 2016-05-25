@@ -24,10 +24,10 @@
       </div>
       <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
       <div style="display: inline-block">
-        <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link",
+        <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link", class:"am-icon-comment-o", style:"font-size:1.4rem; color:#999;",
                         href: "javascript:void(0)",
                         data: {question_id: @question.id} %>
-        <a href="#">分享</a>
+        <%= render 'shared/share_box' %>
       </div>
       <div style="display: inline-block; float: right">
         <span>发布于<%= @question.created_at.strftime("%Y/%m/%d")%></span>

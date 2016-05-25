@@ -21,8 +21,8 @@
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">
       <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @question.id %>"
-         href="javascript: void(0)"><%= @answer.answer_comments.length %>条评论</a>
-      <a href="##">分享</a>
+         href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>
+      <%= render 'shared/share_box' %>
     </div>
     <div style="display: inline-block; float: right">
       <span>发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>

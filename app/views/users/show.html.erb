@@ -11,7 +11,7 @@
   <div style="padding-left: 30px">
     <span>个人成就：共获得1</span><br>
       <span>
-        我的提问(<%= @user.questions.length %>)
+        我的<%= link_to "提问", all_questions_user_path(@user) %> (<%= @user.questions.length %>)
         回答(<%= @user.answers.length %>)
         评论(<%= @user.comments.length %>)
         赞成(<%= @user.votes.where(attitude: 1).length %>)

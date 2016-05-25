@@ -19,7 +19,7 @@
   </div>
   <hr>
   <% @questions.each do |question| %>
-      <div style="display: inline-block; float: left;">
+      <div style="display: inline-block; float: left; padding-top: 3px;">
         <div style="display: inline-block; width: 50px; text-align: center">
           <span>10</span><br>
           <span>投票</span>
@@ -28,7 +28,7 @@
           <span><%= question.answers.length %></span><br>
           <span>回答</span>
         </div>
-        <div style="display: inline-block; width: 50px; text-align: center">
+        <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
           <span><%= question.question_comments.length %></span><br>
           <span>评论</span>
         </div>

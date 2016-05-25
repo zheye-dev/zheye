@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :question_comments
-    resources :question_votes
+    resources :question_votes, only: [:create]
     resources :answers do
-      resources :answer_votes
+      resources :answer_votes, only: [:create]
       resources :answer_comments
     end
   end

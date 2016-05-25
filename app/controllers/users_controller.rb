@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     @questions = current_user.questions
   end
 
+  def all_answers
+    @answers = current_user.answers
+  end
+
   # Action: Destroy certain user(not logout)
   # Require admin access
   def destroy

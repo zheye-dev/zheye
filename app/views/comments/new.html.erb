@@ -2,7 +2,9 @@
 
 <%= form_for @comment.chain do |f| %>
     <div class="am-input-group" style="margin-bottom: 5px; width: 91%">
-      <%= f.text_field :content, class: "am-form-field", placeholder:"写下你的评论……" %>
-      <span class="am-input-group-label"><i class="am-icon-comment-o am-icon-fw"></i></span>
+      <%= f.text_area :content, class: "am-form-field", placeholder:"写下你的评论……", style:"width:98%;margin-left:1%;border-radius:5px;" %>
+
+      <%= f.submit "提交", class:"am-btn am-btn-default", style:"float:right; margin-top:10px;"%>
+
     </div>
 <% end %>

@@ -20,7 +20,8 @@
       <%= yield %>
     </div>
     <div class="am-u-sm-4">
-      <span></span>
+      <%= image_tag "ad_test.png" %>
+      <%= content_for?(:sidebox) ?yield(:sidebox) : '' %>
     </div>
   </div>
   <%= render 'shared/backtotop' %>

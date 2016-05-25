@@ -1,6 +1,7 @@
 <% if detail %>
 
 <% else %>
+    <div id="answer-<%= @answer.id %>">
     <div class="am-u-sm-3">
       <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
         <a href="##" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
@@ -32,4 +33,5 @@
       <div id="answer<%= @answer.id %>_comments_placeholder"></div>
       <hr>
     </div>
+      </div>
 <% end %>

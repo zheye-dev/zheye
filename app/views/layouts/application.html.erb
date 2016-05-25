@@ -13,12 +13,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-no-turbolink>
+<div class="am-container" style="max-width: none; padding-left: 0; padding-right: 0;">
 
-<%= render 'shared/navbar' %>
+  <%= render 'shared/navbar' %>
 
-<%= yield %>
+  <%= yield %>
 
-<%= render 'shared/backtotop' %>
-<%= render 'shared/footer' %>
+  <%= render 'shared/backtotop' %>
+  <%= render 'shared/footer' %>
+</div>
 </body>
 </html>

@@ -19,14 +19,14 @@
             <%= link_to '修改', edit_question_path(@question) %>
         <% end %>
         <% if can? :destroy, @question %>
-            <%= link_to '删除', @question, action: :destroy, method: :delete, data: {'confirm': 'Really?'} %>
+            <%= link_to '删除', @question, action: :destroy, method: :delete, data: {confirm: 'Really?'} %>
         <% end %>
       </div>
       <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
       <div style="display: inline-block">
         <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link",
                         href: "javascript:void(0)",
-                        data: {"question_id": @question.id} %>
+                        data: {question_id: @question.id} %>
         <a href="#">分享</a>
       </div>
       <div style="display: inline-block; float: right">

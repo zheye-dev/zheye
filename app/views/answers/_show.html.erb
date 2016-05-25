@@ -10,7 +10,7 @@
   </div>
   <div class="am-u-sm-9">
     <div style="display: inline-block">
-      <%= link_to @answer.user.login, @answer.user %>
+      <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
       <span>21</span>
     </div>
     <div style="display: inline-block; float: right">

@@ -21,6 +21,19 @@ register_answer_comment = () ->
           container = $("<div />", {id: answer_and_id+"_comment_container"}).append(answer_comment_box).append(new_answer_comment_box)
           placeholder.append(container)
 
+display_new_answer_box = () ->
+  new_answer_box = $("#new_answer_box")
+  if (new_answer_box.length && $('a[data-user-login='+new_answer_box.data('user-login')+']').length == 0)
+    new_answer_box.load(Routes.new_question_answer_path(
+        new_answer_box.data("question-id")
+    ))
+  else
+    new_answer_box.html('')
+  
+
+work_after_answer = () ->
+  register_answer_comment()
+  display_new_answer_box()
 
  $ ->
   answer_box = $("#answer_box")
@@ -28,14 +41,11 @@ register_answer_comment = () ->
     answer_box.load(Routes.question_answers_path(
         answer_box.data("question-id")
     ),
-      register_answer_comment
+      work_after_answer
     )
 
-  new_answer_box = $("#new_answer_box")
-  if (new_answer_box.length)
-    new_answer_box.load(Routes.new_question_answer_path(
-      new_answer_box.data("question-id")
-    ))
+
+
 
   question_comment_link = $("#question_comment_link")
   question_id = question_comment_link.data("question-id")

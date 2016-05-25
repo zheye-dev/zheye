@@ -1,7 +1,6 @@
-<% detail = detail || true %>
+<% if detail %>
 
 <div class="am-u-sm-3">
-  <% if detail %>
       <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
         <a href="#" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
         <br>
@@ -10,7 +9,6 @@
         <a href="#" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
       </div>
   <% end %>
-</div>
 
 <div class="am-u-sm-9">
   <div style="display: inline-block;">
@@ -21,7 +19,6 @@
         <%= link_to '修改', edit_question_path(@question) %>
     <% end %>
   </div>
-  <% if detail %>
       <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
       <div style="display: inline-block">
         <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link",
@@ -29,7 +26,6 @@
                         data: {"question_id": @question.id} %>
         <a href="#">分享</a>
       </div>
-  <% end %>
   <div style="display: inline-block; float: right">
     <span>发布于<%= @question.created_at.strftime("%Y/%m/%d")%></span>
     <%= link_to @question.user.login, @question.user %>
@@ -38,3 +34,8 @@
   <div id="question_comments_placeholder"></div>
   <hr>
 </div>
+
+<% else %>
+
+
+<% end %>

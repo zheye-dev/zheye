@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  authorize_resource :except => :cur_user
+  authorize_resource :except => [:cur_user, :all_questions]
   # Display all users
   # Require admin access
   def index
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # Action: Update given user's info
+  # Action: Update given user's infos
   def update
     @user = User.find(params[:id])
     if @user.update(user_info_params)
@@ -45,6 +45,10 @@ class UsersController < ApplicationController
 
   def cur_user
     redirect_to current_user
+  end
+
+  def all_questions
+    @questions = current_user.questions
   end
 
   # Action: Destroy certain user(not logout)

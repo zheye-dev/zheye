@@ -1,0 +1,8 @@
+<h1>Search#index</h1>
+
+<h2> Search Result for <%= @query %></h2>
+
+<% @search.results.each do |result| %>
+    <% @answer = result %>
+<%= render partial: 'answers/answer_box', locals: {detail: false} %>
+<% end %>

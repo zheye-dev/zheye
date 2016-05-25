@@ -8,9 +8,10 @@
   <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 
   <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-    <form class="am-topbar-form am-topbar-left am-form-inline" role="search">
+    <form class="am-topbar-form am-topbar-left am-form-inline" role="search" action="<%= search_index_url %>" method="get">
       <div class="am-input-group am-input-group-primary" style="min-width: 300px;" >
-        <input type="text" class="am-form-field am-input-sm" placeholder="搜索" style="border-radius:10px;">
+
+        <input type="search" class="am-form-field am-input-sm" name="query" placeholder="搜索" style="border-radius:10px;">
       </div>
     </form>
 

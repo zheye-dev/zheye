@@ -1,19 +1,15 @@
 <%= render 'errors' %>
 
-<div class="am-g am-g-collapse">
-  <div class="am-u-sm-2"></div>
-  <div class="am-u-sm-6 am-u-sm-offset-2">
+<div>
+  <div class="am-u-sm-3"></div>
+  <div class="am-u-sm-9 am-u-sm-offset-3">
     <span class="am-monospace" style="font-weight: bold">你的回答</span>
     <hr style="margin-top: 0px;">
     <%= form_for [@question, @answer], remote: true do |f| %>
-        <div style="margin-bottom: 5px">
-          <%= f.cktext_area :content%><br>
+        <%= f.cktext_area :content%>
+        <div style="margin-top: 10px;">
+          <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>
         </div>
-        <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>
     <% end %>
   </div>
-  <div class="am-u-sm-2">
-    <span></span>
-  </div>
-  <div class="am-u-sm-2"></div>
 </div>

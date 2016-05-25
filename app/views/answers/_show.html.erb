@@ -1,5 +1,5 @@
-<div id="answer-<%= @answer.id %>" class="am-g am-g-collapse">
-  <div class="am-u-sm-2">
+<div id="answer-<%= @answer.id %>">
+  <div class="am-u-sm-3">
     <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
       <a href="##" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
       <br>
@@ -8,9 +8,9 @@
       <a href="##" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
     </div>
   </div>
-  <div class="am-u-sm-6">
+  <div class="am-u-sm-9">
     <div style="display: inline-block">
-      <%= link_to @answer.user.login, @answer.user %>
+      <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
       <span>21</span>
     </div>
     <div style="display: inline-block; float: right">
@@ -20,17 +20,14 @@
     </div>
     <p class="am-san-serif" style="margin-top: 0;"><%= @answer.content.html_safe%></p>
     <div style="display: inline-block">
-      <a id="answer<%= @answer.id %>_comment_link" href="javascript: void(0)"><%= @answer.answer_comments.length %>条评论</a>
+      <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @question.id %>"
+         href="javascript: void(0)"><%= @answer.answer_comments.length %>条评论</a>
       <a href="##">分享</a>
     </div>
     <div style="display: inline-block; float: right">
       <span>发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
     </div>
-    <div  id="answer_comments_placeholder"></div>
+    <div id="answer<%= @answer.id %>_comments_placeholder"></div>
     <hr>
   </div>
-  <div class="am-u-sm-2">
-    <span></span>
-  </div>
-  <div class="am-u-sm-2"></div>
 </div>

@@ -2,47 +2,10 @@
     <title><%= @question.title %>-者也</title>
 <% end %>
 
-<div class="am-g am-g-collapse">
-  <div class="am-u-sm-2">
-    <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
-      <a href="#" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
-      <br>
-      <span>233</span>
-      <br>
-      <a href="#" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
-    </div>
-  </div>
-  <div class="am-u-sm-6">
-    <div style="display: inline-block;">
-      <h2 class="am-monospace" style="margin-bottom: 0px;"><%= @question.title %></h2>
-    </div>
-    <div style="display: inline-block">
-      <% if can? :update, @question %>
-          <%= link_to '修改', edit_question_path(@question) %>
-      <% end %>
-    </div>
-    <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
-    <div style="display: inline-block">
-      <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link",
-                      href: "javascript:void(0)",
-                      data: {"question_id": @question.id} %>
-      <a href="#">分享</a>
-    </div>
-    <div style="display: inline-block; float: right">
-      <span>发布于<%= @question.created_at.strftime("%Y/%m/%d")%></span>
-      <%= link_to @question.user.login, @question.user %>
-      <span>21</span>
-    </div>
-    <div id="question_comments_placeholder"></div>
-    <hr>
-  </div>
-  <div class="am-u-sm-2">
-    <%= image_tag 'ad_test.png', style: 'width: 90%; float:right' %>
-  </div>
-  <div class="am-u-sm-2"></div>
-</div>
-
-
-
+<%= render partial: 'question_box', locals: {detail: true} %>
 <%= content_tag "div", "Loading...", id: "answer_box", data: {question_id: @question.id} %>
-<%= content_tag "div", "Loading...", id: "new_answer_box", data: {question_id: @question.id} %>
+<% if current_user %>
+<%= content_tag "div", "Loading...", id: "new_answer_box", data: {question_id: @question.id, user_login: current_user.login} %>
+<% end %>
+
+

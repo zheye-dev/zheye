@@ -1,5 +1,7 @@
 class AnswerCommentsController < CommentsController
   before_action :get_comment, :only => [:edit, :update, :destroy]
+  layout false
+  respond_to :html, :js
   authorize_resource
   def get_comment
     @comment = AnswerComment.find(params[:id])
@@ -20,7 +22,7 @@ class AnswerCommentsController < CommentsController
       redirect_to @comment.answer.question
       flash[:notice] = 'Comment created!'
     else
-      render 'comment/new'
+      render 'comments/new'
       flash[:notice] = 'Failed!'
     end
   end

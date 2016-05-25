@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    member do
+      get 'all_questions'
+      get 'all_answers'
+    end
+  end
 
   resources :user_sessions, only: [:create, :destroy]
 

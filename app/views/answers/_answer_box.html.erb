@@ -12,6 +12,7 @@
     <div id="answer-<%= @answer.id %>">
       <div class="am-g">
         <div class="am-u-sm-3">
+          <!--
           <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
             <a href="##" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
             <br>
@@ -19,8 +20,10 @@
             <br>
             <a href="##" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
           </div>
+          -->
+          <div id="answer<%= @answer.id %>_votes_placeholder"></div>
         </div>
-        <div class="am-u-sm-9">
+        <div class="am-u-sm-9 am-u-sm-offset-3">
           <div style="display: inline-block; padding-top: 0.3em;">
             <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
             <span>21</span>
@@ -50,6 +53,7 @@
     <div id="answer-<%= @answer.id %>">
       <div class="am-g">
         <div class="am-u-sm-3">
+          <!--
           <div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
             <a href="##" class="am-icon-btn am-icon-thumbs-o-up am-icon-btn-sm"></a>
             <br>
@@ -57,8 +61,10 @@
             <br>
             <a href="##" class="am-icon-btn am-icon-thumbs-o-down am-icon-btn-sm"></a>
           </div>
+          -->
+          <div id="answer<%= @answer.id %>_votes_placeholder"></div>
         </div>
-        <div class="am-u-sm-9">
+        <div class="am-u-sm-9 am-u-sm-offset-3">
           <div style="display: inline-block; padding-top: 0.3em;">
             <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
             <span>21</span>

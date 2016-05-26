@@ -1,10 +1,16 @@
-<h1>Search#index</h1>
+<% content_for :head do %>
+    <title><%= @query %>-搜索结果-者也</title>
+<% end %>
 
-<h2> Search Result for <%= @query %></h2>
+<div class="am-u-sm-3"></div>
+<div class="am-u-sm-9 am-u-sm-offset-3">
+  <span class="am-monospace" style="font-size: 1.1em; color: #cc0000;"><%= @query %></span>
+  <span class="am-monospace" style="font-size: 1.1em">的搜索结果</span>
+  <hr style="margin-top: 0px;">
+</div>
 
 <% @search.results.each do |result| %>
     <% @answer = result %>
     <% @question = result.question %>
-    <%= render partial: 'questions/question_box', locals: {detail: false} %>
-<%= render partial: 'answers/answer_box', locals: {detail: false} %>
+    <%= render partial: 'answers/answer_box', locals: {detail: true} %>
 <% end %>

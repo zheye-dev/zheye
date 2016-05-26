@@ -8,14 +8,17 @@
   <%= favicon_link_tag 'favicon.ico' %>
   <%= content_for?(:head) ? yield(:head) : '' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <style type="text/css">
+    p{
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+  </style>
   <%= javascript_include_tag 'application', 'portal', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
 </head>
 <body data-no-turbolink>
-<!--
-<div class="am-container" style="max-width: none; padding-left: 0; padding-right: 0; height: auto">
--->
 <div id="wrapper" style="position: relative; height: auto;">
   <br>
   <%= render 'shared/navbar' %>
@@ -35,8 +38,5 @@
   <%= render 'shared/backtotop' %>
   <%= render 'shared/footer' %>
 </div>
-<!--
-</div>
--->
 </body>
 </html>

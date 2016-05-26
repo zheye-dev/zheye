@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <title>我的回答-者也</title>
+<% end %>
+
 <div class="am-u-sm-3"></div>
 <div class="am-u-sm-9 am-u-sm-offset-3">
   <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">我的回答(<%= @answers.length %>)</span>
@@ -5,5 +9,5 @@
 </div>
 <% @answers.each do |answer| %>
     <% @answer = answer %>
-    <%= render partial: 'answers/answer_box', locals: {detail: false} %>
+    <%= render partial: 'answers/answer_box', locals: {detail: true} %>
 <% end %>

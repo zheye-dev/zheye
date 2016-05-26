@@ -12,7 +12,7 @@
 
     <div class="am-u-sm-9">
       <div style="display: inline-block;">
-        <h2 class="am-monospace" style="margin-bottom: 0px;"><%= @question.title %></h2>
+        <span class="am-monospace" style="font-size:1.2em; font-weight: bold; margin-bottom: 0px;"><%= @question.title %></span>
       </div>
       <div style="display: inline-block">
         <% if can? :update, @question %>
@@ -22,7 +22,7 @@
             <%= link_to '删除', @question, action: :destroy, method: :delete, data: {confirm: 'Really?'} %>
         <% end %>
       </div>
-      <p class="am-san-serif am-text-break"><%= @question.content.html_safe%></p>
+      <div class="am-san-serif am-text-break" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @question.content.html_safe%></div>
       <div style="display: inline-block">
         <%= content_tag "a", "#{@question.question_comments.length}条评论", id: "question_comment_link", class:"am-icon-comment-o", style:"font-size:1.4rem; color:#999;",
                         href: "javascript:void(0)",
@@ -30,9 +30,9 @@
         <%= render 'shared/share_box' %>
       </div>
       <div style="display: inline-block; float: right">
-        <span>发布于<%= @question.created_at.strftime("%Y/%m/%d")%></span>
-        <%= link_to @question.user.login, @question.user %>
-        <span>21</span>
+        <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @question.created_at.strftime("%Y/%m/%d")%>&nbsp;</span>
+        <%= link_to @question.user.login, @question.user, html_options = {style: "font-size:1.4rem;"} %>
+        <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">21</span>
       </div>
       <div id="question_comments_placeholder"></div>
       <hr>

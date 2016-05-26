@@ -3,23 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 register_answer_comment = () ->
   $("a[id^=answer]").each (idx, ele) ->
-      console.log(ele)
-      ele = $(ele);
-      question_id = ele.data('question-id')
-      answer_id = ele.data('answer-id')
-      answer_and_id = "answer" + answer_id;
-      console.log(question_id)
-      ele.click ->
-        console.log("click")
-        container = $("#"+answer_and_id + "_comment_container")
-        if (container.length)
-          container.toggle()
-        else
-          placeholder = $("#"+answer_and_id+"_comments_placeholder")
-          answer_comment_box = $("<div />").load(Routes.question_answer_answer_comments_path(question_id, answer_id))
-          new_answer_comment_box = $("<div />").load(Routes.new_question_answer_answer_comment_path(question_id, answer_id))
-          container = $("<div />", {id: answer_and_id+"_comment_container"}).append(answer_comment_box).append(new_answer_comment_box)
-          placeholder.append(container)
+    console.log(ele)
+    ele = $(ele);
+    question_id = ele.data('question-id')
+    answer_id = ele.data('answer-id')
+    answer_and_id = "answer" + answer_id;
+    console.log(question_id)
+    ele.click ->
+      console.log("click")
+      container = $("#"+answer_and_id + "_comment_container")
+      if (container.length)
+        container.toggle()
+      else
+        placeholder = $("#"+answer_and_id+"_comments_placeholder")
+        answer_comment_box = $("<div />").load(Routes.question_answer_answer_comments_path(question_id, answer_id))
+        new_answer_comment_box = $("<div />").load(Routes.new_question_answer_answer_comment_path(question_id, answer_id))
+        container = $("<div />", {id: answer_and_id+"_comment_container"}).append(answer_comment_box).append(new_answer_comment_box)
+        placeholder.append(container)
 
 display_new_answer_box = () ->
   new_answer_box = $("#new_answer_box")
@@ -29,22 +29,43 @@ display_new_answer_box = () ->
     ))
   else
     new_answer_box.html('')
-  
+
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+upvote_btn = (e) ->
+  target = $ e.target
+  vote_id = target.data('id');
+  $('input[type=text][data-vote-id='+vote_id+']').attr('value', if target.hasClass('am-success') then 0 else 1)
+  $('form[data-id='+vote_id+']').submit()
+
+downvote_btn = (e) ->
+  target = $ e.target
+  vote_id = target.data('id');
+  $('input[type=text][data-vote-id='+vote_id+']').attr('value', if target.hasClass('am-success') then 0 else -1)
+  $('form[data-id='+vote_id+']').submit()
+
+register_vote = ->
+  $('.upvote-btn').click upvote_btn
+  $('.downvote-btn').click downvote_btn
 
 work_after_answer = () ->
   register_answer_comment()
   display_new_answer_box()
+  register_vote()
 
- $ ->
+$ ->
   answer_box = $("#answer_box")
   if (answer_box.length)
     answer_box.load(Routes.question_answers_path(
         answer_box.data("question-id")
-    ),
-      work_after_answer
+        ),
+        work_after_answer
     )
 
   register_answer_comment()
+  register_vote()
 
 
   question_comment_link = $("#question_comment_link")
@@ -61,8 +82,8 @@ work_after_answer = () ->
         new_question_comment_box = $("<div />", {id: "new_question_comment_box"})
         new_question_comment_box.load(Routes.new_question_question_comment_path(question_id))
         question_comment_container = $("<div />", {"id": "question_comment_container"}).append(
-          question_comment_box
+            question_comment_box
         ).append(
-          new_question_comment_box
+            new_question_comment_box
         )
         $("#question_comments_placeholder").append(question_comment_container)

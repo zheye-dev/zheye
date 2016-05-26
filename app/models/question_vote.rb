@@ -5,4 +5,16 @@ class QuestionVote < Vote
   def chain
     [self.question, self]
   end
+
+  def points
+    QuestionVote.where(question: self.question).sum(:attitude)
+  end
+
+  def self.user_vote(user, question_id)
+    vote = QuestionVote.find_or_initialize_by user: user, question_id: question_id
+    if !vote.persisted?
+      vote.attitude = 0
+    end
+    return vote
+  end
 end

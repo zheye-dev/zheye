@@ -1,4 +1,4 @@
-<%= form_for(@vote) do |f| %>
+<%= form_for @vote.chain do |f| %>
   <% if @vote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
@@ -11,7 +11,4 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

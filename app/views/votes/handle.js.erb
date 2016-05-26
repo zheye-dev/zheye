@@ -1,0 +1,17 @@
+<% if !@vote.errors.any? %>
+$('.vote-points[data-id=<%= @vote_id %>]').text(<%= @vote.points %>);
+$('.upvote-btn[data-id=<%= @vote_id %>]').removeClass('am-success');
+$('.downvote-btn[data-id=<%= @vote_id %>]').removeClass('am-success');
+<% if @vote.attitude == 1 %>
+<% vote_obj = '.upvote-btn' %>
+<% elsif @vote.attitude == -1 %>
+<% vote_obj = '.downvote-btn' %>
+<% end %>
+
+<% if @vote.attitude != 0 %>
+$('<%= vote_obj %>[data-id=<%= @vote_id %>]').addClass('am-success');
+<% end %>
+
+<% else %>
+alert("<%= j @vote.errors.full_messages.join('\n') %>\n Voteid= <%= @vote_id %> ");
+<% end %>

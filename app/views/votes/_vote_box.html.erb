@@ -1,0 +1,18 @@
+<% vote_identifier = rand(100000000) %>
+<%= form_for @vote.chain, remote: true, method: :post, data: {id: vote_identifier}, html: {style: "display: none"}  do |f| %>
+    <%= f.text_field :attitude , data: {vote_id: vote_identifier}%>
+    <%= text_field_tag :vote_id, vote_identifier %>
+    <%= f.submit %>
+<% end %>
+
+<div style="width: 50px; float: right; text-align: center; padding-top: 5px; padding-right: 20px;">
+  <%= link_to '', 'javascript: void(0)',
+              class: ['upvote-btn', 'am-icon-btn', 'am-icon-thumbs-o-up', 'am-icon-btn-sm', @vote.attitude == 1 ? 'am-success' : ''],
+  data: {id: vote_identifier} %>
+  <br>
+  <%= content_tag :span, @vote.points , class: 'vote-points', data: {id: vote_identifier} %>
+  <br>
+  <%= link_to '', 'javascript: void(0)',
+              class: ['downvote-btn', 'am-icon-btn', 'am-icon-thumbs-o-down', 'am-icon-btn-sm', @vote.attitude == -1 ? 'am-success' : ''],
+  data: {id: vote_identifier }%>
+</div>

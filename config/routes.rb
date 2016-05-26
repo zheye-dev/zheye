@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :questions do
     resources :question_comments
     get 'question_votes', to: 'question_votes#index'
-    post 'question_votes', to: 'question_votes#handle'
+    post 'question_votes', to: 'question_votes#handle', as: :question_vote
     resources :answers do
       get 'answer_votes', to: 'answer_votes#index'
-      post 'answer_votes', to: 'answer_votes#handle'
+      post 'answer_votes', to: 'answer_votes#handle', as: :answer_vote
       resources :answer_comments
     end
   end

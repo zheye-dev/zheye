@@ -2,18 +2,17 @@ Rails.application.routes.draw do
   resources :votes
   get 'search/index'
 
-  resources :comments
-  resources :question_comments
-  resources :answer_comments
   resources :answers
   mount Ckeditor::Engine => '/ckeditor'
   get 'portal/index'
 
   resources :questions do
     resources :question_comments
-    resources :question_votes, only: [:create]
+    get 'question_votes', to: 'question_votes#index'
+    post 'question_votes', to: 'question_votes#handle'
     resources :answers do
-      resources :answer_votes, only: [:create]
+      get 'answer_votes', to: 'answer_votes#index'
+      post 'answer_votes', to: 'answer_votes#handle'
       resources :answer_comments
     end
   end

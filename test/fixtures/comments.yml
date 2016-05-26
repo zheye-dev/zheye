@@ -2,7 +2,7 @@
 
 tester_comment:
   content: MyText
-  user_id: 1011897928
+  user: tester
 
 two:
   content: MyText

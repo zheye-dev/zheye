@@ -13,9 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require amazeui.js
 //= require amazeui.min.js
-//= require amazeui.widgets.helper.js
 //= require amazeui.widgets.helper.min.js
 //= require handlebars.min.js
 //= require ckeditor/init

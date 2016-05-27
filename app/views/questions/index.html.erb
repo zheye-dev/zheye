@@ -49,13 +49,13 @@
 </div>
 
 <div class="am-btn-group doc-js-btn-1" data-am-button>
-  <label class="am-btn am-btn-default am-btn-sm am-active" style="border:1px transparent; background-color: transparent; color:#999;">
+  <label class="am-btn am-btn-default am-btn-sm am-active">
     <input type="radio" name="options" value="1" id="option1" checked> 综合排序
   </label>
-  <label class="am-btn am-btn-default am-btn-sm" style="border:1px transparent; background-color: transparent; color:#999;">
+  <label class="am-btn am-btn-default am-btn-sm">
     <input type="radio" name="options" value="2" id="option2"> 时间排序
   </label>
-  <label class="am-btn am-btn-default am-btn-sm" style="border:1px transparent; background-color: transparent; color:#999;">
+  <label class="am-btn am-btn-default am-btn-sm">
     <input type="radio" name="options" value="3" id="option3"> 迷之排序
   </label>
 </div>
@@ -67,21 +67,4 @@
       console.log('单选框当前选中的是：', $radios.filter(':checked').val());
     });
   });
-</script>
-
-<script>
-  $(function() {
-    var $toggleInitial = $('#li_for_abled');
-    $toggleInitial.on('click', function() {
-      setSortButtonStatus();
-    });
-
-    function setSortButtonStatus() {
-      var fixed_icon='<span class="am-icon-caret-down"></span>';
-      var status_tmp = $('#li_for_abled').text();
-      $('#li_for_abled').text($('#li_for_disabled').text());
-      $('#li_for_disabled').text(status_tmp);
-      $('#button_for_sort').text(status_tmp+fixed_icon);
-    }
-  })
 </script>

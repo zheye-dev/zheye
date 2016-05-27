@@ -11,8 +11,42 @@
       </span>
     </div>
     <div style="display: inline-block;float: right">
-      <span style="color:#999">联系我们</span>
-      <span style="color:#999">|关于</span>
+      <button type="button" class="am-btn am-btn-default am-btn-sm" style="border:1px transparent; background-color: transparent; color:#999" data-am-modal="{target: '#my-alert'}">
+        联系我们
+      </button>
+
+      <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+          <div class="am-modal-hd">联系我们</div>
+          <div class="am-modal-bd">
+            Github：https://github.com/zheye-dev/zheye
+          </div>
+          <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+          </div>
+        </div>
+      </div>
+
+      <span style="color:#999">|</span>
+
+      <button type="button" class="am-btn am-btn-default am-btn-sm" style="border:1px transparent; background-color: transparent; color:#999" data-am-modal="{target: '#my-alert'}">
+        关于
+      </button>
+
+      <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+          <div class="am-modal-hd">关于</div>
+          <div class="am-modal-bd">
+            者也，一起提高姿势水平！
+            © 2016 Morocco Group. Developed with Ruby on Rails.
+            Group members: 骆铮 宋肇哲 瞿文浩 张福明 黄河
+          </div>
+          <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="am-u-sm-2"></div>

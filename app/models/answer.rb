@@ -11,7 +11,7 @@ class Answer < ActiveRecord::Base
     before_update :sanitize_content
 
     searchable do
-        text :content
+        text :content, :stored => true
     end
 
     def points

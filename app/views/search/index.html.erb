@@ -9,8 +9,12 @@
   <hr style="margin-top: 0px;">
 </div>
 
-<% @search.results.each do |result| %>
+<% @search.each_hit_with_result do |hit, result| %>
     <% @answer = result %>
-    <% @question = result.question %>
+    <% @question = @answer.question %>
+    <% @answer.content = '' %>
+    <% hit.highlights(:content).each do |highlight| %>
+        <% @answer.content += highlight.format{ |word| "<mark>#{word}</mark>"} %>
+    <% end %>
     <%= render partial: 'answers/answer_box', locals: {detail: true} %>
 <% end %>

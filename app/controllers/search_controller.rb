@@ -2,7 +2,9 @@ class SearchController < ApplicationController
   def index
     @query = params[:query]
     @search = Answer.search do
-      fulltext params[:query]
+      fulltext params[:query] do
+        highlight :content
+      end
     end
   end
 

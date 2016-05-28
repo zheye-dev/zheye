@@ -13,8 +13,8 @@ class Question < ActiveRecord::Base
 
 
   searchable do
-    string :title
-    text :content
+    string :title, :stored => true
+    text :content, :stored => true
   end
 
   def points

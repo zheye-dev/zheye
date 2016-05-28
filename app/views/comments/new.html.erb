@@ -2,7 +2,7 @@
 
 <%= form_for @comment.chain do |f| %>
     <div class="am-input-group" style="margin-bottom: 5px; width: 91%">
-      <%= f.text_area :content, class: "am-form-field", placeholder:"写下你的评论……", onkeyup:"auto_grow(this)",
+      <%= f.text_area :content, class: "am-form-field", placeholder:"写下你的评论……(最少5字)", onkeyup:"auto_grow(this)",
                       style:"width:99%;margin-left:0.5%;border-radius:5px; resize:none;min-height:40px; max-height:100px;" %>
       <%= f.submit "提交", class:"am-btn am-btn-default", style:"float:right; margin-top:10px; margin-right:3px"%>
     </div>

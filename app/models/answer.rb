@@ -14,6 +14,10 @@ class Answer < ActiveRecord::Base
         text :content
     end
 
+    def points
+        AnswerVote.where(answer: self).sum(:attitude)
+    end
+
     private
 
     def sanitize_content

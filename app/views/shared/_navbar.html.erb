@@ -24,9 +24,9 @@
             <li><%= link_to '我的主页', me_path %></li>
             <li><%= link_to "我的提问", all_questions_user_path(current_user) %></li>
             <li><%= link_to "我的回答", all_answers_user_path(current_user) %></li>
-            <li><a href="#">我的评论</a></li>
-            <li><a href="#">我赞成的</a></li>
-            <li><a href="#">我反对的</a></li>
+            <li><%= link_to "我的评论", all_comments_user_path(current_user) %></li>
+            <li><%= link_to "我赞成的", all_upvotes_user_path(current_user) %></li>
+            <li><%= link_to "我反对的", all_downvotes_user_path(current_user) %></li>
             <li><%= link_to '退出', log_out_path, method: :delete %></li>
           </ul>
         </div>

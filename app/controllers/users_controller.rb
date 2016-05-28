@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  authorize_resource :except => [:cur_user, :all_questions, :all_answers]
+  authorize_resource :except => [:cur_user, :all_questions, :all_answers, :all_comments, :all_upvotes, :all_downvotes]
   # Display all users
   # Require admin access
   def index
@@ -48,13 +48,32 @@ class UsersController < ApplicationController
   end
 
   def all_questions
-    @questions = current_user.questions
+    @user = User.find(params[:id])
+    @questions = @user.questions
     authorize! :read, Question
   end
 
   def all_answers
-    @answers = current_user.answers
+    @user = User.find(params[:id])
+    @answers = @user.answers
     authorize! :read, Answer
+  end
+
+  def all_comments
+    @user = User.find(params[:id])
+    @comments = @user.comments
+    authorize! :read, Comment
+  end
+
+  def all_upvotes
+    @user = User.find(params[:id])
+    @upvotes = Vote.where({user: @user, attitude: 1})
+    authorize! :read, Vote
+  end
+
+  def all_downvotes
+    @user = User.find(params[:id])
+    @downvotes = Vote.where({user: @user, attitude: -1})
   end
 
   # Action: Destroy certain user(not logout)

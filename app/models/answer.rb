@@ -12,7 +12,11 @@ class Answer < ActiveRecord::Base
     after_update :calculate_score
 
     searchable do
-        text :content
+        text :content, :stored => true
+    end
+
+    def points
+        AnswerVote.where(answer: self).sum(:attitude)
     end
 
     private

@@ -12,19 +12,14 @@ class AnswerCommentsController < CommentsController
   end
   # Action: Create a new comment to answer
   def create
+    super
     #@question = Question.find(params[:question_id])
     @answer = Answer.find(params[:answer_id])
     @comment = AnswerComment.new(answer_comment_params)
     @comment.answer = @answer
     authorize! :create, @comment
     @comment.user = current_user
-    if @comment.save
-      redirect_to @comment.answer.question
-      flash[:notice] = 'Comment created!'
-    else
-      render 'comments/new'
-      flash[:notice] = 'Failed!'
-    end
+    @comment.save
   end
 
   # Display an comment box to current answer

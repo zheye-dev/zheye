@@ -1,17 +1,31 @@
 <% content_for :head do %>
-    <title>我的评论-者也</title>
+    <title><%= @user.login %>的评论-者也</title>
 <% end %>
 
 <div class="am-u-sm-3"></div>
 <div class="am-u-sm-9 am-u-sm-offset-3">
-  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">我的评论(<%= @comments.length %>)</span>
+  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= render partial: 'users/user_name' %>的评论(<%= @comments.length %>)</span>
   <hr style="margin-top: 0px;">
 </div>
 <% @comments.each do |comment| %>
     <% @comment = comment %>
-    <% if %>
-        <%= render partial: 'questions/question_box', locals: {detail: true} %>
+    <% if @comment.type == 'QuestionComment' %>
+        <% @question=@comment.question %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>评论的问题
+          </span>
+        </div>
+        <%= render partial: 'questions/question_box', locals: {detail: true, show_link: true} %>
     <% else %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>评论的回答
+          </span>
+        </div>
+        <% @answer=@comment.answer %>
         <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

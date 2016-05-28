@@ -1,17 +1,31 @@
 <% content_for :head do %>
-    <title>我赞成的-者也</title>
+    <title><%= @user.login %>赞成的-者也</title>
 <% end %>
 
 <div class="am-u-sm-3"></div>
 <div class="am-u-sm-9 am-u-sm-offset-3">
-  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">我赞成的(<%= @upvotes.length %>)</span>
+  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= render partial: 'users/user_name' %>赞成的(<%= @upvotes.length %>)</span>
   <hr style="margin-top: 0px;">
 </div>
 <% @upvotes.each do |upvote| %>
     <% @upvote = upvote %>
-    <% if %>
-        <%= render partial: 'questions/question_box', locals: {detail: true} %>
+    <% if @upvote.type == 'QuestionVote' %>
+        <% @question = @upvote.question %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>赞成的问题
+          </span>
+        </div>
+        <%= render partial: 'questions/question_box', locals: {detail: true, show_link: true} %>
     <% else %>
+        <% @answer = @upvote.answer %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>赞成的回答
+          </span>
+        </div>
         <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

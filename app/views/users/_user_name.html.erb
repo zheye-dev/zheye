@@ -1,0 +1,7 @@
+<% if !defined? @user %>
+    <% @user = user %>
+<% end %>
+<%= @user.login %>
+<% if @user.admin? %>
+    <span class="am-badge am-badge-primary am-round">管理员</span>
+<% end %>

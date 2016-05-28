@@ -1,10 +1,10 @@
 <% content_for :head do %>
-    <title>我的回答-者也</title>
+    <title><%= @user.login %>的回答-者也</title>
 <% end %>
 
 <div class="am-u-sm-3"></div>
 <div class="am-u-sm-9 am-u-sm-offset-3">
-  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">我的回答(<%= @answers.length %>)</span>
+  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= @user.login %>的回答(<%= @answers.length %>)</span>
   <hr style="margin-top: 0px;">
 </div>
 <% @answers.each do |answer| %>

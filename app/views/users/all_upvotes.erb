@@ -11,9 +11,21 @@
     <% @upvote = upvote %>
     <% if @upvote.type == 'QuestionVote' %>
         <% @question = @upvote.question %>
-        <%= render partial: 'questions/question_box', locals: {detail: true} %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>赞成的问题
+          </span>
+        </div>
+        <%= render partial: 'questions/question_box', locals: {detail: true, show_link: true} %>
     <% else %>
         <% @answer = @upvote.answer %>
+        <div class="am-u-sm-3"></div>
+        <div class="am-u-sm-9 am-u-sm-offset-3">
+          <span style="color:#999; font-size: 1.4rem;">
+            <%= @user.login %>赞成的回答
+          </span>
+        </div>
         <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  authorize_resource :except => [:cur_user, :all_questions, :all_answers, :all_upvotes, :all_downvotes]
+  authorize_resource :except => [:cur_user, :all_questions, :all_answers, :all_comments, :all_upvotes, :all_downvotes]
   # Display all users
   # Require admin access
   def index
@@ -57,6 +57,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @answers = @user.answers
     authorize! :read, Answer
+  end
+
+  def all_comments
+    @user = User.find(params[:id])
+    @comments = @user.comments
+    authorize! :read, Comment
   end
 
   def all_upvotes

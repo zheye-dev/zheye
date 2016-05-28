@@ -9,9 +9,11 @@
 </div>
 <% @comments.each do |comment| %>
     <% @comment = comment %>
-    <% if %>
+    <% if @comment.type == 'QuestionComment' %>
+        <% @question=@comment.question %>
         <%= render partial: 'questions/question_box', locals: {detail: true} %>
     <% else %>
+        <% @answer=@comment.answer %>
         <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

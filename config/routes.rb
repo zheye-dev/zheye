@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do
       get 'all_questions'
       get 'all_answers'
+      get 'all_comments'
       get 'all_downvotes'
       get 'all_upvotes'
     end

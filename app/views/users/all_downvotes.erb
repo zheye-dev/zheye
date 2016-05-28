@@ -9,9 +9,11 @@
 </div>
 <% @downvotes.each do |downvote| %>
     <% @downvote = downvote %>
-    <% if %>
-        <%= render partial: 'questions/question_box', locals: {detail: true} %>
+    <% if @downvote.type == 'QuestionVote' %>
+        <% @question = @downvote.question %>
+        <%= render partial: 'questions/question_box', locals: {detail: true, show_link: true} %>
     <% else %>
+        <% @answer = @downvote.answer %>
         <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

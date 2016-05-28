@@ -1,3 +1,7 @@
+<% if ! defined? show_link %>
+    <% show_link = false %>
+<% end %>
+
 <% if detail %>
 
     <div class="am-u-sm-3">
@@ -7,7 +11,13 @@
 
     <div class="am-u-sm-9">
       <div style="display: inline-block;">
-        <span class="am-monospace" style="font-size:1.2em; font-weight: bold; margin-bottom: 0px;"><%= @question.title %></span>
+        <span class="am-monospace" style="font-size:1.2em; font-weight: bold; margin-bottom: 0px;">
+          <% if show_link %>
+              <%= link_to @question.title, @question %>
+              <% else %>
+          <%= @question.title %>
+              <% end %>
+        </span>
       </div>
       <div style="display: inline-block">
         <% if can? :update, @question %>

@@ -1,0 +1,8 @@
+<% if !@comment.errors.any? %>
+location.reload();
+<% else %>
+placeholder = $('#comment_errors_<%= @comment_id %>_placeholder');
+placeholder.html("<%= j render 'comments/errors'%>");
+placeholder.show();
+placeholder.css('display', '');
+<% end %>

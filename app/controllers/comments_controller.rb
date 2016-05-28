@@ -12,6 +12,10 @@ class CommentsController < ApplicationController
     end
   end
 
+  def create
+    @comment_id = params.permit(:comment_identifier)[:comment_identifier]
+  end
+
   # Action: Destroy current comment
   # Require comment.user == current_user.login || Admin access
   def destroy

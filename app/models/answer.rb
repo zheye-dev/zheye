@@ -9,6 +9,7 @@ class Answer < ActiveRecord::Base
 
     before_save :sanitize_content
     before_update :sanitize_content
+    after_update :calculate_score
 
     searchable do
         text :content
@@ -18,5 +19,9 @@ class Answer < ActiveRecord::Base
 
     def sanitize_content
         self.content = Sanitize.fragment(self.content, Sanitize::Config::RELAXED)
+    end
+
+    def calculate_score
+        self.score = answer_votes.where(attitude: 1).length - answer_votes.where(attitude: -1).length
     end
 end

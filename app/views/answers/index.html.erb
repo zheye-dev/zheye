@@ -5,19 +5,36 @@
       <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= @answers.length %>个回答</span>
     </div>
     <div style="display: inline-block; float: right; vertical-align: middle">
-      <div class="am-btn-group doc-js-btn-1" data-am-button>
-        <label class="am-btn am-btn-secondary am-btn-sm am-active">
-          <input type="radio" name="options" value="1" id="option1" checked> 综合排序
-        </label>
-        <label class="am-btn am-btn-secondary am-btn-sm">
-          <input type="radio" name="options" value="2" id="option2"> 时间排序
-        </label>
-        <!--
-        <label class="am-btn am-btn-secondary am-btn-sm">
-          <input type="radio" name="options" value="3" id="option3"> 迷之排序
-        </label>
-        -->
-      </div>
+      <% if params[:sort] == 1 %>
+          <div class="am-btn-group doc-js-btn-1" data-am-button>
+            <label class="am-btn am-btn-secondary am-btn-sm am-active">
+              <input type="radio" name="options" value="1" id="option1" checked> 综合排序
+            </label>
+            <label class="am-btn am-btn-secondary am-btn-sm">
+              <input type="radio" name="options" value="2" id="option2"> 时间排序
+            </label>
+            <!--
+            <label class="am-btn am-btn-secondary am-btn-sm">
+              <input type="radio" name="options" value="3" id="option3"> 迷之排序
+            </label>
+            -->
+          </div>
+      <% else %>
+          <div class="am-btn-group doc-js-btn-1" data-am-button>
+            <label class="am-btn am-btn-secondary am-btn-sm">
+              <input type="radio" name="options" value="1" id="option1"> 综合排序
+            </label>
+            <label class="am-btn am-btn-secondary am-btn-sm am-active">
+              <input type="radio" name="options" value="2" id="option2" checked> 时间排序
+            </label>
+            <!--
+            <label class="am-btn am-btn-secondary am-btn-sm">
+              <input type="radio" name="options" value="3" id="option3"> 迷之排序
+            </label>
+            -->
+          </div>
+      <% end %>
+    </div>
     </div>
     <hr>
   </div>
@@ -29,13 +46,24 @@
     var $radios = $('[name="options"]');
     $radios.on('change',function() {
       console.log('单选框当前选中的是：', $radios.filter(':checked').val());
+      window.location.href.replace(/[\?#].*|$/, "?sort="+$radios.filter(':checked').val())
     });
   });
 </script>
 
-<div id="answerslist">
-  <% @answers.order("score desc") do |answer| %>
-      <% @answer = answer %>
-      <%= render "answers/show" %>
-  <% end %>
+<% if params[:sort] == 1 %>
+    <div id="answerslist">
+      <% @answers.order("score desc") do |answer| %>
+          <% @answer = answer %>
+          <%= render "answers/show" %>
+      <% end %>
+    </div>
+<% else %>
+    <div id="answerslist">
+      <% @answers.order("create_at desc") do |answer| %>
+          <% @answer = answer %>
+          <%= render "answers/show" %>
+      <% end %>
+    </div>
+<% end %>
 </div>

@@ -5,13 +5,18 @@
       <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= @answers.length %>个回答</span>
     </div>
     <div style="display: inline-block; float: right; vertical-align: middle">
-      <div class="am-dropdown" data-am-dropdown>
-        <button class="am-btn am-btn-sm am-btn-xs am-dropdown-toggle" style="background-color: transparent" data-am-dropdown-toggle>综合排序<span class="am-icon-caret-down"></span></button>
-        <ul class="am-dropdown-content">
-          <li class="am-disabled"><a href="#">综合排序</a></li>
-          <li class="am-divider"></li>
-          <li><a href="#">时间排序</a></li>
-        </ul>
+      <div class="am-btn-group doc-js-btn-1" data-am-button>
+        <label class="am-btn am-btn-secondary am-btn-sm am-active">
+          <input type="radio" name="options" value="1" id="option1" checked> 综合排序
+        </label>
+        <label class="am-btn am-btn-secondary am-btn-sm">
+          <input type="radio" name="options" value="2" id="option2"> 时间排序
+        </label>
+        <!--
+        <label class="am-btn am-btn-secondary am-btn-sm">
+          <input type="radio" name="options" value="3" id="option3"> 迷之排序
+        </label>
+        -->
       </div>
     </div>
     <hr>

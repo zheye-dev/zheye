@@ -1,5 +1,5 @@
 <% content_for :head do %>
-    <title><%= @user.login %>-者也</title>
+    <title><%= @user.login %>的主页-者也</title>
 <% end %>
 
 
@@ -18,9 +18,15 @@
         <%= link_to all_answers_user_path(@user) do %>
           <span>回答(<%= @user.answers.length %>)</span>
         <% end %>
-        评论(<%= @user.comments.length %>)
-        赞成(<%= @user.votes.where(attitude: 1).length %>)
-        反对(<%= @user.votes.where(attitude: -1).length %>)
+        <%= link_to all_comments_user_path(@user) do %>
+          <span>评论(<%= @user.comments.length %>)</span>
+        <% end %>
+        <%= link_to all_upvotes_user_path(@user) do %>
+          <span>赞成(<%= @user.votes.where(attitude: 1).length %>)</span>
+        <% end %>
+        <%= link_to all_downvotes_user_path(@user) do %>
+          <span>反对(<%= @user.votes.where(attitude: -1).length %>)</span>
+        <% end %>
       </span><br><br>
   </div>
   <div>

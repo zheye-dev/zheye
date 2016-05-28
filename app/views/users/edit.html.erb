@@ -33,23 +33,34 @@
   </div>
   <div style="padding-left: 30px">
     <%= form_for @user do |f| %>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-          <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-          <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
+        <div style="display: inline-block; width: 40%">
+          <div class="am-input-group am-input-group-primary">
+            <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+            <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
+          </div>
         </div>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-          <span class="am-input-group-label"><i class="am-icon-mars am-icon-fw"></i></span>
-          <%= f.text_field :gender, class: "am-form-field", placeholder:"性别" %>
+        <div style="display: inline-block; width: 40%">
+          <div class="am-input-group am-input-group-primary">
+            <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
+            <%= f.text_field :birthday, class: "am-form-field", placeholder:"生日" %>
+          </div>
         </div>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-          <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
-          <%= f.text_field :birthday, class: "am-form-field", placeholder:"生日" %>
+        <div style="display: inline-block; float: right">
+          <i class="am-icon-venus-mars am-icon-fw"></i>
+          <div class="am-btn-group doc-js-btn-1" data-am-button>
+            <label class="am-btn am-btn-primary <%= @user.gender ? "am-active" : ""%>">
+              <%= f.radio_button :gender, 'true' %>男
+            </label>
+            <label class="am-btn am-btn-primary <%= (@user.gender == false) ? "am-active" : ""%>">
+              <%= f.radio_button :gender, 'false' %>女
+            </label>
+          </div>
         </div>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+        <div class="am-input-group am-input-group-primary" style="margin-bottom: 6px">
           <span class="am-input-group-label"><i class="am-icon-map am-icon-fw"></i></span>
           <%= f.text_field :address, class: "am-form-field", placeholder:"地址" %>
         </div>
-        <div style="margin-bottom: 5px">
+        <div style="margin-bottom: 6px">
           <%= f.text_area :self_introduction, style:"width:100%; border: 1px solid rgb(14, 144, 210)", placeholder:"个人介绍" %><br>
         </div>
         <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>

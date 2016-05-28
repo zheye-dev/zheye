@@ -41,7 +41,13 @@
   </div>
   <div style="padding-left: 30px">
     <span>真实姓名：<%= @user.realname %></span><br>
-    <span>性别：<%= @user.gender %></span><br>
+    <% if @user.gender %>
+        <span>性别：男</span><br>
+    <% elsif @user.gender==false %>
+        <span>性别：女</span><br>
+    <% else %>
+        <span>性别：</span><br>
+    <% end %>
     <span>生日：<%= @user.birthday %></span><br>
     <span>地址：<%= @user.address %></span><br>
     <span>个人简介：<%= @user.self_introduction %></span><br>

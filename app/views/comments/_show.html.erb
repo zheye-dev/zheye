@@ -7,7 +7,7 @@
     <header class="am-comment-hd">
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
-        <%= link_to @comment.user.login, @comment.user, class: "am-comment-author" %>
+        <%= link_to render(partial: 'users/user_name', locals: {user: @comment.user}), @comment.user, class: "am-comment-author" %>
         <span>评论于<%= @comment.created_at.strftime("%Y/%m/%d") %></span>
         <% if can? :destroy, @comment.chain %>
             <%= link_to '删除', @comment.chain, action: :destroy, method: :delete, remote: true, data: {confirm: 'Really?'} %>

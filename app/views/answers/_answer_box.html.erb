@@ -16,7 +16,7 @@
         </div>
         <div class="am-u-sm-9">
             <div style="display: inline-block; padding-top: 0.3em;">
-                <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
+                <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
                 <span>21</span>
             </div>
             <div style="display: inline-block; float: right; padding-top: 0.3em;">
@@ -49,7 +49,7 @@
             </div>
             <div class="am-u-sm-9">
                 <div style="display: inline-block; padding-top: 0.3em;">
-                    <%= link_to @answer.user.login, @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
+                    <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login': @answer.user.login}, class: "user-in-answer" %>
                     <span>21</span>
                 </div>
                 <div style="display: inline-block; float: right; padding-top: 0.3em;">

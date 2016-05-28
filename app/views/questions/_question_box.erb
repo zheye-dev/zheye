@@ -36,7 +36,7 @@
       </div>
       <div style="display: inline-block; float: right">
         <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @question.created_at.strftime("%Y/%m/%d")%>&nbsp;</span>
-        <%= link_to @question.user.login, @question.user, html_options = {style: "font-size:1.4rem;"} %>
+        <%= link_to render(partial: 'users/user_name', locals: {user: @question.user}), @question.user, html_options = {style: "font-size:1.4rem;"} %>
         <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">21</span>
       </div>
       <div id="question_comments_placeholder"></div>
@@ -66,7 +66,7 @@
         </div>
         <div style="font-size: 0.9em; text-align: right">
           <span>发布于 <%= @question.created_at.strftime("%Y/%m/%d") %></span>
-          <%= link_to @question.user.login, @question.user %>
+          <%= link_to render(partial: 'users/user_name', locals: {user: @question.user}), @question.user %>
           <span> 21</span>
         </div>
       </div>

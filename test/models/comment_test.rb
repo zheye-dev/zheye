@@ -6,7 +6,7 @@ class CommentTest < ActiveSupport::TestCase
     assert answer.save
   end
 
-  test "should not save comment without illegal content" do
+  test "should not save comment with illegal content" do
     answer = Answer.new(content: "four",user_id: 1)
     assert_not answer.save
   end

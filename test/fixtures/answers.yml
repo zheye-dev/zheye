@@ -2,8 +2,8 @@
 
 tester_answer:
   content: MyText
-  question_id: 519995637
-  user_id: 1011897928
+  question: tester_question
+  user: tester
 
 two:
   content: MyText

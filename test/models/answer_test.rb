@@ -17,7 +17,7 @@ class AnswerTest < ActiveSupport::TestCase
   end
 
   test "should not save two answers from one user" do
-    answer = Answer.new(content: "legal content",question_id: 519995637, user_id: 1011897928)
+    answer = Answer.new(content: "legal content",question: questions(:tester_question), user: users(:tester))
     assert_not answer.save
   end
 

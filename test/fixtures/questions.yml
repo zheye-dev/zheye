@@ -3,7 +3,7 @@
 tester_question:
   title: MyString
   content: MyText
-  user_id: 1011897928
+  user: tester
 
 two:
   title: MyString

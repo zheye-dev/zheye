@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class AnswerTest < ActiveSupport::TestCase
   test "should not save answer without title" do
     answer = Answer.new

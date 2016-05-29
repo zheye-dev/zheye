@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class CommentTest < ActiveSupport::TestCase
   test "should save comment" do
     answer = Answer.new(content: "legal comment",user_id: 1)

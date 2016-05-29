@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class UserTest < ActiveSupport::TestCase
   test "destroy questionswhile user destroyed" do
     user = User.create(login: "tester1", password: "password", password_confirmation: "password")

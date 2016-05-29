@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class QuestionTest < ActiveSupport::TestCase
   test "should save question" do
     question = Question.new(title: "legal title", content: "legal comment",user_id: 1)

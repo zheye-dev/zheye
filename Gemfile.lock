@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/zheye-dev/amazeui-rails.git
+  revision: 52de4b04b4962310629dbb8e163b77d9def7e059
+  specs:
+    amazeui (2.6.3)
+
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -36,7 +42,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    amazeui (2.6.1)
     arel (6.0.3)
     authlogic (3.4.6)
       activerecord (>= 3.2)
@@ -206,7 +211,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  amazeui
+  amazeui!
   authlogic (= 3.4.6)
   better_errors
   binding_of_caller

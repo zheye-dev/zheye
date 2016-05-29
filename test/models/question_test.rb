@@ -6,7 +6,7 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.save
   end
 
-  test "should not save question without legal title" do
+  test "should not save question with illegal title" do
     question = Question.new(title: "ill", content: "legal comment",user_id: 1)
     assert_not question.save
   end

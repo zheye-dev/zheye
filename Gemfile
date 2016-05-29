@@ -36,7 +36,7 @@ gem 'rails_12factor', group: :production
 
 gem 'authlogic', '3.4.6'
 gem 'cancan'
-gem 'amazeui'
+gem 'amazeui', :git => 'git://github.com/zheye-dev/amazeui-rails.git'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'sanitize'

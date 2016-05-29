@@ -46,24 +46,49 @@
     var $radios = $('[name="options"]');
     $radios.on('change',function() {
       console.log('单选框当前选中的是：', $radios.filter(':checked').val());
-      window.location.href.replace(/[\?#].*|$/, "?sort="+$radios.filter(':checked').val())
+      window.location.href = changeURLArg(window.location.href, 'sort', $radios.filter(':checked').val());
     });
   });
 </script>
 
+<div id="answerslist">
+  <% @answers.order("created_at DESC").each do |answer| %>
+      <% @answer = answer %>
+      <%= render "answers/show" %>
+  <% end %>
+</div>
 <% if params[:sort] == 1 %>
     <div id="answerslist">
-      <% @answers.order("score desc") do |answer| %>
+      <% @answers.order("score DESC") do |answer| %>
           <% @answer = answer %>
           <%= render "answers/show" %>
       <% end %>
     </div>
 <% else %>
     <div id="answerslist">
-      <% @answers.order("create_at desc") do |answer| %>
+      <% @answers.order("create_at DESC") do |answer| %>
           <% @answer = answer %>
           <%= render "answers/show" %>
       <% end %>
     </div>
 <% end %>
 </div>
+
+<script>
+  function changeURLArg(url, arg, arg_val) {
+    var pattern = arg + '=([^&]*)';
+    var replaceText = arg + '=' + arg_val;
+    if (url.match(pattern)) {
+      var tmp = '/(' + arg + '=)([^&]*)/gi';
+      tmp = url.replace(eval(tmp), replaceText);
+      return tmp;
+    }else{
+      if(url.match('[\?]')){
+        return url + '&' + replaceText;
+      }else{
+        return url + '?' + replaceText;
+      }
+    }
+    return url + '\n' + arg + '\n' + arg_val;
+  }
+</script>

@@ -3,7 +3,7 @@
 <% end %>
 
 <%= render partial: 'question_box', locals: {detail: true} %>
-<%= content_tag "div", "Loading...", id: "answer_box", data: {question_id: @question.id} %>
+<%= content_tag "div", "Loading...", id: "answer_box", data: {question_id: @question.id, sort: params[:sort]} %>
 <% if current_user %>
 <%= content_tag "div", "Loading...", id: "new_answer_box", data: {question_id: @question.id, user_login: current_user.login} %>
 <% end %>

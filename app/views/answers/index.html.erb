@@ -5,7 +5,7 @@
       <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= @answers.length %>个回答</span>
     </div>
     <div style="display: inline-block; float: right; vertical-align: middle">
-      <% if params[:sort] == "1" %>
+      <% if @sort == "1" %>
           <div class="am-btn-group doc-js-btn-1" data-am-button>
             <label class="am-btn am-btn-secondary am-btn-sm am-active">
               <input type="radio" name="options" value="1" id="option1" checked> 综合排序
@@ -13,11 +13,6 @@
             <label class="am-btn am-btn-secondary am-btn-sm">
               <input type="radio" name="options" value="2" id="option2"> 时间排序
             </label>
-            <!--
-            <label class="am-btn am-btn-secondary am-btn-sm">
-              <input type="radio" name="options" value="3" id="option3"> 迷之排序
-            </label>
-            -->
           </div>
       <% else %>
           <div class="am-btn-group doc-js-btn-1" data-am-button>
@@ -27,11 +22,6 @@
             <label class="am-btn am-btn-secondary am-btn-sm am-active">
               <input type="radio" name="options" value="2" id="option2" checked> 时间排序
             </label>
-            <!--
-            <label class="am-btn am-btn-secondary am-btn-sm">
-              <input type="radio" name="options" value="3" id="option3"> 迷之排序
-            </label>
-            -->
           </div>
       <% end %>
     </div>
@@ -51,7 +41,7 @@
   });
 </script>
 
-<% if params[:sort] == "1" %>
+<% if @sort == "1" %>
     <div id="answerslist">
       <% @answers.order("score DESC").each do |answer| %>
           <% @answer = answer %>
@@ -66,7 +56,6 @@
       <% end %>
     </div>
 <% end %>
-</div>
 
 <script>
   function changeURLArg(url, arg, arg_val) {

@@ -26,6 +26,23 @@ class Answer < ActiveRecord::Base
     end
 
     def calculate_score
-        self.score = answer_votes.where(attitude: 1).length - answer_votes.where(attitude: -1).length
+        u = Float(answer_votes.where(attitude: 1).length)
+        v = Float(answer_votes.where(attitude: -1).length)
+        n = u + v
+
+        if (n == 0)
+            self.score = 0.0
+            return nil
+        end
+
+        p = u / n
+        z = 1.96
+
+        self.score = 4 * n * (1 - p) * p + z ** 2
+        self.score = Math.sqrt(self.score)
+        self.score = self.score * z / n / 2
+        self.score = p + z ** 2 / 2 / n - self.score
+        self.score = self.score / (1 + z ** 2 / n)
+        return nil
     end
 end

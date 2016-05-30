@@ -44,16 +44,16 @@
           <div style="display: inline-block; float: left; padding-top: 3px;">
             <div style="display: inline-block; width: 50px; text-align: center">
               <% @vote = QuestionVote.user_vote(current_user, question.id) %>
-              <span><%= @vote.points %></span><br>
-              <span>投票</span>
+              <span style="color:#6a737c"><%= @vote.points %></span><br>
+              <span style="color:#6a737c">投票</span>
             </div>
             <div style="display: inline-block; width: 50px; text-align: center">
-              <span><%= question.answers.length %></span><br>
-              <span>回答</span>
+              <span style="color:#6a737c"><%= question.answers.length %></span><br>
+              <span style="color:#6a737c">回答</span>
             </div>
             <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
-              <span><%= question.question_comments.length %></span><br>
-              <span>评论</span>
+              <span style="color:#6a737c"><%= question.question_comments.length %></span><br>
+              <span style="color:#6a737c">评论</span>
             </div>
           </div>
           <div>
@@ -61,9 +61,9 @@
               <%= link_to question.title, question, style: "font-size: 1.2em"%>
             </div>
             <div style="font-size: 0.9em; text-align: right">
-              <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
+              <span style="color:#6a737c">发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
               <%= link_to question.user.login, question.user %>
-              <span> 21</span>
+              <span style="color:#6a737c"> 21</span>
             </div>
           </div>
           <hr>
@@ -73,16 +73,16 @@
           <div style="display: inline-block; float: left; padding-top: 3px;">
             <div style="display: inline-block; width: 50px; text-align: center">
               <% @vote = QuestionVote.user_vote(current_user, question.id) %>
-              <span><%= @vote.points %></span><br>
-              <span>投票</span>
+              <span style="color:#6a737c"><%= @vote.points %></span><br>
+              <span style="color:#6a737c">投票</span>
             </div>
             <div style="display: inline-block; width: 50px; text-align: center">
-              <span><%= question.answers.length %></span><br>
-              <span>回答</span>
+              <span style="color:#6a737c"><%= question.answers.length %></span><br>
+              <span style="color:#6a737c">回答</span>
             </div>
             <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
-              <span><%= question.question_comments.length %></span><br>
-              <span>评论</span>
+              <span style="color:#6a737c"><%= question.question_comments.length %></span><br>
+              <span style="color:#6a737c">评论</span>
             </div>
           </div>
           <div>
@@ -90,9 +90,9 @@
               <%= link_to question.title, question, style: "font-size: 1.2em"%>
             </div>
             <div style="font-size: 0.9em; text-align: right">
-              <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
+              <span style="color:#6a737c">发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
               <%= link_to question.user.login, question.user %>
-              <span> 21</span>
+              <span style="color:#6a737c"> 21</span>
             </div>
           </div>
           <hr>

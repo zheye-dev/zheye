@@ -54,6 +54,19 @@ work_after_answer = () ->
   register_answer_comment()
   display_new_answer_box()
   register_vote()
+  
+getSortParam = ->
+  query = window.location.search.substring(1)
+  raw_vars = query.split("&")
+  
+  sort = "sort=1"
+  
+  for v in raw_vars
+    [key, val] = v.split("=")
+    if (key == "sort")
+      sort = "sort=" + decodeURIComponent(val)
+      
+  sort
 
 $ ->
   answer_box = $("#answer_box")
@@ -61,6 +74,7 @@ $ ->
     answer_box.load(Routes.question_answers_path(
         answer_box.data("question-id")
         ),
+      getSortParam(),
         work_after_answer
     )
 

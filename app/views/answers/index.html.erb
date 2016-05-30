@@ -5,7 +5,7 @@
       <span class="am-monospace" style="font-weight: bold; font-size: 1.1em"><%= @answers.length %>个回答</span>
     </div>
     <div style="display: inline-block; float: right; vertical-align: middle">
-      <% if params[:sort] == 1 %>
+      <% if params[:sort] == "1" %>
           <div class="am-btn-group doc-js-btn-1" data-am-button>
             <label class="am-btn am-btn-secondary am-btn-sm am-active">
               <input type="radio" name="options" value="1" id="option1" checked> 综合排序
@@ -57,7 +57,7 @@
       <%= render "answers/show" %>
   <% end %>
 </div>
-<% if params[:sort] == 1 %>
+<% if params[:sort] == "1" %>
     <div id="answerslist">
       <% @answers.order("score DESC") do |answer| %>
           <% @answer = answer %>
@@ -91,4 +91,12 @@
     }
     return url + '\n' + arg + '\n' + arg_val;
   }
+</script>
+
+<script>
+  $(document).ready(function() {
+        console.log(window.location.href);
+        console.log("log");
+      }
+  );
 </script>

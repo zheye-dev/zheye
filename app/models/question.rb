@@ -29,6 +29,8 @@ class Question < ActiveRecord::Base
     self.content = Sanitize.fragment(self.content, Sanitize::Config::RELAXED)
   end
 
+  public
+
   def calculate_score
     u = Float(question_votes.where(attitude: 1).length)
     v = Float(question_votes.where(attitude: -1).length)
@@ -36,7 +38,7 @@ class Question < ActiveRecord::Base
 
     if (n == 0)
       self.score = 0.0
-      return nil
+      return self.score
     end
 
     p = u / n
@@ -47,6 +49,6 @@ class Question < ActiveRecord::Base
     self.score = self.score * z / n / 2
     self.score = p + z ** 2 / 2 / n - self.score
     self.score = self.score / (1 + z ** 2 / n)
-    return nil
+    self.score
   end
 end

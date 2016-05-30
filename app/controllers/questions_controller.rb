@@ -26,7 +26,22 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    if params.has_key? :sort
+      @sort = params[:sort]
+    else
+      @sort = '2'
+    end
+
+    if @sort == '1'
+      @questions = Question.all.to_a
+      @questions.sort_by! do |question|
+        - question.calculate_score
+      end
+    end
+    if @sort == '2'
+      @questions = Question.order('updated_at DESC')
+    end
+
   end
 
   # Display form to edit current question comment

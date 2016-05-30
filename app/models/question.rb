@@ -10,6 +10,7 @@ class Question < ActiveRecord::Base
 
   before_save :sanitize_content
   before_update :sanitize_content
+  after_update :calculate_score
 
 
   searchable do
@@ -26,5 +27,26 @@ class Question < ActiveRecord::Base
 
   def sanitize_content
     self.content = Sanitize.fragment(self.content, Sanitize::Config::RELAXED)
+  end
+
+  def calculate_score
+    u = Float(question_votes.where(attitude: 1).length)
+    v = Float(question_votes.where(attitude: -1).length)
+    n = u + v
+
+    if (n == 0)
+      self.score = 0.0
+      return nil
+    end
+
+    p = u / n
+    z = 1.96
+
+    self.score = 4 * n * (1 - p) * p + z ** 2
+    self.score = Math.sqrt(self.score)
+    self.score = self.score * z / n / 2
+    self.score = p + z ** 2 / 2 / n - self.score
+    self.score = self.score / (1 + z ** 2 / n)
+    return nil
   end
 end

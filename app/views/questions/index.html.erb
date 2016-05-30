@@ -8,48 +8,95 @@
     <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">热门问答</span>
   </div>
   <div style="display: inline-block; float: right; vertical-align: middle">
-    <div class="am-btn-group doc-js-btn-1" data-am-button>
-      <label class="am-btn am-btn-secondary am-btn-sm am-active">
-        <input type="radio" name="options" value="1" id="option1" checked> 综合排序
-      </label>
-      <label class="am-btn am-btn-secondary am-btn-sm">
-        <input type="radio" name="options" value="2" id="option2"> 时间排序
-      </label>
-      <!--
-      <label class="am-btn am-btn-secondary am-btn-sm">
-        <input type="radio" name="options" value="3" id="option3"> 迷之排序
-      </label>
-      -->
-    </div>
+    <% if params[:sort] == "1" %>
+        <div class="am-btn-group doc-js-btn-1" data-am-button>
+          <label class="am-btn am-btn-secondary am-btn-sm am-active">
+            <input type="radio" name="options" value="1" id="option1" checked> 综合排序
+          </label>
+          <label class="am-btn am-btn-secondary am-btn-sm">
+            <input type="radio" name="options" value="2" id="option2"> 时间排序
+          </label>
+          <!--
+          <label class="am-btn am-btn-secondary am-btn-sm">
+            <input type="radio" name="options" value="3" id="option3"> 迷之排序
+          </label>
+          -->
+        </div>
+    <% else %>
+        <div class="am-btn-group doc-js-btn-1" data-am-button>
+          <label class="am-btn am-btn-secondary am-btn-sm">
+            <input type="radio" name="options" value="1" id="option1"> 综合排序
+          </label>
+          <label class="am-btn am-btn-secondary am-btn-sm am-active">
+            <input type="radio" name="options" value="2" id="option2" checked> 时间排序
+          </label>
+          <!--
+          <label class="am-btn am-btn-secondary am-btn-sm">
+            <input type="radio" name="options" value="3" id="option3"> 迷之排序
+          </label>
+          -->
+        </div>
+    <% end %>
   </div>
   <hr>
-  <% @questions.each do |question| %>
-      <div style="display: inline-block; float: left; padding-top: 3px;">
-        <div style="display: inline-block; width: 50px; text-align: center">
-          <% @vote = QuestionVote.user_vote(current_user, question.id) %>
-          <span><%= @vote.points %></span><br>
-          <span>投票</span>
-        </div>
-        <div style="display: inline-block; width: 50px; text-align: center">
-          <span><%= question.answers.length %></span><br>
-          <span>回答</span>
-        </div>
-        <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
-          <span><%= question.question_comments.length %></span><br>
-          <span>评论</span>
-        </div>
-      </div>
-      <div>
-        <div>
-          <%= link_to question.title, question, style: "font-size: 1.2em"%>
-        </div>
-        <div style="font-size: 0.9em; text-align: right">
-          <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
-          <%= link_to question.user.login, question.user %>
-          <span> 21</span>
-        </div>
-      </div>
-      <hr>
+  <% if params[:sort] == "1" %>
+      <% @questions.order("score DESC").each do |question| %>
+          <div style="display: inline-block; float: left; padding-top: 3px;">
+            <div style="display: inline-block; width: 50px; text-align: center">
+              <% @vote = QuestionVote.user_vote(current_user, question.id) %>
+              <span><%= @vote.points %></span><br>
+              <span>投票</span>
+            </div>
+            <div style="display: inline-block; width: 50px; text-align: center">
+              <span><%= question.answers.length %></span><br>
+              <span>回答</span>
+            </div>
+            <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
+              <span><%= question.question_comments.length %></span><br>
+              <span>评论</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= link_to question.title, question, style: "font-size: 1.2em"%>
+            </div>
+            <div style="font-size: 0.9em; text-align: right">
+              <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
+              <%= link_to question.user.login, question.user %>
+              <span> 21</span>
+            </div>
+          </div>
+          <hr>
+      <% end %>
+  <% else %>
+      <% @questions.order("created_at DESC").each do |question| %>
+          <div style="display: inline-block; float: left; padding-top: 3px;">
+            <div style="display: inline-block; width: 50px; text-align: center">
+              <% @vote = QuestionVote.user_vote(current_user, question.id) %>
+              <span><%= @vote.points %></span><br>
+              <span>投票</span>
+            </div>
+            <div style="display: inline-block; width: 50px; text-align: center">
+              <span><%= question.answers.length %></span><br>
+              <span>回答</span>
+            </div>
+            <div style="display: inline-block; width: 50px; text-align: center; margin-right: 10px">
+              <span><%= question.question_comments.length %></span><br>
+              <span>评论</span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= link_to question.title, question, style: "font-size: 1.2em"%>
+            </div>
+            <div style="font-size: 0.9em; text-align: right">
+              <span>发布于 <%= question.created_at.strftime("%Y/%m/%d") %></span>
+              <%= link_to question.user.login, question.user %>
+              <span> 21</span>
+            </div>
+          </div>
+          <hr>
+      <% end %>
   <% end %>
 </div>
 
@@ -60,6 +107,39 @@
     var $radios = $('[name="options"]');
     $radios.on('change',function() {
       console.log('单选框当前选中的是：', $radios.filter(':checked').val());
+      window.location.href = changeURLArg(window.location.href, 'sort', $radios.filter(':checked').val());
     });
   });
 </script>
+
+
+<script>
+  function changeURLArg(url, arg, arg_val) {
+    var pattern = arg + '=([^&]*)';
+    var replaceText = arg + '=' + arg_val;
+    if (url.match(pattern)) {
+      var tmp = '/(' + arg + '=)([^&]*)/gi';
+      tmp = url.replace(eval(tmp), replaceText);
+      return tmp;
+    }else{
+      if(url.match('[\?]')){
+        return url + '&' + replaceText;
+      }else{
+        return url + '?' + replaceText;
+      }
+    }
+    return url + '\n' + arg + '\n' + arg_val;
+  }
+</script>
+
+<script>
+  $(document).ready(function() {
+        console.log(window.location.href);
+        console.log("log");
+      }
+  );
+</script>
+
+<% logger.debug("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh") %>
+<% logger.debug(request.fullpath) %>
+<% logger.debug("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh") %>

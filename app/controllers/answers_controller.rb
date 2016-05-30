@@ -15,6 +15,7 @@ class AnswersController < ApplicationController
   end
   def index
     @answers = Answer.where(question: @question)
+    @sort = params[:sort]
   end
 
   # Action: Create a new answer

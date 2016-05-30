@@ -51,22 +51,16 @@
   });
 </script>
 
-<div id="answerslist">
-  <% @answers.order("created_at DESC").each do |answer| %>
-      <% @answer = answer %>
-      <%= render "answers/show" %>
-  <% end %>
-</div>
 <% if params[:sort] == "1" %>
     <div id="answerslist">
-      <% @answers.order("score DESC") do |answer| %>
+      <% @answers.order("score DESC").each do |answer| %>
           <% @answer = answer %>
           <%= render "answers/show" %>
       <% end %>
     </div>
 <% else %>
     <div id="answerslist">
-      <% @answers.order("create_at DESC") do |answer| %>
+      <% @answers.order("created_at DESC").each do |answer| %>
           <% @answer = answer %>
           <%= render "answers/show" %>
       <% end %>
@@ -100,3 +94,7 @@
       }
   );
 </script>
+
+<% logger.debug("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh") %>
+<% logger.debug(request.fullpath) %>
+<% logger.debug("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh") %>

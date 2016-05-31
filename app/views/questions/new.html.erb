@@ -7,10 +7,10 @@
 <div class="am-u-sm-9 am-u-sm-offset-3">
   <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">用户提问</span>
   <hr style="margin-top: 0px;">
-  <%= form_for @question do |f| %>
+  <%= form_for @question, html: {'data-am-validator'=> true} do |f| %>
       <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
         <span class="am-input-group-label"><i class="am-icon-quote-left am-icon-fw"></i></span>
-        <%= f.text_field :title, class: "am-form-field", placeholder:"标题" %>
+        <%= f.text_field :title, class: "am-form-field", placeholder:"标题", minlength: 5 %>
       </div>
       <%= f.cktext_area :content%>
       <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right; margin-top:10px;"%>

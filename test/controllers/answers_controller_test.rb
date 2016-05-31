@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class AnswersControllerTest < ActionController::TestCase
   setup do
     user = users(:tester)
@@ -9,10 +7,20 @@ class AnswersControllerTest < ActionController::TestCase
     @user = user
   end
 
+  test "should get new" do
+    get :new
+    assert_template 'new'
+    assert_not_nil assigns(:answer)
+  end
+
+  test "should get edit" do
+    get :edit
+    assert_response :success
+  end
+
   test "should create answer" do
-    post :create, question_id: questions(:tester_question).id, user: @current_user, answer:  {content: "this is a legal content"}
-    question = questions(:tester_question)
-    assert_redirected_to question_path(question)
+    post :create, format: 'json', question_id: questions(:tester_question).id, user: @current_user, answer:  {content: "this is a legal content"}
+    assert_response :success
   end
 
   test "shouldn't create answer" do

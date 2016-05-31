@@ -1,8 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-tester_comment:
-  content: MyText
-  user: tester
-
-two:
-  content: MyText

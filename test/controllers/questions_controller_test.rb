@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class QuestionsControllerTest < ActionController::TestCase
   setup do
     user = users(:tester)
@@ -8,11 +6,6 @@ class QuestionsControllerTest < ActionController::TestCase
     end
     @user = user
   end
-
-  #test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #end
 
   test "should create question" do
     post :create, question: {title: "this is a legal title", content: "this is a legal content"}
@@ -31,16 +24,19 @@ class QuestionsControllerTest < ActionController::TestCase
     end
     post :update, id: questions(:tester_question).id  ,question: {title: "this is a legal title", content: "this is a legal content"}
     assert_redirected_to question_path(assigns(:question))
+    assert_equal flash[:notice], 'Question updated!'
   end
 
   test "tester should update question" do
     post :update, id: questions(:tester_question).id  ,question: {title: "this is a legal title", content: "this is a legal content"}
     assert_redirected_to question_path(assigns(:question))
+    assert_equal flash[:notice], 'Question updated!'
   end
 
   test "tester shouldn't update question with illegal title" do
     post :update, id: questions(:tester_question).id  ,question: {title: "ill", content: "this is a legal content"}
     assert_template 'edit'
+    assert_equal flash[:notice], 'Failed!'
   end
 
   test "admin should destroy question" do

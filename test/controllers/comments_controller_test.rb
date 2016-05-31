@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class CommentsControllerTest < ActionController::TestCase
   setup do
     user = users(:tester)

@@ -1,11 +1,16 @@
 class AnswerTest < ActiveSupport::TestCase
-  test "should not save answer without title" do
+  test "should save answer" do
+    answer = Answer.new(content: "legal cotent",user: users(:tester))
+    assert answer.save
+  end
+
+  test "should not save answer without content" do
     answer = Answer.new
     assert_not answer.save
   end
 
   test "should not save answer with illegal length" do
-    answer = Answer.new(content: "only nine",user_id: 1)
+    answer = Answer.new(content: "only nine",user: users(:tester))
     assert_not answer.save
   end
 

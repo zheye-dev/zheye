@@ -20,24 +20,7 @@
 </head>
 <body data-no-turbolink>
 <div id="wrapper" style="position: relative; height: auto;">
-  <br>
-  <%= render 'shared/navbar' %>
-  <div class="am-g am-g-collapse" style="min-height: 420px;">
-    <div class="am-u-sm-8">
-      <%= yield %>
-    </div>
-    <div class="am-u-sm-4">
-      <div class="am-u-sm-6">
-        <%= image_tag "ad_test.png", style:"width:90%; float:right;" %>
-        <%= content_for?(:sidebox) ?yield(:sidebox) : '' %>
-      </div>
-      <div class="am-u-sm-6"></div>
-
-    </div>
-  </div>
-  <%= render 'shared/backtotop' %>
-  <%= render 'shared/footer' %>
+  <%= yield %>
 </div>
-<%= render 'shared/login_modal' %>
 </body>
 </html>

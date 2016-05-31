@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
 
+  layout 'simple'
   # Display page of a new session(login page)
   def new
     @user_session = UserSession.new

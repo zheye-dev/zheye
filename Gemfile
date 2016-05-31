@@ -1,5 +1,6 @@
 source 'https://ruby.taobao.org'
 
+gem 'progress_bar'
 gem 'sunspot_test', '~> 0.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

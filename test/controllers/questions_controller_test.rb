@@ -40,7 +40,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "tester shouldn't update question with illegal title" do
     post :update, id: questions(:tester_question).id  ,question: {title: "ill", content: "this is a legal content"}
-    assert_redirected_to question_path(assigns(:question))
+    assert_template 'edit'
   end
 
   test "admin should destroy question" do

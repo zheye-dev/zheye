@@ -83,6 +83,7 @@ GEM
       rake
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    highline (1.7.8)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -110,6 +111,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     nokogumbo (1.4.7)
       nokogiri
+    options (2.3.2)
     orm_adapter (0.5.0)
     paperclip (4.3.6)
       activemodel (>= 3.2.0)
@@ -118,6 +120,9 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pr_geohash (1.0.0)
+    progress_bar (1.0.5)
+      highline (~> 1.6)
+      options (~> 2.3.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -225,6 +230,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   paperclip
+  progress_bar
   rails (= 4.2.6)
   rails_12factor
   responders

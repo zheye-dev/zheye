@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   # Display registration form
   def new
     @user = User.new
+    render 'new', layout: 'simple'
   end
 
   # Display info about certain user

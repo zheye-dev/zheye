@@ -24,9 +24,24 @@ register_answer_comment = () ->
 display_new_answer_box = () ->
   new_answer_box = $("#new_answer_box")
   if (new_answer_box.length && $('a[data-user-login='+new_answer_box.data('user-login')+']').length == 0)
+    userlogin = new_answer_box.data('user-login')
+    questionid = new_answer_box.data("question-id")
     new_answer_box.load(Routes.new_question_answer_path(
-        new_answer_box.data("question-id")
-    ))
+        questionid
+    ),
+     ->
+       store = $.AMUI.store;
+       if (store.enabled)
+         d = store.get(userlogin + '-' + questionid)
+         if (d)
+           CKEDITOR.instances.answer_content.setData(d)
+       setInterval(
+         ->
+           store.set(userlogin + '-' + questionid, CKEDITOR.instances.answer_content.getData())
+           console.log('saved')
+         , 10000
+       )
+    )
   else
     new_answer_box.html('')
 

@@ -16,16 +16,35 @@
           <span style="color:#999; font-size: 1.4rem;">
             <%= @user.login %>评论的问题
           </span>
+          <div class="am-monospace" style="font-size:1.2em; font-weight: bold; margin-bottom: -10px;">
+            <%= link_to @question.title, @question %>
+          </div>
+          <div>
+            <ul class="am-comments-list am-comments-list-flip" id="commentslist">
+              <%= render partial: 'comments/show' %>
+            </ul>
+          </div>
+          <hr>
         </div>
-        <%= render partial: 'questions/question_box', locals: {detail: true, show_link: true} %>
     <% else %>
+        <% @answer=@comment.answer %>
         <div class="am-u-sm-3"></div>
         <div class="am-u-sm-9 am-u-sm-offset-3">
           <span style="color:#999; font-size: 1.4rem;">
             <%= @user.login %>评论的回答
           </span>
+          <div class="am-monospace" style="font-size:1.1em; font-weight: bold; margin-bottom: 0px;">
+            <%= link_to @answer.question.title, @answer.question %>
+          </div>
+          <div style="margin-bottom: -10px;">
+            <%= @answer.content.html_safe %>
+          </div>
+          <div>
+            <ul class="am-comments-list am-comments-list-flip" id="commentslist">
+              <%= render partial: 'comments/show' %>
+            </ul>
+          </div>
+          <hr>
         </div>
-        <% @answer=@comment.answer %>
-        <%= render partial: 'answers/answer_box', locals: {detail: true} %>
     <% end %>
 <% end %>

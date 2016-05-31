@@ -34,7 +34,7 @@
     <% else %>
       <div class="am-topbar-right" style="margin-right: 16%">
         <%= button_to '登录', 'javascript:void(0)', :id => 'button_login', :class => 'am-btn am-btn-primary am-topbar-btn am-btn-sm', :method => :get, data:{'am-modal':"{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 225}"}, form_class: 'am-topbar-right am-topbar-inline' %>
-        <%= button_to '注册', new_user_path, :id => 'button_signup', :class => 'am-btn am-btn-primary am-topbar-btn am-btn-sm', :method => :get, form_class: 'am-topbar-right am-topbar-inline' %>
+        <%= button_to '注册', 'javascript:void(0)', :id => 'button_signup', :class => 'am-btn am-btn-primary am-topbar-btn am-btn-sm', :method => :get, data:{'am-modal':"{target: '#doc-modal-2', closeViaDimmer: 0, width: 400, height: 225}"}, form_class: 'am-topbar-right am-topbar-inline' %>
       </div>
     <% end %>
   </div>

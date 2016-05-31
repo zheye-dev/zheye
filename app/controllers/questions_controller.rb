@@ -26,21 +26,12 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    if params.has_key? :sort
-      @sort = params[:sort]
-    else
-      @sort = '2'
-    end
+    @sort = params.fetch(:sort, '2')
+    @sort_strategy = @sort == '1' ?
+        QuestionsHelper::DateSortStrategy::new :
+        QuestionsHelper::PrioritySortStrategy::new
 
-    if @sort == '1'
-      @questions = Question.all.to_a
-      @questions.sort_by! do |question|
-        - question.calculate_score
-      end
-    end
-    if @sort == '2'
-      @questions = Question.order('updated_at DESC')
-    end
+    @questions = @sort_strategy.acquire_sorted
 
   end
 

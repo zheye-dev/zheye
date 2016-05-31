@@ -33,20 +33,22 @@
   </div>
   <div style="padding-left: 30px">
     <%= form_for @user do |f| %>
-        <div style="display: inline-block; width: 40%">
+        <div style="display: inline-block; width: 24%">
           <div class="am-input-group am-input-group-primary">
             <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
             <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
           </div>
         </div>
-        <div style="display: inline-block; width: 40%">
+        <div style="display: inline-block; width: 54%">
           <div class="am-input-group am-input-group-primary">
             <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
-            <%= f.date_select :birthday, class: "am-form-field", placeholder:"生日" %>
+            <div style="margin-left: 2px; padding-top: 1px;">
+            <%= f.date_select :birthday, class: "am-form-field"%>
+            </div>
           </div>
         </div>
-        <div style="display: inline-block; float: right">
-          <i class="am-icon-venus-mars am-icon-fw"></i>
+        <div style="display: inline-block; float: right;">
+          <div style="display: inline-block; background-color: #0e90d2; padding-top: 4px; margin-right: -4px; height: 37.2px; min-width: 25px; text-align: center;"><i class="am-icon-venus-mars am-icon-fw" style="color:white;"></i></div>
           <div class="am-btn-group doc-js-btn-1" data-am-button>
             <label class="am-btn am-btn-primary <%= @user.gender ? "am-active" : ""%>">
               <%= f.radio_button :gender, 'true' %>男

@@ -47,7 +47,13 @@
           <div style="color:#6a737c; font-size: 0.8em;">投票</div>
         </div>
         <div style="display: inline-block; width: 50px; text-align: center">
-          <% if question.answers.length >= 1 %>
+          <% if question.answers.length >= 10 %>
+              <div style="color: #c52f24; margin-bottom: -3px;"><%= question.answers.length %></div>
+              <div style="color: #c52f24; font-size: 0.8em;">回答</div>
+          <% elsif question.answers.length >=5 %>
+              <div style="color: #CF7721; margin-bottom: -3px;"><%= question.answers.length %></div>
+              <div style="color: #CF7721; font-size: 0.8em;">回答</div>
+          <% elsif question.answers.length >=1 %>
               <div style="color: #45A163; margin-bottom: -3px;"><%= question.answers.length %></div>
               <div style="color: #45A163; font-size: 0.8em;">回答</div>
           <% else %>

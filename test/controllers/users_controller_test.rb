@@ -8,12 +8,17 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
-    post :create, user: {login: "tester", password: "admin", password_confirmation: "admin"}
+    post :create, user: {login: "tester2", password: "admin", password_confirmation: "admin"}
     assert_redirected_to root_path
   end
 
   test "shouldn't create user" do
     post :create, user: {login: "admin", password: "admin", password_confirmation: "adminn"}
+    assert_template 'new'
+  end
+
+  test "shouldn't create existed user" do
+    post :create, user: {login: "tester", password: "admin", password_confirmation: "adminn"}
     assert_template 'new'
   end
 

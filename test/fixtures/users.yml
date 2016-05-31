@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 tester:
-  login: MyString
+  login: tester
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString
@@ -10,6 +10,17 @@ tester:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+
+del_tester:
+  login: del_tester
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  gender: false
+  realname: MyString
+  birthday: 2016-05-11
+  address: MyString
+  self_introduction: MyString  login: del_tester
 
 admin:
   login: admin

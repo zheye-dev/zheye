@@ -1,5 +1,7 @@
 class UserSessionsController < ApplicationController
 
+  layout 'simple'
+  respond_to :html, :js
   # Display page of a new session(login page)
   def new
     @user_session = UserSession.new
@@ -8,11 +10,7 @@ class UserSessionsController < ApplicationController
   # Action: Create a new session(login)
   def create
     @user_session = UserSession.new(user_session_params)
-    if @user_session.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @user_session.save
   end
 
   # Action: destroy current session(logout)

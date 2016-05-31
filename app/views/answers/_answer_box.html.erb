@@ -1,75 +1,81 @@
+<% if ! defined? show_without_html %>
+    <% show_without_html = false %>
+<% end %>
+
 <% if detail %>
-<div class="am-u-sm-3"></div>
-<div class="am-u-sm-9 am-u-sm-offset-3">
-    <div>
+    <div class="am-u-sm-3"></div>
+    <div class="am-u-sm-9 am-u-sm-offset-3">
+      <div>
         <%= link_to question_path(@answer.question) do %>
             <span class="am-monospace" style="font-weight: bold; font-size: 1.1em;"><%= @answer.question.title %></span>
         <% end %>
+      </div>
     </div>
-</div>
 
-<div id="answer-<%= @answer.id %>">
-    <div class="am-g">
+    <div id="answer-<%= @answer.id %>">
+      <div class="am-g">
         <div class="am-u-sm-3">
           <% @vote = AnswerVote.user_vote(current_user, @answer.id) %>
           <%= render 'votes/vote_box' %>
         </div>
         <div class="am-u-sm-9">
-            <div style="display: inline-block; padding-top: 0.3em;">
-                <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login'=> @answer.user.login}, class: "user-in-answer" %>
-                <span>21</span>
-            </div>
-            <div style="display: inline-block; float: right; padding-top: 0.3em;">
-                <% if can? :update, @answer %>
-                    <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
-                <% end %>
-            </div>
-            <div class="am-san-serif" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
-            <div style="display: inline-block">
-                <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
-                    href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>
-                <%= render 'shared/share_box' %>
-            </div>
-            <div style="display: inline-block; float: right">
-                <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
-            </div>
-            <div id="answer<%= @answer.id %>_comments_placeholder"></div>
-            <hr>
+          <div style="display: inline-block; padding-top: 0.3em;">
+            <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login'=> @answer.user.login}, class: "user-in-answer" %>
+          </div>
+          <div style="display: inline-block; float: right; padding-top: 0.3em;">
+            <% if can? :update, @answer %>
+                <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
+            <% end %>
+          </div>
+          <% if show_without_html %>
+              <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content %></div>
+          <% else %>
+              <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
+          <% end %>
+          <div style="display: inline-block">
+            <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
+               href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>
+            <%= render 'shared/share_box' %>
+          </div>
+          <div style="display: inline-block; float: right">
+            <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
+          </div>
+          <div id="answer<%= @answer.id %>_comments_placeholder"></div>
+          <hr>
         </div>
+      </div>
     </div>
-</div>
 
 <% else %>
 
     <div id="answer-<%= @answer.id %>">
-        <div class="am-g">
-            <div class="am-u-sm-3">
-              <% @vote = AnswerVote.user_vote(current_user, @answer.id) %>
-              <%= render 'votes/vote_box' %>
-            </div>
-            <div class="am-u-sm-9">
-                <div style="display: inline-block; padding-top: 0.3em;">
-                    <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login'=> @answer.user.login}, class: "user-in-answer" %>
-                    <span>21</span>
-                </div>
-                <div style="display: inline-block; float: right; padding-top: 0.3em;">
-                    <% if can? :update, @answer %>
-                        <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
-                    <% end %>
-                </div>
-                <div class="am-san-serif" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
-                <div style="display: inline-block">
-                    <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
-                        href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>
-                    <%= render 'shared/share_box' %>
-                </div>
-                <div style="display: inline-block; float: right">
-                    <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
-                </div>
-                <div id="answer<%= @answer.id %>_comments_placeholder"></div>
-                <hr>
-            </div>
+      <div class="am-g">
+        <div class="am-u-sm-3">
+          <% @vote = AnswerVote.user_vote(current_user, @answer.id) %>
+          <%= render 'votes/vote_box' %>
         </div>
+        <div class="am-u-sm-9">
+          <div style="display: inline-block; padding-top: 0.3em;">
+            <%= link_to render(partial: 'users/user_name', locals: {user: @answer.user}), @answer.user, data: {'user-login'=> @answer.user.login}, class: "user-in-answer" %>
+          </div>
+          <div style="display: inline-block; float: right; padding-top: 0.3em;">
+            <% if can? :update, @answer %>
+                <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
+            <% end %>
+          </div>
+          <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
+          <div style="display: inline-block">
+            <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
+               href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>
+            <%= render 'shared/share_box' %>
+          </div>
+          <div style="display: inline-block; float: right">
+            <span style="font-size: 1.4rem; color:rgb(153, 153, 153)">发布于<%= @answer.created_at.strftime("%Y/%m/%d") %></span>
+          </div>
+          <div id="answer<%= @answer.id %>_comments_placeholder"></div>
+          <hr>
+        </div>
+      </div>
     </div>
 
 <% end %>

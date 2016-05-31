@@ -1,28 +1,17 @@
-<% content_for :head do %>
-    <title>用户注册-者也</title>
+<%= form_for @user, remote: true do |f| %>
+    <%= render 'shared/errors', object: @user %>
+    <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
+      <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+      <%= f.text_field :login, class: "am-form-field", placeholder:"登录帐号" %>
+    </div>
+
+    <div style="margin-bottom: 5px">
+      <%= f.password_field :password, class: "am-form-field", placeholder:"密码", style:"border-color:rgb(14, 144, 210)" %>
+    </div>
+
+    <div style="margin-bottom: 5px">
+      <%= f.password_field :password_confirmation, class: "am-form-field", placeholder:"确认密码", style:"border-color:rgb(14, 144, 210)" %>
+    </div>
+
+    <%= f.submit '注册', class:"am-btn am-btn-primary", style:"float:right" %>
 <% end %>
-
-<div class="am-u-sm-3"></div>
-<div class="am-u-sm-9 am-u-sm-offset-3">
-  <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">用户注册</span>
-  <hr style="margin-top: 0px;">
-  <div style="padding-left: 30px">
-    <%= form_for @user do |f| %>
-        <%= render 'shared/errors', object: @user %>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 5px">
-          <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-          <%= f.text_field :login, class: "am-form-field", placeholder:"登录帐号" %>
-        </div>
-
-        <div style="margin-bottom: 5px">
-          <%= f.password_field :password, class: "am-form-field", placeholder:"密码", style:"border-color:rgb(14, 144, 210)" %>
-        </div>
-
-        <div style="margin-bottom: 5px">
-          <%= f.password_field :password_confirmation, class: "am-form-field", placeholder:"确认密码", style:"border-color:rgb(14, 144, 210)" %>
-        </div>
-
-        <%= f.submit '注册', class:"am-btn am-btn-primary", style:"float:right" %>
-    <% end %>
-  </div>
-</div>

@@ -13,6 +13,9 @@
       margin-top: 0em;
       margin-bottom: 0em;
     }
+    .answer_wrapper img{
+      max-width: 100%;
+    }
   </style>
   <%= javascript_include_tag 'application', 'portal', 'data-turbolinks-track' => true %>
 
@@ -28,7 +31,12 @@
     </div>
     <div class="am-u-sm-4">
       <div class="am-u-sm-6">
-        <%= image_tag "ad_test.png", style:"width:90%; float:right;" %>
+        <a href="https://www.zhihu.com/publications/weekly/19551074">
+          <%= image_tag "ad_z3.jpg", style:"width:90%; float:right;" %>
+        </a>
+        <a href="https://www.zhihu.com/publications/weekly/19551064">
+          <%= image_tag "ad_z4.jpg", style:"width:90%; float:right; margin-top: 5px" %>
+        </a>
         <%= content_for?(:sidebox) ?yield(:sidebox) : '' %>
       </div>
       <div class="am-u-sm-6"></div>
@@ -38,5 +46,7 @@
   <%= render 'shared/backtotop' %>
   <%= render 'shared/footer' %>
 </div>
+<%= render 'shared/login_modal' %>
+<%= render 'shared/signup_modal' %>
 </body>
 </html>

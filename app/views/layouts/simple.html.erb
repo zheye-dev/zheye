@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="者也，友好的中文问答网站">
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= content_for?(:head) ? yield(:head) : '' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <style type="text/css">
+    p{
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+  </style>
+  <%= javascript_include_tag 'application', 'portal', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body data-no-turbolink>
+<div id="wrapper" style="position: relative; height: auto;">
+  <%= yield %>
+</div>
+</body>
+</html>

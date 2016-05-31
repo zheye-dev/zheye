@@ -6,63 +6,70 @@
 <div class="am-u-sm-9 am-u-sm-offset-3">
   <span class="am-monospace" style="font-weight: bold; font-size: 1.1em">修改个人信息</span>
   <hr style="margin-top: 0px;">
-  <span><%= render partial: 'users/user_name' %>的统计信息：</span>
-  <div style="padding-left: 30px">
-    <span>个人成就：共获得<%= @user.all_upvotes_received %>赞成</span><br>
-      <span>
-        <span>我的</span>
-        <%= link_to all_questions_user_path(@user) do %>
-          <span>提问(<%= @user.questions.length %>)</span>
-        <% end %>
-        <%= link_to all_answers_user_path(@user) do %>
-          <span>回答(<%= @user.answers.length %>)</span>
-        <% end %>
-        <%= link_to all_comments_user_path(@user) do %>
-          <span>评论(<%= @user.comments.length %>)</span>
-        <% end %>
-        <%= link_to all_upvotes_user_path(@user) do %>
-          <span>赞成(<%= @user.votes.where(attitude: 1).length %>)</span>
-        <% end %>
-        <%= link_to all_downvotes_user_path(@user) do %>
-          <span>反对(<%= @user.votes.where(attitude: -1).length %>)</span>
-        <% end %>
-      </span><br><br>
-  </div>
   <div>
-    <span><%= @user.login %>的详细资料：</span><br>
+    <span style="color: #666; font-weight: 700"><i class="am-icon-angellist am-icon-fw"></i>个人成就</span>
+    <div style="padding-left: 40px; color: #777; font-size: 0.9em;">获得 <i class="am-icon-thumbs-o-up"></i> <%= @user.all_upvotes_received %>赞成</div>
   </div>
-  <div style="padding-left: 30px">
+  <div style="margin-top: 20px;">
+    <span style="color: #666; font-weight: 700"><i class="am-icon-bar-chart-o am-icon-fw"></i>统计信息</span>
+    <div style="padding-left: 40px; color: #777; font-size: 0.9em;">
+      <%= link_to all_questions_user_path(@user) do %>
+          <i class="am-icon-lightbulb-o am-icon-fw"></i>
+          <span>提问(<%= @user.questions.length %>)</span>
+      <% end %>
+      <%= link_to all_answers_user_path(@user) do %>
+          <i class="am-icon-sticky-note-o am-icon-fw" style="margin-left: 10px;"></i>
+          <span>回答(<%= @user.answers.length %>)</span>
+      <% end %>
+      <%= link_to all_comments_user_path(@user) do %>
+          <i class="am-icon-comment-o am-icon-fw" style="margin-left: 10px;"></i>
+          <span>评论(<%= @user.comments.length %>)</span>
+      <% end %>
+      <%= link_to all_upvotes_user_path(@user) do %>
+          <i class="am-icon-thumbs-o-up am-icon-fw" style="margin-left: 10px;"></i>
+          <span>赞成(<%= @user.votes.where(attitude: 1).length %>)</span>
+      <% end %>
+      <%= link_to all_downvotes_user_path(@user) do %>
+          <i class="am-icon-thumbs-o-down am-icon-fw" style="margin-left: 10px;"></i>
+          <span>反对(<%= @user.votes.where(attitude: -1).length %>)</span>
+      <% end %>
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <span style="color: #666; font-weight: 700; margin-bottom: 5px;"><i class="am-icon-list-ul am-icon-fw"></i>详细资料</span>
+    <% if can? :update, @user %>
+        <%= link_to '修改', edit_user_path(@user) %>
+    <% end %>
+    <% if can? :destroy, @user %>
+        <%= link_to '删除', user_path(@user), method: :delete, data: {confirm: 'Really?'} %>
+    <% end %>
     <%= form_for @user do |f| %>
-        <div style="display: inline-block; width: 24%">
-          <div class="am-input-group am-input-group-primary">
-            <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
-            <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名" %>
-          </div>
+        <div class="am-input-group am-input-group-primary" style="margin-top: 5px;">
+          <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
+          <%= f.text_field :realname, class: "am-form-field", placeholder:"真实姓名", style:"width:100px;"%>
         </div>
-        <div style="display: inline-block; width: 54%">
-          <div class="am-input-group am-input-group-primary">
-            <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
-            <div style="margin-left: 2px; padding-top: 1px;">
+        <div style="display: inline-block; background-color: #0e90d2; padding-top: 3.5px; margin-right: -2px; height: 37.2px; width:53px; text-align: center; margin-top: 6px;">
+          <i class="am-icon-venus-mars am-icon-fw" style="color:white;"></i>
+        </div>
+        <div class="am-btn-group doc-js-btn-1" data-am-button>
+          <label class="am-btn am-btn-primary <%= @user.gender ? "am-active" : ""%>">
+            <%= f.radio_button :gender, 'true' %>男
+          </label>
+          <label class="am-btn am-btn-primary <%= (@user.gender == false) ? "am-active" : ""%>">
+            <%= f.radio_button :gender, 'false' %>女
+          </label>
+        </div>
+        <div class="am-input-group am-input-group-primary" style="margin-top: 6px;">
+          <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
+          <div style="margin-left: 2px; padding-top: 1px;">
             <%= f.date_select :birthday, class: "am-form-field"%>
-            </div>
           </div>
         </div>
-        <div style="display: inline-block; float: right;">
-          <div style="display: inline-block; background-color: #0e90d2; padding-top: 4px; margin-right: -4px; height: 37.2px; min-width: 25px; text-align: center;"><i class="am-icon-venus-mars am-icon-fw" style="color:white;"></i></div>
-          <div class="am-btn-group doc-js-btn-1" data-am-button>
-            <label class="am-btn am-btn-primary <%= @user.gender ? "am-active" : ""%>">
-              <%= f.radio_button :gender, 'true' %>男
-            </label>
-            <label class="am-btn am-btn-primary <%= (@user.gender == false) ? "am-active" : ""%>">
-              <%= f.radio_button :gender, 'false' %>女
-            </label>
-          </div>
-        </div>
-        <div class="am-input-group am-input-group-primary" style="margin-bottom: 6px">
+        <div class="am-input-group am-input-group-primary" style="margin-top: 6px">
           <span class="am-input-group-label"><i class="am-icon-map am-icon-fw"></i></span>
           <%= f.text_field :address, class: "am-form-field", placeholder:"地址" %>
         </div>
-        <div style="margin-bottom: 6px">
+        <div style="margin-top: 6px">
           <%= f.text_area :self_introduction, style:"width:100%; border: 1px solid rgb(14, 144, 210)", placeholder:"个人介绍" %><br>
         </div>
         <%= f.submit "提交", class:"am-btn am-btn-primary", style:"float:right"%>

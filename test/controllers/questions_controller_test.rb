@@ -9,6 +9,11 @@ class QuestionsControllerTest < ActionController::TestCase
     @user = user
   end
 
+  #test "should get index" do
+  #  get :index
+  #  assert_response :success
+  #end
+
   test "should create question" do
     post :create, question: {title: "this is a legal title", content: "this is a legal content"}
     assert_redirected_to question_path(assigns(:question))
@@ -33,7 +38,7 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_redirected_to question_path(assigns(:question))
   end
 
-  test "tester shouldn't update question" do
+  test "tester shouldn't update question with illegal title" do
     post :update, id: questions(:tester_question).id  ,question: {title: "ill", content: "this is a legal content"}
     assert_redirected_to question_path(assigns(:question))
   end

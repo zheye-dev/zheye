@@ -5,6 +5,7 @@ tester_question:
   content: MyText
   user: tester
 
-two:
-  title: MyString
-  content: MyText
+del_tester_question:
+  title: This question will be deleted
+  content: hope it works
+  user: del_tester

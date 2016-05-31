@@ -5,5 +5,10 @@ tester_answer:
   question: tester_question
   user: tester
 
+del_tester_answer:
+  content: this answer will be deleted
+  question: tester_question
+  user: del_tester
+
 two:
   content: MyText

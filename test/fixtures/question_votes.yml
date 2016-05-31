@@ -2,3 +2,8 @@ tester_question_vote:
   attitude: 1
   user: tester
   question: tester_question
+
+del_tester_question_vote:
+  attitude: 1
+  user: del_tester
+  question: tester_question

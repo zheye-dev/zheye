@@ -11,6 +11,7 @@ tester:
   address: MyString
   self_introduction: MyString
 
+#id 842650587
 del_tester:
   login: del_tester
   crypted_password: MyString
@@ -20,10 +21,10 @@ del_tester:
   realname: MyString
   birthday: 2016-05-11
   address: MyString
-  self_introduction: MyString  login: del_tester
+  self_introduction: MyString
 
-admin:
-  login: admin
+test_admin:
+  login: test_admin
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString

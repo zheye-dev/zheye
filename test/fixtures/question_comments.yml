@@ -2,3 +2,8 @@ tester_question_comment:
   content: MyText
   user: tester
   question: tester_question
+
+del_tester_question_comment:
+  content: this comment will be deleted
+  user: del_tester
+  question: tester_question

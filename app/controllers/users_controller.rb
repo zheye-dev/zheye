@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   authorize_resource :except => [:cur_user, :all_questions, :all_answers, :all_comments, :all_upvotes, :all_downvotes]
+
+  respond_to :html, :js
   # Display all users
   # Require admin access
   def index
@@ -10,11 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     @user.admin = @user.login == 'admin'
-    if @user.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    @user.save
   end
 
   # Display registration form

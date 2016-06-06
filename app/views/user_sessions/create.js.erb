@@ -1,0 +1,5 @@
+<% if @user_session.errors.any? %>
+alert("<%= j @user_session.errors.full_messages.join('\n') %>");
+<% else %>
+window.parent.location.reload();
+<% end %>

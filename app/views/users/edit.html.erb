@@ -37,12 +37,6 @@
   </div>
   <div style="margin-top: 20px;">
     <span style="color: #666; font-weight: 700; margin-bottom: 5px;"><i class="am-icon-list-ul am-icon-fw"></i>详细资料</span>
-    <% if can? :update, @user %>
-        <%= link_to '修改', edit_user_path(@user) %>
-    <% end %>
-    <% if can? :destroy, @user %>
-        <%= link_to '删除', user_path(@user), method: :delete, data: {confirm: 'Really?'} %>
-    <% end %>
     <%= form_for @user do |f| %>
         <div class="am-input-group am-input-group-primary" style="margin-top: 5px;">
           <span class="am-input-group-label"><i class="am-icon-user am-icon-fw"></i></span>
@@ -61,7 +55,7 @@
         </div>
         <div class="am-input-group am-input-group-primary" style="margin-top: 6px;">
           <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
-          <div style="margin-left: 2px; padding-top: 1px;">
+          <div style="margin-left: 2px; padding-top: 1.1px;">
             <%= f.date_select :birthday, :start_year => 1930, :end_year => 2016, class: "am-form-field"%>
           </div>
         </div>

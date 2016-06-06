@@ -62,7 +62,7 @@
         <div class="am-input-group am-input-group-primary" style="margin-top: 6px;">
           <span class="am-input-group-label"><i class="am-icon-birthday-cake am-icon-fw"></i></span>
           <div style="margin-left: 2px; padding-top: 1px;">
-            <%= f.date_select :birthday, class: "am-form-field"%>
+            <%= f.date_select :birthday, :start_year => 1930, :end_year => 2016, class: "am-form-field"%>
           </div>
         </div>
         <div class="am-input-group am-input-group-primary" style="margin-top: 6px">

@@ -1,7 +1,7 @@
 module QuestionsHelper
   class DateSortStrategy
     def acquire_sorted
-      Question.order('updated_at DESC').to_a
+      Question.order(updated_at: :desc).to_a
     end
   end
 

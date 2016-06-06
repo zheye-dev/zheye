@@ -9,5 +9,5 @@
 </div>
 <% @questions.each do |question| %>
 <% @question = question %>
-<%= render partial: 'questions/question_box', locals: {detail: true} %>
+<%= render partial: 'questions/question_box', locals: {detail: true, show_link:true} %>
 <% end %>

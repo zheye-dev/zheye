@@ -7,3 +7,20 @@
 # column: value
 #
 
+tester_answer_vote:
+  attitude: 1
+  type: AnswerVote
+  user: tester
+  answer_id: 464091718
+
+tester_question_vote:
+  attitude: 1
+  type: QuestionVote
+  user: tester
+  question_id: 519995637
+
+del_tester_question_vote:
+  attitude: 1
+  type: QuestionVote
+  user: del_tester
+  question_id: 519995637

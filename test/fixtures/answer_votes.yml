@@ -1,4 +1,5 @@
 tester_answer_vote:
   attitude: 1
+  type: answer_vote
   user: tester
-  answer: tester_answer
+  answer_id: 464091718

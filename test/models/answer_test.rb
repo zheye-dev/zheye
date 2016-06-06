@@ -1,12 +1,7 @@
 class AnswerTest < ActiveSupport::TestCase
   test "should save answer" do
-    answer = Answer.new(content: "legal cotent",user: users(:tester))
+    answer = Answer.new(content: "legal content",user: users(:tester))
     assert answer.save
-  end
-
-  test "should not save answer without content" do
-    answer = Answer.new
-    assert_not answer.save
   end
 
   test "should not save answer with illegal length" do

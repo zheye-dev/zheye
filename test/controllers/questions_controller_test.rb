@@ -33,6 +33,11 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_equal flash[:notice], 'Question updated!'
   end
 
+  test "tester should update others question" do
+    post :update, id: questions(:del_tester_question).id  ,question: {title: "this is a legal title", content: "this is a legal content"}
+    assert_throws AccessDenied
+  end
+
   test "tester shouldn't update question with illegal title" do
     post :update, id: questions(:tester_question).id  ,question: {title: "ill", content: "this is a legal content"}
     assert_template 'edit'

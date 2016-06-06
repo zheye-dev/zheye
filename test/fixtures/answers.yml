@@ -1,14 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+#id 464091718
 tester_answer:
   content: MyText
   question: tester_question
   user: tester
 
+#id 680754760
 del_tester_answer:
   content: this answer will be deleted
   question: tester_question
   user: del_tester
-
-two:
-  content: MyText

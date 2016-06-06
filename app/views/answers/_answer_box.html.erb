@@ -28,9 +28,9 @@
             <% end %>
           </div>
           <% if show_without_html %>
-              <div class="am-san-serif" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content %></div>
+              <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content %></div>
           <% else %>
-              <div class="am-san-serif" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
+              <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
           <% end %>
           <div style="display: inline-block">
             <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
@@ -63,7 +63,7 @@
                 <%= link_to '修改', edit_question_answer_path(@answer.question, @answer), remote: true %>
             <% end %>
           </div>
-          <div class="am-san-serif" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
+          <div class="answer_wrapper" style="margin-top: 0.3em; margin-bottom: 0.3em;"><%= @answer.content.html_safe %></div>
           <div style="display: inline-block">
             <a id="answer<%= @answer.id %>_comment_link" data-answer-id="<%= @answer.id %>" data-question-id="<%= @answer.question.id %>"
                href="javascript: void(0)" class="am-icon-comment-o" style="font-size:1.4rem; color:#999;"><%= @answer.answer_comments.length %>条评论</a>

@@ -37,7 +37,7 @@ test_admin:
 
 
 admin:
-  login: admin
+  login: administer
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString

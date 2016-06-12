@@ -1,2 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+tester_answer_comment:
+  content: MyText
+  type: AnswerComment
+  user: tester
+  answer: tester_answer
+
+tester_question_comment:
+  content: MyText
+  type: QuestionComment
+  user: tester
+  question_id: 519995637
+
+del_tester_question_comment:
+  content: this comment will be deleted
+  type: QuestionComment
+  user: del_tester
+  question_id: 519995637

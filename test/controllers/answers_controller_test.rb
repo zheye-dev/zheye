@@ -14,13 +14,18 @@ class AnswersControllerTest < ActionController::TestCase
   end
 
   test "should create answer" do
-    post :create, format: 'json', question_id: questions(:tester_question).id, user: @current_user, answer: {content: "this is a legal content"}
-    assert_response :success
+    post :create, format: 'js', question_id: questions(:del_tester_question).id, user: @current_user, answer: {content: "this is a legal content"}
+    assert_template 'create'
+  end
+
+  test "shouldn't answer twice" do
+    post :create, format: 'js', question_id: questions(:tester_question).id, user: @current_user, answer: {content: "this is a legal content"}
+    assert_template '_errors'
   end
 
   test "shouldn't create answer whihout legal content" do
-    post :create, question_id: questions(:tester_question).id, user: @current_user, answer: {content: "illegal"}
-    assert_response :success
+    post :create, format: 'js', question_id: questions(:tester_question).id, user: @current_user, answer: {content: "illegal"}
+    assert_template '_errors'
   end
 
   test "shouldn't update answer without legal content" do

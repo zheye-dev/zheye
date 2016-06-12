@@ -2,13 +2,13 @@
 #id 464091718
 tester_answer:
   content: MyText
-  question: tester_question
+  question_id: 519995637
   user: tester
 
 #id 680754760
 del_tester_answer:
   content: this answer will be deleted
-  question: tester_question
+  question_id: 519995637
   user: del_tester
 
 

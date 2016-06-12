@@ -34,3 +34,16 @@ test_admin:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+
+
+admin:
+  login: admin
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  gender: false
+  admin: true
+  realname: MyString
+  birthday: 2016-05-11
+  address: MyString
+  self_introduction: MyString

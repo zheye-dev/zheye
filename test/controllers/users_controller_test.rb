@@ -1,6 +1,6 @@
 class UsersControllerTest < ActionController::TestCase
   setup do
-    user = User.first
+    user = users(:tester)
     @controller.instance_eval do
       @current_user = user
     end
@@ -20,11 +20,6 @@ class UsersControllerTest < ActionController::TestCase
   test "shouldn't create existed user" do
     post :create, user: {login: "tester", password: "admin", password_confirmation: "adminn"}
     assert_template 'new'
-  end
-
-  test "should destroy user" do
-    post :destroy, id: users(:tester).id
-    assert_redirected_to root_path
   end
 
   test "should update user" do
@@ -75,5 +70,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:user)
   end
 
+  #authorize
+  test "shouldn't destroy user" do
+    assert_raise(CanCan::AccessDenied){post :destroy, id: users(:tester).id}
+  end
 
+  test "admin should destroy user" do
+    user = users(:admin)
+    @controller.instance_eval do
+      @current_user = user
+    end
+    post :destroy, id: users(:tester).id
+    assert_redirected_to root_path
+  end
 end

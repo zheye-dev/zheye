@@ -47,7 +47,7 @@ class AnswersControllerTest < ActionController::TestCase
     assert_raise(CanCan::AccessDenied){post :update, question_id: questions(:tester_question).id, id: answers(:del_tester_answer).id, answer: {content: "this is a legal content"}}
   end
 
-  test "admin should destroy question" do
+  test "admin should destroy answer" do
     auser = users(:admin)
     @controller.instance_eval do
       @current_user = auser
@@ -56,7 +56,11 @@ class AnswersControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-  test "user shouldn't destroy question" do
+  test "user shouldn't destroy his answer" do
     assert_raise(CanCan::AccessDenied){post :destroy, question_id: questions(:tester_question).id, id: answers(:tester_answer).id}
+  end
+
+  test "user shouldn't destroy other's answer" do
+    assert_raise(CanCan::AccessDenied){post :destroy, question_id: questions(:tester_question).id, id: answers(:del_tester_answer).id}
   end
 end

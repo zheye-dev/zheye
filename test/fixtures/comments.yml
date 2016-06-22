@@ -5,15 +5,18 @@ tester_answer_comment:
   type: AnswerComment
   user: tester
   answer: tester_answer
+  score: 0.0
 
 tester_question_comment:
   content: MyText
   type: QuestionComment
   user: tester
   question_id: 519995637
+  score: 0.0
 
 del_tester_question_comment:
   content: this comment will be deleted
   type: QuestionComment
   user: del_tester
   question_id: 519995637
+  score: 0.0

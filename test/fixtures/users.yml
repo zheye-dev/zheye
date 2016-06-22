@@ -10,6 +10,7 @@ tester:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+  score: 0.0
 
 #id 842650587
 del_tester:
@@ -22,6 +23,7 @@ del_tester:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+  score: 0.0
 
 test_admin:
   login: test_admin
@@ -34,6 +36,7 @@ test_admin:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+  score: 0.0
 
 
 admin:
@@ -48,3 +51,4 @@ admin:
   birthday: 2016-05-11
   address: MyString
   self_introduction: MyString
+  score: 0.0

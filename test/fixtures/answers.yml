@@ -4,11 +4,13 @@ tester_answer:
   content: MyText
   question_id: 519995637
   user: tester
+  score: 0.0
 
 #id 680754760
 del_tester_answer:
   content: this answer will be deleted
   question_id: 519995637
   user: del_tester
+  score: 0.0
 
 

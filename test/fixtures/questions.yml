@@ -4,8 +4,10 @@ tester_question:
   title: MyString
   content: MyText
   user: tester
+  score: 0.0
 
 del_tester_question:
   title: This question will be deleted
   content: hope it works
   user: del_tester
+  score: 0.0

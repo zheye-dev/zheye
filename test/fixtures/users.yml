@@ -38,9 +38,10 @@ test_admin:
 
 admin:
   login: administer
-  crypted_password: MyString
-  password_salt: MyString
-  persistence_token: MyString
+  #password: password
+  crypted_password: 400$8$45$95e1bf251871c9ed$5a2a93acd40b3cff5c2bc804b6cc1b110f95c3858eba4455e72c62821ee9ad25
+  password_salt: 10qdW3YTdalAMEMun4c9
+  persistence_token: 941262f7c317dd18b75ea7eb588dd6f2b33bfe0204693612c3d335b5a707cc6e337055062b5a360c08b3a858460133ce496ba239ec2099ce1d6c9e69ed56d37f
   gender: false
   admin: true
   realname: MyString

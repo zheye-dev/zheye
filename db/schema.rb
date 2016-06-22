@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530151450) do
+ActiveRecord::Schema.define(version: 20160622023130) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160530151450) do
     t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "score"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160530151450) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.boolean  "admin"
+    t.boolean  "admin",             default: false
     t.boolean  "gender"
     t.string   "realname"
     t.date     "birthday"
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160530151450) do
     t.string   "self_introduction"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "score"
   end
 
   add_index "users", ["login"], name: "index_users_on_login", unique: true

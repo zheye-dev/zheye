@@ -10,7 +10,8 @@ class Question < ActiveRecord::Base
 
   before_save :sanitize_content
   before_update :sanitize_content
-  after_update :calculate_score
+  before_save :calculate_score
+  before_update :calculate_score
 
 
   searchable do
@@ -32,23 +33,48 @@ class Question < ActiveRecord::Base
   public
 
   def calculate_score
+    logger.debug "question calculate score start"
     u = Float(question_votes.where(attitude: 1).length)
     v = Float(question_votes.where(attitude: -1).length)
     n = u + v
 
-    if (n == 0)
-      self.score = 0.0
-      return self.score
+    vote_score = 0.0
+
+    if (n != 0)
+      p = u / n
+      z = 1.96
+
+      vote_score = 4 * n * (1 - p) * p + z ** 2
+      vote_score = Math.sqrt(vote_score)
+      vote_score = vote_score * z / n / 2
+      vote_score = p + z ** 2 / 2 / n - vote_score
+      vote_score = vote_score / (1 + z ** 2 / n)
     end
 
-    p = u / n
-    z = 1.96
+    answer_score = 0.0
+    cnt = 0
 
-    self.score = 4 * n * (1 - p) * p + z ** 2
-    self.score = Math.sqrt(self.score)
-    self.score = self.score * z / n / 2
-    self.score = p + z ** 2 / 2 / n - self.score
-    self.score = self.score / (1 + z ** 2 / n)
+    answers.order(score: :desc).each do |answer|
+      cnt += 1
+      answer_score += answer.score
+      break if cnt == 99
+    end
+
+    begin
+      date_diff = DateTime.now - DateTime.parse(created_at.to_s)
+    rescue
+      date_diff = 0
+    end
+
+    self.score = vote_score * 0.3 + answer_score * 0.7
+
+    if date_diff < 10
+      self.score += 0.02 * (10 - date_diff)
+    end
+
+    logger.debug "question calculate score success"
+
     self.score
+
   end
 end

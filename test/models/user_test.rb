@@ -1,9 +1,12 @@
+require 'spec_helper'
+
 class UserTest < ActiveSupport::TestCase
+  setup :activate_authlogic
+
   test "should create user" do
     user = User.new(login: "tester1", password: "password", password_confirmation: "password")
     user.save
     assert_equal user.errors.full_messages, []
-    assert_equal user.crypted_password, user.password_salt, user.persistence_token
   end
 
   test "shouldn't create user with same login" do

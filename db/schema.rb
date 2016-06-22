@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160622023130) do
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
+    t.string   "password_confirmation"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"

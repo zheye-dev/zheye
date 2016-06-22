@@ -15,7 +15,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "shouldn't create question" do
     post :create, question: {title: "ill", content: "this is a legal content"}
-    assert_response :success
+    assert_template 'new'
   end
 
   test "shouldn't update question with illegal title" do

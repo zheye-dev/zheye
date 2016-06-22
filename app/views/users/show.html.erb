@@ -9,7 +9,12 @@
   <hr style="margin-top: 0px;">
   <div>
     <span style="color: #666; font-weight: 700"><i class="am-icon-angellist am-icon-fw"></i>个人成就</span>
-    <div style="padding-left: 40px; color: #777; font-size: 0.9em;">获得 <i class="am-icon-thumbs-o-up"></i> <%= @user.all_upvotes_received %>赞成</div>
+    <div style="padding-left: 40px; color: #777; font-size: 0.9em;">获得
+      <i class="am-icon-thumbs-o-up am-icon-fw"></i>
+      <span style="font-weight: bold"><%= @user.all_upvotes_received %> </span>赞成
+      <i class="am-icon-star am-icon-fw"></i>
+      <span style="font-weight: bold"><%= (@user.score * 100).round %> </span>积分
+    </div>
   </div>
   <div style="margin-top: 20px;">
     <span style="color: #666; font-weight: 700"><i class="am-icon-bar-chart-o am-icon-fw"></i>统计信息</span>

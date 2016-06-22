@@ -4,27 +4,11 @@ class UsersControllerTest < ActionController::TestCase
     @controller.instance_eval do
       @current_user = user
     end
-    @user = user
   end
 
   test "should create user" do
     post :create, :format => 'js', user: {login: "tester2", password: "admin", password_confirmation: "admin"}
-    assert_response :success
-  end
-
-  test "shouldn't create user" do
-    post :create, :format => 'js', user: {login: "adminn", password: "admin", password_confirmation: "adminn"}
     assert_template 'create'
-  end
-
-  test "shouldn't create existed user" do
-    post :create, :format => 'js', user: {login: "tester", password: "admin", password_confirmation: "adminn"}
-    assert_template 'create'
-  end
-
-  test "should update user" do
-    post :update, {id: users(:tester).id, user: {gender: true, realname: "tester", birthday: "1996-07-10", address: "test address", self_introduction: "hhh"}}
-    assert_redirected_to user_path(assigns(:user))
   end
 
   test "should get user's questions" do
@@ -71,6 +55,20 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   #authorize
+  test "admin should update user" do
+    user = users(:admin)
+    @controller.instance_eval do
+      @current_user = user
+    end
+    post :update, {id: users(:tester).id, user: {gender: true, realname: "tester", birthday: "1996-07-10", address: "test address", self_introduction: "hhh"}}
+    assert_redirected_to user_path(assigns(:user))
+  end
+
+  test "should update user" do
+    post :update, {id: users(:tester).id, user: {gender: true, realname: "tester", birthday: "1996-07-10", address: "test address", self_introduction: "hhh"}}
+    assert_redirected_to user_path(assigns(:user))
+  end
+
   test "shouldn't destroy user" do
     assert_raise(CanCan::AccessDenied){post :destroy, id: users(:tester).id}
   end

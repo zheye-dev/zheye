@@ -10,8 +10,16 @@ class Question < ActiveRecord::Base
 
   before_save :sanitize_content
   before_update :sanitize_content
-  before_save :calculate_score
-  before_update :calculate_score
+
+  after_create :calculate_score
+
+  after_find do |question|
+    old_score = question.score
+    question.calculate_score
+    if old_score != question.score
+      question.save
+    end
+  end
 
 
   searchable do
@@ -61,7 +69,8 @@ class Question < ActiveRecord::Base
     end
 
     begin
-      date_diff = DateTime.now - DateTime.parse(created_at.to_s)
+      date_diff = (DateTime.now - created_at).to_i
+      logger.debug("date_diff=" + date_diff.to_s)
     rescue
       date_diff = 0
     end

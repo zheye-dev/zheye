@@ -31,12 +31,19 @@
     </div>
     <div class="am-u-sm-4">
       <div class="am-u-sm-6">
-        <a href="https://www.zhihu.com/publications/weekly/19551074">
-          <%= image_tag "ad_z3.jpg", style:"width:90%; float:right;" %>
+
+        <a href="http://stackoverflow.com/">
+          <%= image_tag "ad_stackoverflow.png", style:"width:90%; float:right; margin-top: 5px" %>
         </a>
-        <a href="https://www.zhihu.com/publications/weekly/19551064">
-          <%= image_tag "ad_z4.jpg", style:"width:90%; float:right; margin-top: 5px" %>
+
+        <a href="https://www.jetbrains.com/ruby/?fromMenu">
+          <%= image_tag "ad_rubymine.png", style:"width:90%; float:right; margin-top: 5px" %>
         </a>
+
+        <a href="https://www.zhihu.com">
+          <%= image_tag "ad_zhihu.jpg", style:"width:90%; float:right; margin-top: 5px" %>
+        </a>
+
         <%= content_for?(:sidebox) ?yield(:sidebox) : '' %>
       </div>
       <div class="am-u-sm-6"></div>

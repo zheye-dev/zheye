@@ -6,7 +6,14 @@ class User < ActiveRecord::Base
     has_many :comments, dependent: :destroy
 
     after_create :calculate_score
-    after_update :calculate_score
+
+    after_find do |user|
+        old_score = user.score
+        user.calculate_score
+        if old_score != user.score
+            user.save
+        end
+    end
 
     def all_upvotes_received
         upvotes_count =
@@ -19,24 +26,25 @@ class User < ActiveRecord::Base
 
     end
 
-  def calculate_score
-      logger.debug "user calculate score start"
+    public
+      def calculate_score
+          logger.debug "user calculate score start"
 
-      self.score = 0.0
-      cnt = 0
+          self.score = 0.0
+          cnt = 0
 
-      answers.order(score: :desc).each do |answer|
-          cnt += 1
-          self.score += answer.score
-          break if cnt == 9
+          answers.order(score: :desc).each do |answer|
+              cnt += 1
+              self.score += answer.score
+              break if cnt == 9
+          end
+
+          self.score += 1
+          self.score /= 10
+
+          logger.debug "user calculate score success"
+
+          self.score
+
       end
-
-      self.score += 1
-      self.score /= 10
-
-      logger.debug "user calculate score success"
-
-      self.score
-
-  end
 end

@@ -21,7 +21,7 @@ class QuestionCommentsControllerTest < ActionController::TestCase
 
   #need json
   test "shouldn't create question comment" do
-    post :create, {question_id: questions(:tester_question).id, user: @current_user, question_comment: {content: "ill"}}
+    post :create, format: 'js', question_id: questions(:tester_question).id, user: @current_user, question_comment: {content: "legal content"}
     assert_response :success
   end
 
@@ -52,15 +52,21 @@ class QuestionCommentsControllerTest < ActionController::TestCase
     @controller.instance_eval do
       @current_user = user
     end
-    get :destroy, id: comments(:tester_question_comment).id
+    comment = comments(:tester_question_comment)
+    @comment = comment
+    delete :destroy, format: 'js', @comment => comment
     assert_template 'destroy'
   end
 
   test "user shouldn't destroy his comment" do
-    assert_raise(CanCan::AccessDenied){get :destroy, id: comments(:tester_question_comment).id}
+    comment = comments(:tester_question_comment)
+    @comment = comment
+    assert_raise(CanCan::AccessDenied){delete :destroy,format: 'js', @comment => comment}
   end
 
   test "user shouldn't destroy other's comment" do
-    assert_raise(CanCan::AccessDenied){get :destroy, id: comments(:del_tester_question_comment).id}
+    comment = comments(:tester_question_comment)
+    @comment = comment
+    assert_raise(CanCan::AccessDenied){delete :destroy, format:'js', @comment => comment}
   end
 end

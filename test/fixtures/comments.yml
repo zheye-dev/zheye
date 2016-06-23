@@ -7,6 +7,13 @@ tester_answer_comment:
   answer: tester_answer
   score: 0.0
 
+del_tester_answer_comment:
+  content: MyText
+  type: AnswerComment
+  user: del_tester
+  answer: tester_answer
+  score: 0.0
+
 tester_question_comment:
   content: MyText
   type: QuestionComment
